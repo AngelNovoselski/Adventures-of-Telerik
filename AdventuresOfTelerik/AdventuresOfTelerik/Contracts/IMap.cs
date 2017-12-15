@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Contracts
 {
-    class IMap
+    public interface IMap
     {
     }
 }

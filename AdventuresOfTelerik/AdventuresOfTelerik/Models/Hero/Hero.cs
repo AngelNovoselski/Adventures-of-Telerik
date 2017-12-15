@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Models.Hero
 {
-    class Hero
+    public abstract class Hero
     {
     }
 }

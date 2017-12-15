@@ -42,11 +42,46 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\EnemyInterfaces\IBoss.cs" />
+    <Compile Include="Contracts\EnemyInterfaces\IDragon.cs" />
+    <Compile Include="Contracts\EnemyInterfaces\IEnemy.cs" />
+    <Compile Include="Contracts\EnemyInterfaces\IMonster.cs" />
+    <Compile Include="Contracts\HeroInterfaces\IHero.cs" />
+    <Compile Include="Contracts\HeroInterfaces\IHunter.cs" />
+    <Compile Include="Contracts\HeroInterfaces\IMage.cs" />
+    <Compile Include="Contracts\HeroInterfaces\IWarrior.cs" />
+    <Compile Include="Contracts\IMap.cs" />
+    <Compile Include="Contracts\WeaponInterfaces\IBow.cs" />
+    <Compile Include="Contracts\WeaponInterfaces\IKnife.cs" />
+    <Compile Include="Contracts\WeaponInterfaces\IMace.cs" />
+    <Compile Include="Contracts\WeaponInterfaces\IStaff.cs" />
+    <Compile Include="Contracts\WeaponInterfaces\IWeapon.cs" />
+    <Compile Include="Engine\Engine.cs" />
+    <Compile Include="Factories\Factory.cs" />
+    <Compile Include="Factories\IFactory.cs" />
+    <Compile Include="Models\Enemies\BossDragon.cs" />
+    <Compile Include="Models\Enemies\BossMonster.cs" />
+    <Compile Include="Models\Enemies\Dragon.cs" />
+    <Compile Include="Models\Enemies\Enemy.cs" />
+    <Compile Include="Models\Enemies\Monster.cs" />
+    <Compile Include="Models\Hero\Hero.cs" />
+    <Compile Include="Models\Hero\Hunter.cs" />
+    <Compile Include="Models\Hero\Mage.cs" />
+    <Compile Include="Models\Hero\Warrior.cs" />
+    <Compile Include="Models\Map.cs" />
+    <Compile Include="Models\Weapons\Bow.cs" />
+    <Compile Include="Models\Weapons\Knife.cs" />
+    <Compile Include="Models\Weapons\Mace.cs" />
+    <Compile Include="Models\Weapons\Staff.cs" />
+    <Compile Include="Models\Weapons\Weapon.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Common\Enums\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

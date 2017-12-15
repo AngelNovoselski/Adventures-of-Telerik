@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Contracts.HeroInterfaces
 {
-    class IWarrior
+    public interface IWarrior
     {
     }
 }

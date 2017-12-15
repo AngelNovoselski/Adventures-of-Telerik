@@ -10,6 +10,7 @@ namespace AdventuresOfTelerik
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Star your engines and lets get it on !!!");
         }
     }
 }

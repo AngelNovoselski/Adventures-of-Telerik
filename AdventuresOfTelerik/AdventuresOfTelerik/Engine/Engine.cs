@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Engine
 {
-    class Engine
+    public class Engine
     {
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Models.Weapons
 {
-    class Bow
+    public class Bow
     {
     }
 }

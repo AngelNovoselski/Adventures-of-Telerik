@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Models.Weapons
 {
-    class Staff
+    public class Staff
     {
+       
     }
 }

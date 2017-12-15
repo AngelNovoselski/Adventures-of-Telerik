@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Models.Enemies
 {
-    class BossDragon
+    public class BossDragon
     {
+
     }
 }

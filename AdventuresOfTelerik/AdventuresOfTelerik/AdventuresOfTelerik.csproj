@@ -56,7 +56,10 @@
     <Compile Include="Contracts\WeaponInterfaces\IMace.cs" />
     <Compile Include="Contracts\WeaponInterfaces\IStaff.cs" />
     <Compile Include="Contracts\WeaponInterfaces\IWeapon.cs" />
+    <Compile Include="Engine\Command.cs" />
     <Compile Include="Engine\Engine.cs" />
+    <Compile Include="Engine\ICommand.cs" />
+    <Compile Include="Engine\IEngine.cs" />
     <Compile Include="Factories\Factory.cs" />
     <Compile Include="Factories\IFactory.cs" />
     <Compile Include="Models\Enemies\BossDragon.cs" />

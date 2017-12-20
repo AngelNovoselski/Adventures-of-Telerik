@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 using AdventuresOfTelerik.Models.Enemies;
 using AdventuresOfTelerik.Models.Hero;
 using AdventuresOfTelerik.Models.Weapons;
+using AdventuresOfTelerik.Models;
+using AdventuresOfTelerik.Contracts.WeaponInterfaces;
 
 namespace AdventuresOfTelerik.Factories
 {
-    public class Factory : IFactory
+    public class GameFactory : IFactory
     {
         public BossDragon CreateBossDragon()
         {
@@ -48,7 +50,9 @@ namespace AdventuresOfTelerik.Factories
 
         public Mage CreateMage()
         {
-            throw new NotImplementedException();
+            Mage mag= new Mage();
+
+            return mag;
         }
 
         public Monster CreateMonster()
@@ -58,12 +62,23 @@ namespace AdventuresOfTelerik.Factories
 
         public Staff CreateStaff()
         {
-            throw new NotImplementedException();
+            Staff sta = new Staff();
+
+            return sta;
         }
 
         public Warrior CreateWarrior()
         {
-            throw new NotImplementedException();
+            Warrior war = new Warrior();
+
+            return war;
+        }
+
+        public Map CreateMap()
+        {
+            Map map = new Map();
+
+            return map;
         }
     }
 }

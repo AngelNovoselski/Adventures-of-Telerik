@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AdventuresOfTelerik.Contracts.WeaponInterfaces;
 using AdventuresOfTelerik;
+using AdventuresOfTelerik.Contracts;
 
 namespace AdventuresOfTelerik.Models.Hero
 {
@@ -18,12 +19,12 @@ namespace AdventuresOfTelerik.Models.Hero
         private int level;
         private int exp;
         private IWeapon weapon;
-
+        //private Map mappo;
 
         public Hero()
         {
-            this.PositionX = 0;
-            this.PositionY = 0;
+            this.PositionX = 1;
+            this.PositionY = 1;
             this.Name = "Telerik";
             this.Hp = 100;
             this.Level = 1;
@@ -39,36 +40,32 @@ namespace AdventuresOfTelerik.Models.Hero
         public int Exp { get => exp; set => exp = value; }
         public IWeapon Weapon { get => weapon; set => weapon = value; }
 
-        public void Move()
-        {
-            throw new NotImplementedException();
-        }
-
         public void Print()
         {
             throw new NotImplementedException();
         }
 
-        //public void Move(string input)
-        //{
-        //    Map testMap = new Map(3, 3);
+        public void Move(int input)
+        {
+            if (input == 1)
+            {
 
-        //    if (input == "left" && this.PositionY >= 1)
-        //    {
-        //        this.PositionY -= 1;
-        //    }
-        //    else if (input == "right" && this.PositionY < testMap.Col - 2)
-        //    {
-        //        this.PositionY += 1;
-        //    }
-        //    else if (keyPressed.Key == ConsoleKey.DownArrow)
-        //    {
-        //        return "moveDown";
-        //    }
-        //    else if (keyPressed.Key == ConsoleKey.UpArrow)
-        //    {
-        //        return "moveUp";
-        //    }
+                this.PositionY -= 1;
+
+            }
+            else if (input == 2)
+            {
+                this.PositionY += 1;
+            }
+            else if (input == 3)
+            {
+                this.PositionX += 1;
+            }
+            else if (input == 4)
+            {
+                this.PositionX -= 1;
+            }
+        }
     }
 }
 

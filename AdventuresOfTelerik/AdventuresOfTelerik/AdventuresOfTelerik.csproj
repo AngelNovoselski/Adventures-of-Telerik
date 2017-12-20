@@ -57,11 +57,12 @@
     <Compile Include="Contracts\WeaponInterfaces\IStaff.cs" />
     <Compile Include="Contracts\WeaponInterfaces\IWeapon.cs" />
     <Compile Include="Engine\Command.cs" />
-    <Compile Include="Engine\Engine.cs" />
+    <Compile Include="Engine\GameEngine.cs" />
     <Compile Include="Engine\ICommand.cs" />
     <Compile Include="Engine\IEngine.cs" />
-    <Compile Include="Factories\Factory.cs" />
+    <Compile Include="Factories\GameFactory.cs" />
     <Compile Include="Factories\IFactory.cs" />
+    <Compile Include="Models\CollisionDetector.cs" />
     <Compile Include="Models\Enemies\BossDragon.cs" />
     <Compile Include="Models\Enemies\BossMonster.cs" />
     <Compile Include="Models\Enemies\Dragon.cs" />
@@ -77,7 +78,7 @@
     <Compile Include="Models\Weapons\Mace.cs" />
     <Compile Include="Models\Weapons\Staff.cs" />
     <Compile Include="Models\Weapons\Weapon.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="StartUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Models.Hero
 {
-    public class Mage
+    public class Mage : Hero
     {
+        public Mage() : 
+            base()
+        {
+
+        }
     }
 }

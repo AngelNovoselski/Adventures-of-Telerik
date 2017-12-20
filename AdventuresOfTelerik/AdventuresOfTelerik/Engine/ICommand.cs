@@ -1,7 +1,7 @@
-﻿namespace AdventuresOfTelerik.Engine
-{
-    using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
+namespace AdventuresOfTelerik.Engine
+{
     public interface ICommand
     {
         string Name { get; }

@@ -6,8 +6,16 @@ using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Models.Weapons
 {
-    public class Staff
+    public class Staff : Weapon
     {
-       
+        public Staff()
+        {
+
+        }
+
+        public override string ToString()
+        {
+            return "My staff!";
+        }
     }
 }

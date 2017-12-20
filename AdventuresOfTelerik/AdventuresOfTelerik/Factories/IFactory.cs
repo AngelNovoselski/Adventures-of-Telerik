@@ -1,4 +1,5 @@
-﻿using AdventuresOfTelerik.Models.Enemies;
+﻿using AdventuresOfTelerik.Contracts.WeaponInterfaces;
+using AdventuresOfTelerik.Models.Enemies;
 using AdventuresOfTelerik.Models.Hero;
 using AdventuresOfTelerik.Models.Weapons;
 using System;

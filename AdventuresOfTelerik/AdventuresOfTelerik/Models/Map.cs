@@ -8,18 +8,26 @@ namespace AdventuresOfTelerik.Models
 {
     public class Map
     {
-        private int row;
-        private int col;
+        private int row = 5;
+        private int col = 5;
         private char[,] firstMap;
-        public Map(int row, int col)
+
+        public Map()
         {
             this.Row = row;
             this.Col = col;
-           
-            firstMap = new char [,]{ { '-', '-', '-' } ,{ '-', '-', '-' } ,{ '-', '@','@' } };
+            FirstMap = new char[Row, Col];
+            FirstMap = new char[,] {
+                { '@','@', '@', '@' , '@' },
+                { '@','-', '-', '-' , '@' },
+                { '@','-', '-', '-' , '@' },
+                { '@','-', '-', '-' , '@' },
+                { '@','@', '@', '@' , '@' },
+            };
         }
 
-        public int Row { get => row; set => row = value; }
-        public int Col { get => col; set => col = value; }
+        public int Row { get; }
+        public int Col { get; }
+        public char[,] FirstMap { get => firstMap; set => firstMap = value; }
     }
 }

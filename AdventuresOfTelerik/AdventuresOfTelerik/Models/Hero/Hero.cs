@@ -19,6 +19,8 @@ namespace AdventuresOfTelerik.Models.Hero
         private int level;
         private int exp;
         private IWeapon weapon;
+        private int energy;
+        
         //private Map mappo;
 
         public Hero()
@@ -29,6 +31,7 @@ namespace AdventuresOfTelerik.Models.Hero
             this.Hp = 100;
             this.Level = 1;
             this.Exp = 0;
+            this.Energy = 100;
             //this.Weapon =  IWeapon();
         }
 
@@ -39,6 +42,7 @@ namespace AdventuresOfTelerik.Models.Hero
         public int Level { get => level; set => level = value; }
         public int Exp { get => exp; set => exp = value; }
         public IWeapon Weapon { get => weapon; set => weapon = value; }
+        public int Energy { get => energy; set => energy = value; }
 
         public void Print()
         {
@@ -59,11 +63,11 @@ namespace AdventuresOfTelerik.Models.Hero
             }
             else if (input == 3)
             {
-                this.PositionX += 1;
+                this.PositionX -= 1;
             }
             else if (input == 4)
             {
-                this.PositionX -= 1;
+                this.PositionX += 1;
             }
         }
     }

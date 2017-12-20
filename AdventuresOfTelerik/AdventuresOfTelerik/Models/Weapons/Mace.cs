@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Models.Weapons
 {
-    public class Mace
+    public class Mace : Weapon
     {
+        public Mace() : base()
+        {
+            this.Dmg = 20;
+        }
+        public override string ToString()
+        {
+            return "Mace";
+        }
     }
 }

@@ -8,11 +8,32 @@ namespace AdventuresOfTelerik.Models
 {
     public static class CollisionDetector
     {
-        public static string CheckCollisions(int positionX, int positionY, Map map)
+        public static char CheckCollisions(int positionX, int positionY, Map map)
         {
-            string result = "";
-            result = map.FirstMap[positionX, positionY].ToString();
+            char result = ' ';
+            result = map.FirstMap[positionX, positionY];
             return result;
+        }
+        public static string GuideMessage(char a)
+        {
+            var msg = "";
+
+            if (a == '-')
+            {
+                msg = "n empty path..";
+                return msg;
+            }
+            else if (a == '@')
+            {
+                msg = " tree there!";
+                return msg;
+            }
+            else if (a == '1')
+            {
+                msg = " dangerous monster ahead";
+                return msg;
+            }
+            return string.Empty;
         }
     }
 }

@@ -8,14 +8,13 @@ namespace AdventuresOfTelerik.Models.Weapons
 {
     public class Staff : Weapon
     {
-        public Staff()
+        public Staff() :base()
         {
-
+            this.Dmg = 10;
         }
-
         public override string ToString()
         {
-            return "My staff!";
+            return "Staff";
         }
     }
 }

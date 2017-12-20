@@ -1,4 +1,5 @@
-﻿using AdventuresOfTelerik.Contracts.WeaponInterfaces;
+﻿using AdventuresOfTelerik.Contracts.EnemyInterfaces;
+using AdventuresOfTelerik.Contracts.WeaponInterfaces;
 using AdventuresOfTelerik.Factories;
 using AdventuresOfTelerik.Models;
 using AdventuresOfTelerik.Models.Hero;
@@ -31,6 +32,7 @@ namespace AdventuresOfTelerik.Engine
         private Hero herrr;
         //private IWeapon weapon;
         private Map mappo;
+        private IEnemy enem;
         private readonly GameFactory factory;
 
         private GameEngine()
@@ -65,16 +67,18 @@ namespace AdventuresOfTelerik.Engine
             Console.WriteLine("Choose hero type:");
             Console.WriteLine("  Type 1 for mage:");
             Console.WriteLine("  Type 2 for warrior:");
+            Console.WriteLine("  Type 3 for hunter:");
             int type = int.Parse(Console.ReadLine());
             Console.WriteLine(ProcessStartScreen(type));
             Console.WriteLine("ENTER into your adventure!");
+            Console.ReadKey();
         }
 
         private string ProcessStartScreen(int command)
         {
-            while (command != 1 && command != 2)
+            while (command != 1 && command != 2 && command != 3)
             {
-                Console.WriteLine("Wrong Warrior! Choose Again!");
+                Console.WriteLine("Wrong Class! Choose Again!");
                 command = int.Parse(Console.ReadLine());
             }
             switch (command)
@@ -85,10 +89,14 @@ namespace AdventuresOfTelerik.Engine
                     return "You are Telerik Mage!";
                 case 2:
                     herrr = this.factory.CreateWarrior();
-                    herrr.Weapon = this.factory.CreateStaff();
+                    herrr.Weapon = this.factory.CreateMace();
                     return "You are Telerik Warrior!";
+                case 3:
+                    herrr = this.factory.CreateHunter();
+                    herrr.Weapon = this.factory.CreateBow();
+                    return "You are Telerik Hunter!";
                 default:
-                    return "Wrong Warrior! Choose Again!";
+                    return "Wrong Class! Choose Again!";
             }
         }
 
@@ -96,78 +104,209 @@ namespace AdventuresOfTelerik.Engine
         {
             while (herrr.Hp > 0)
             {
-                Console.ReadLine();
+               // Console.ReadLine();
                 //var commands = new List<ICommand>();
 
-                var currentLine = 0;
-
-                while (currentLine != 1 || currentLine != 2 || currentLine != 3 || currentLine != 4)
+                var currentLine = "0";
+                var msg = "Your journey begins now!";
+                //while (currentLine != 1 || currentLine != 2 || currentLine != 3 || currentLine != 4)
+                while (herrr.Hp>0)
                 {
+                   
+                
                     Console.Clear();
+                    Console.WriteLine(msg);         
+                    Console.WriteLine("Hero X:" + herrr.PositionX + " " + "Hero Y:" + herrr.PositionY);
+                    Console.WriteLine("Hero Hp:" + herrr.Hp + " " + "Hero Energy:" + herrr.Energy);
+                    Console.WriteLine("Hero Weapon:" + herrr.Weapon.ToString());
                     Console.WriteLine("Choose where to go!");
-                    Console.WriteLine(" 1 = left" + CollisionDetector.CheckCollisions(herrr.PositionX, herrr.PositionY - 1, mappo));
-                    Console.WriteLine(" 2 = right" + CollisionDetector.CheckCollisions(herrr.PositionX, herrr.PositionY + 1, mappo));
-                    Console.WriteLine(" 3 = up" + CollisionDetector.CheckCollisions(herrr.PositionX - 1, herrr.PositionY - 1, mappo));
-                    Console.WriteLine(" 4 = down" + CollisionDetector.CheckCollisions(herrr.PositionX + 1, herrr.PositionY - 1, mappo));
+                    Console.WriteLine(" 1 = You see a" + CollisionDetector.GuideMessage(CollisionDetector.CheckCollisions(herrr.PositionX, herrr.PositionY - 1, mappo)));
+                    Console.WriteLine(" 2 = You see a" + CollisionDetector.GuideMessage(CollisionDetector.CheckCollisions(herrr.PositionX, herrr.PositionY + 1, mappo)));
+                    Console.WriteLine(" 3 = You see a" + CollisionDetector.GuideMessage(CollisionDetector.CheckCollisions(herrr.PositionX - 1, herrr.PositionY , mappo)));
+                    Console.WriteLine(" 4 = You see a" + CollisionDetector.GuideMessage(CollisionDetector.CheckCollisions(herrr.PositionX + 1, herrr.PositionY , mappo)));
                     Console.WriteLine("Enter the number!");
-                    currentLine = int.Parse(Console.ReadLine());
+                    currentLine = Console.ReadLine();
+                    
                     switch (currentLine)
                     {
-                        case 1:
+                        case "1":
                             //CheckMap(mappo);
-                            if (CollisionDetector.CheckCollisions(herrr.PositionX, herrr.PositionY - 1, mappo) == "@")
+                            if (CollisionDetector.CheckCollisions(herrr.PositionX, herrr.PositionY - 1, mappo) == '@')
                             {
-                                Console.WriteLine("Stone ahead!");
+                                msg= "Tree here!";
+                            }
+                            else if (CollisionDetector.CheckCollisions(herrr.PositionX, herrr.PositionY - 1, mappo) == '1')
+                            {
+                                enem = factory.CreateMonster();
+                                msg = "You engage a monster!";
+                                while (herrr.Hp>0 && enem.Hp>0)
+                                {
+                                    Console.Clear();
+                                    Console.WriteLine(msg);
+                                    Console.WriteLine("Hero Hp:" + herrr.Hp + " " + "Hero Energy:" + herrr.Energy);
+                                    Console.WriteLine("Enemy Hp:" + enem.Hp + " " + "Enemy Energy:" + enem.Energy);
+                                    Console.WriteLine("enter 1 for hit");
+                                    Console.WriteLine("enter 2 to RUN");
+                                    var a = Console.ReadLine();
+                                    switch (a)
+                                    {
+                                        case "1":
+                                            enem.Hp -= herrr.Weapon.Dmg;
+                                            herrr.Hp -= enem.Dmg;
+                                            break;
+                                        case "2":
+                                            herrr.Hp = 0;
+                                            return;
+                                        default:
+                                            break;
+                                    }
+                                    
+                                }
+                                msg = "you beat the monster!";
+                                herrr.Move(1);
+                                mappo.FirstMap[herrr.PositionX, herrr.PositionY] = '-';
                             }
                             else
                             {
                                 herrr.Move(1);
-                                Console.WriteLine("You went left!");
+                                msg = "You went left!";
                             }
                             break;
-                        case 2:
-                            if (CollisionDetector.CheckCollisions(herrr.PositionX, herrr.PositionY + 1, mappo) == "@")
+                        case "2":
+                            if (CollisionDetector.CheckCollisions(herrr.PositionX, herrr.PositionY + 1, mappo) == '@')
                             {
-                                Console.WriteLine("Stone ahead!");
+                                msg = "Tree here!";
+                            }
+                            else if (CollisionDetector.CheckCollisions(herrr.PositionX, herrr.PositionY + 1, mappo) == '1')
+                            {
+                                enem = factory.CreateMonster();
+                                msg = "You engage a monster!";
+                                while (herrr.Hp > 0 && enem.Hp > 0)
+                                {
+                                    Console.Clear();
+                                    Console.WriteLine(msg);
+                                    Console.WriteLine("Hero Hp:" + herrr.Hp + " " + "Hero Energy:" + herrr.Energy);
+                                    Console.WriteLine("Enemy Hp:" + enem.Hp + " " + "Enemy Energy:" + enem.Energy);
+                                    Console.WriteLine("enter 1 for hit");
+                                    Console.WriteLine("enter 2 to RUN");
+                                    var a = Console.ReadLine();
+                                    switch (a)
+                                    {
+                                        case "1":
+                                            enem.Hp -= herrr.Weapon.Dmg;
+                                            herrr.Hp -= enem.Dmg;
+                                            break;
+                                        case "2":
+                                            herrr.Hp = 0;
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                    
+                                }
+                                msg = "you beat the monster!";
+                                herrr.Move(2);
+                                mappo.FirstMap[herrr.PositionX, herrr.PositionY] = '-';
                             }
                             else
                             {
                                 herrr.Move(2);
-                                Console.WriteLine("You went right!");
+                                msg = "You went right!";
                             }
                             break;
-                        case 3:
-                            if (CollisionDetector.CheckCollisions(herrr.PositionX - 1, herrr.PositionY, mappo) == "@")
+                        case "3":
+                            if (CollisionDetector.CheckCollisions(herrr.PositionX - 1, herrr.PositionY, mappo) == '@')
                             {
-                                Console.WriteLine("Stone ahead!");
+                                msg = "Tree here!";
+                            }
+                            else if (CollisionDetector.CheckCollisions(herrr.PositionX-1, herrr.PositionY , mappo) == '1')
+                            {
+                                enem = factory.CreateMonster();
+                                msg = "You engage a monster!";
+                                while (herrr.Hp > 0 && enem.Hp > 0)
+                                {
+                                    Console.Clear();
+                                    Console.WriteLine(msg);
+                                    Console.WriteLine("Hero Hp:" + herrr.Hp + " " + "Hero Energy:" + herrr.Energy);
+                                    Console.WriteLine("Enemy Hp:" + enem.Hp + " " + "Enemy Energy:" + enem.Energy);
+                                    Console.WriteLine("enter 1 for hit");
+                                    Console.WriteLine("enter 2 to RUN");
+                                    var a = Console.ReadLine();
+                                    switch (a)
+                                    {
+                                        case "1":
+                                            enem.Hp -= herrr.Weapon.Dmg;
+                                            herrr.Hp -= enem.Dmg;
+                                            break;
+                                        case "2":
+                                            herrr.Hp = 0;
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                   
+                                }
+                                msg = "you beat the monster!";
+                                herrr.Move(3);
+                                mappo.FirstMap[herrr.PositionX, herrr.PositionY] = '-';
                             }
                             else
                             {
                                 herrr.Move(3);
-                                Console.WriteLine("You went up!");
+                                msg = "You went up!";
                             }
                             break;
-                        case 4:
-                            if (CollisionDetector.CheckCollisions(herrr.PositionX + 1, herrr.PositionY, mappo) == "@")
+                        case "4":
+                            if (CollisionDetector.CheckCollisions(herrr.PositionX + 1, herrr.PositionY, mappo) == '@')
                             {
-                                Console.WriteLine("Stone ahead!");
+                                msg = "Tree here!";
+                            }
+                            else if (CollisionDetector.CheckCollisions(herrr.PositionX+1, herrr.PositionY, mappo) == '1')
+                            {
+                                enem = factory.CreateMonster();
+                                msg = "You engage a monster!";
+                                while (herrr.Hp > 0 && enem.Hp > 0)
+                                {
+                                    Console.Clear();
+                                    Console.WriteLine(msg);
+                                    Console.WriteLine("Hero Hp:" + herrr.Hp + " " + "Hero Energy:" + herrr.Energy);
+                                    Console.WriteLine("Enemy Hp:" + enem.Hp + " " + "Enemy Energy:" + enem.Energy);
+                                    Console.WriteLine("enter 1 for hit");
+                                    Console.WriteLine("enter 2 to RUN");
+                                    var a = Console.ReadLine();
+                                    switch (a)
+                                    {
+                                        case "1":
+                                            enem.Hp -= herrr.Weapon.Dmg;
+                                            herrr.Hp -= enem.Dmg;
+                                            break;
+                                        case "2":
+                                            herrr.Hp = 0;
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                    
+                                }
+                                msg = "you beat the monster!";
+                                herrr.Move(4);
+                                mappo.FirstMap[herrr.PositionX , herrr.PositionY] = '-';
                             }
                             else
                             {
                                 herrr.Move(4);
-                                Console.WriteLine("You went down!");
+                                msg = "You went down!";
                             }
                             break;
                         default:
-                            Console.WriteLine("Wrong Input");
+                            msg = "Wrong Input";
                             break;
                     }
-                    Console.WriteLine("Hero X:" + herrr.PositionX + " " + "Hero Y:" + herrr.PositionY);
-                    Console.WriteLine("Hero Hp:" + herrr.Hp + " " + "Hero Weapon:" + herrr.Weapon.ToString());
-                    Console.WriteLine("Hit enter");
-                    Console.ReadKey();
+                   
+                    
                 }
             }
+            Console.WriteLine("You did just die!\r\nGAME OVER!!!");
         }
 
         //private IList<string> ProcessCommands(IList<ICommand> commands)

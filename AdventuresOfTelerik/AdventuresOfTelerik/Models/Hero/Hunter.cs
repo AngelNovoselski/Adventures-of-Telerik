@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Models.Hero
 {
-    public class Hunter
+    public class Hunter : Hero
     {
+        public Hunter()
+            : base()
+        {
+            Energy = 100;
+        }
     }
 }

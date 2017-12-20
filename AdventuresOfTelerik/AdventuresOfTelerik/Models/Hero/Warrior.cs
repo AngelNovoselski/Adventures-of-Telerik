@@ -8,10 +8,10 @@ namespace AdventuresOfTelerik.Models.Hero
 {
     public class Warrior : Hero
     {
-        public Warrior() : 
+        public Warrior() :
             base()
         {
-
+            Energy = 100;
         }
     }
 }

@@ -15,37 +15,40 @@ namespace AdventuresOfTelerik.Factories
     {
         public BossDragon CreateBossDragon()
         {
-            throw new NotImplementedException();
+            BossDragon dragBoss = new BossDragon();
+            return dragBoss;
         }
-
         public BossMonster CreateBossMonster()
         {
-            throw new NotImplementedException();
+            BossMonster monstBoss = new BossMonster();
+            return monstBoss;
         }
-
         public Bow CreateBow()
         {
-            throw new NotImplementedException();
+            Bow bow = new Bow();
+            return bow;
         }
-
         public Dragon CreateDragon()
         {
-            throw new NotImplementedException();
+            Dragon drag = new Dragon();
+            return drag;
         }
-
         public Hunter CreateHunter()
         {
-            throw new NotImplementedException();
+            Hunter hunt = new Hunter();
+            return hunt;
         }
 
         public Knife CreateKnife()
         {
-            throw new NotImplementedException();
+            Knife knife = new Knife();
+            return knife;
         }
 
         public Mace CreateMace()
         {
-            throw new NotImplementedException();
+            Mace mace = new Mace();
+            return mace;
         }
 
         public Mage CreateMage()
@@ -57,7 +60,9 @@ namespace AdventuresOfTelerik.Factories
 
         public Monster CreateMonster()
         {
-            throw new NotImplementedException();
+            Monster mosnt = new Monster();
+
+            return mosnt;
         }
 
         public Staff CreateStaff()

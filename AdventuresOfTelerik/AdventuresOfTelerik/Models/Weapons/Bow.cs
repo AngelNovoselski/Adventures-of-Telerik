@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Models.Weapons
 {
-    public class Bow
+    public class Bow:Weapon
+
     {
+        public Bow() : base()
+        {
+            this.Dmg = 15;
+        }
+        public override string ToString()
+        {
+            return "Bow";
+        }
     }
 }

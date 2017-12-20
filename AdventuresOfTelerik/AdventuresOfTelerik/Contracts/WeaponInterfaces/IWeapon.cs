@@ -8,5 +8,6 @@ namespace AdventuresOfTelerik.Contracts.WeaponInterfaces
 {
     public interface IWeapon
     {
+        int Dmg { get; set; }
     }
 }

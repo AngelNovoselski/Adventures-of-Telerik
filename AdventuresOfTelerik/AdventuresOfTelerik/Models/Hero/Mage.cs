@@ -11,7 +11,7 @@ namespace AdventuresOfTelerik.Models.Hero
         public Mage() : 
             base()
         {
-
+            Energy = 100;
         }
     }
 }

@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Models.Weapons
 {
-    public class Knife
+    public class Knife:Weapon
     {
+        public Knife() : base()
+        {
+            this.Dmg = 5;
+        }
+        public override string ToString()
+        {
+            return "Knife";
+        }
     }
 }

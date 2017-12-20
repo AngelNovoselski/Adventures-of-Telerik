@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Models.Enemies
 {
-    public class BossMonster
+    public class BossMonster: Enemy
     {
+        public BossMonster() : base()
+        {
+
+        }
     }
 }

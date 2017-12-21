@@ -68,30 +68,37 @@ namespace AdventuresOfTelerik.Engine
             Console.WriteLine("  Type 1 for mage:");
             Console.WriteLine("  Type 2 for warrior:");
             Console.WriteLine("  Type 3 for hunter:");
-            int type = int.Parse(Console.ReadLine());
+            string type = Console.ReadLine();
             Console.WriteLine(ProcessStartScreen(type));
             Console.WriteLine("ENTER into your adventure!");
             Console.ReadKey();
         }
 
-        private string ProcessStartScreen(int command)
+        private string ProcessStartScreen(string command)
         {
-            while (command != 1 && command != 2 && command != 3)
+            while (command != "1" && command != "2" && command != "3")
             {
+                Console.Clear();
                 Console.WriteLine("Wrong Class! Choose Again!");
-                command = int.Parse(Console.ReadLine());
+                Console.WriteLine("Choose hero type:");
+                Console.WriteLine("  Type 1 for mage:");
+                Console.WriteLine("  Type 2 for warrior:");
+                Console.WriteLine("  Type 3 for hunter:");
+                command = Console.ReadLine();
+
+                
             }
             switch (command)
             {
-                case 1:
+                case "1":
                     herrr = this.factory.CreateMage();
                     herrr.Weapon = this.factory.CreateStaff();
                     return "You are Telerik Mage!";
-                case 2:
+                case "2":
                     herrr = this.factory.CreateWarrior();
                     herrr.Weapon = this.factory.CreateMace();
                     return "You are Telerik Warrior!";
-                case 3:
+                case "3":
                     herrr = this.factory.CreateHunter();
                     herrr.Weapon = this.factory.CreateBow();
                     return "You are Telerik Hunter!";

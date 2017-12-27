@@ -11,16 +11,32 @@ namespace AdventuresOfTelerik.Models.Weapons
     public class Mace : Weapon, IStrenght, IMace
     {
         private int strenght;
-        public Mace() : base(20)
+
+        public Mace()
+            : base(20)
         {
-            this.Strenght = 20; // number not final
+            this.Strenght = 20;
         }
 
-        public int Strenght { get => strenght; set => strenght = value; }
+        public int Strenght
+        {
+            get
+            {
+                return this.strenght;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("Strenght must be positive number!");
+                }
+                this.strenght = value;
+            }
+        }
 
         public override string Additionalinfo()
         {
-            return $"\nStrenght: {this.Strenght}";
+            return $", Strenght: {this.Strenght}";
         }
     }
 }

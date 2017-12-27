@@ -13,11 +13,13 @@ namespace AdventuresOfTelerik.Models.Hero
     {
         private int strenght;
         private int fury;
+
         public Warrior() :
-            base(new Mace())
+            base()
         {
             Fury = 100;
-            Strenght = 20; // Number not final;
+            Strenght = 20;
+            this.Weapon = new Mace();
         }
 
         public int Strenght { get => strenght; set => strenght = value; }

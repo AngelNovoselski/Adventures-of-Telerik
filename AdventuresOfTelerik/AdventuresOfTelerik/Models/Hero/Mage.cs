@@ -13,11 +13,13 @@ namespace AdventuresOfTelerik.Models.Hero
     {
         private int mana;
         private int intelligence;
+
         public Mage() : 
-            base(new Staff())
+            base()
         {
             Mana = 100;
-            Intelligence = 20; //Number not final
+            Intelligence = 20;
+            this.Weapon = new Staff();
         }
 
         public int Mana { get => mana; set => mana = value; }

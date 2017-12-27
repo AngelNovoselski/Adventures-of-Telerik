@@ -1,5 +1,6 @@
 ﻿using AdventuresOfTelerik.Contracts;
 using AdventuresOfTelerik.Contracts.HeroInterfaces;
+using AdventuresOfTelerik.Contracts.WeaponInterfaces;
 using AdventuresOfTelerik.Models.Weapons;
 using System;
 using System.Collections.Generic;
@@ -13,14 +14,16 @@ namespace AdventuresOfTelerik.Models.Hero
     {
         private int agility;
         private int energy;
+
         public Hunter()
-            : base(new Bow())
+            : base()
         {
             Energy = 100;
-            Agility = 20; //Number not final
+            Agility = 20;
+            this.Weapon = new Bow();
         }
-
-        public int Energy { get => energy; set => energy = value; }
+        
+        public int Energy { get => this.energy; set => energy = value; }
         public int Agility { get => agility; set => agility = value; }
 
         public int FocusShot()

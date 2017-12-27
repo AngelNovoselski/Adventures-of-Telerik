@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Contracts.WeaponInterfaces
 {
-    public interface IBow
+    public interface IBow : IWeapon
     {
         int Ammo { get; set; }
     }

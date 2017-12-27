@@ -8,20 +8,35 @@ using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Models.Weapons
 {
-    public class Knife:Weapon, IAgility, IKnife
+    public class Knife : Weapon, IAgility, IKnife
     {
         private int agility;
-        public Knife() : base(5)
+
+        public Knife() 
+            : base(5)
         {
-            this.Agility = 20; //number not final
+            this.Agility = 25;
         }
 
-        public int Agility { get => agility; set => agility = value;}
-
+        public int Agility
+        {
+            get
+            {
+                return this.agility;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("Agility must be positive number!");
+                }
+                this.agility = value;
+            }
+        }
 
         public override string Additionalinfo()
         {
-            return $"\nAgility: {this.Agility}";
+            return $", Agility: {this.Agility}";
         }
     }
 }

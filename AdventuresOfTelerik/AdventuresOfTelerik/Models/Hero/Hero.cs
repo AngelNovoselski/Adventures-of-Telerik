@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using AdventuresOfTelerik.Contracts.WeaponInterfaces;
 using AdventuresOfTelerik;
 using AdventuresOfTelerik.Contracts;
+using AdventuresOfTelerik.Models.Weapons;
 
 namespace AdventuresOfTelerik.Models.Hero
 {
@@ -18,11 +19,9 @@ namespace AdventuresOfTelerik.Models.Hero
         private int hp;
         private int level;
         private int exp;
-        private IWeapon weapon;
-        
-        //private Map mappo;
+        private Weapon weapon;
 
-        public Hero(IWeapon weapon)
+        public Hero()
         {
             this.PositionX = 1;
             this.PositionY = 1;
@@ -30,7 +29,7 @@ namespace AdventuresOfTelerik.Models.Hero
             this.Hp = 100;
             this.Level = 1;
             this.Exp = 0;
-            this.Weapon =  weapon;
+            this.Weapon = weapon;
         }
 
         public int PositionX { get => positionX; set => positionX = value; }
@@ -39,7 +38,7 @@ namespace AdventuresOfTelerik.Models.Hero
         public int Hp { get => hp; set => hp = value; }
         public int Level { get => level; set => level = value; }
         public int Exp { get => exp; set => exp = value; }
-        public IWeapon Weapon { get => weapon; set => weapon = value; }
+        public Weapon Weapon { get => this.weapon; set => this.weapon = value; }
 
         public void Print()
         {
@@ -50,9 +49,7 @@ namespace AdventuresOfTelerik.Models.Hero
         {
             if (input == 1)
             {
-
                 this.PositionY -= 1;
-
             }
             else if (input == 2)
             {

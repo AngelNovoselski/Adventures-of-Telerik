@@ -12,16 +12,31 @@ namespace AdventuresOfTelerik.Models.Weapons
     {
         private int intelligence;
 
-        public Staff() :base(10)
+        public Staff() 
+            : base(10)
         {
-            this.Intelligence = 20;   //number is not final
+            this.Intelligence = 20;
         }
 
-        public int Intelligence { get => intelligence; set => intelligence = value; }
+        public int Intelligence
+        {
+            get
+            {
+                return this.intelligence;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("Intelligence must be positive number!");
+                }
+                this.intelligence = value;
+            }
+        }
 
         public override string Additionalinfo()
         {
-            return $"\nIntelligence: {this.Intelligence}";
+            return $", Intelligence: {this.Intelligence}";
         }
     }
 }

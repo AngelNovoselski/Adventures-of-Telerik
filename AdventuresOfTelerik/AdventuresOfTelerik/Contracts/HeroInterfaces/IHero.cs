@@ -1,5 +1,6 @@
 ﻿using AdventuresOfTelerik.Contracts.WeaponInterfaces;
 using AdventuresOfTelerik.Models;
+using AdventuresOfTelerik.Models.Weapons;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace AdventuresOfTelerik.Contracts.HeroInterfaces
         int Hp { get; set; }
         int Level { get; set; }
         int Exp { get; set; }
-        IWeapon Weapon{ get; set; }
+        //Weapon Weapon{ get; set; }
         void Move(int input);
         void Print();
     }

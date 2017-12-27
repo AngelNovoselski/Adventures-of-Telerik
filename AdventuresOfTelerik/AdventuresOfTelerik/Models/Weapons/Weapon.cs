@@ -9,17 +9,34 @@ namespace AdventuresOfTelerik.Models.Weapons
 {
     public abstract class Weapon : IWeapon
     {
+        private int dmg;
+
         public Weapon(int dmg)
         {
             this.Dmg = dmg;
         }
-        private int dmg;
-        public int Dmg { get => dmg; set => dmg = value; }
+
+        public int Dmg
+        {
+            get
+            {
+                return this.dmg;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("Damage must be positive number!");
+                }
+                this.dmg = value;
+            }
+        }
 
         public override string ToString()
         {
-            return $"Weapon: {this.GetType().Name}\nDmg: {this.Dmg}{this.Additionalinfo()}";
+            return $" {this.GetType().Name}, Dmg: {this.Dmg}{this.Additionalinfo()}";
         }
+
         public virtual string Additionalinfo()
         {
             return string.Empty;

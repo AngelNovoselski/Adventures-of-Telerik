@@ -9,18 +9,20 @@ namespace AdventuresOfTelerik.Models.Weapons
 {
     public abstract class Weapon : IWeapon
     {
-        
-
-        public Weapon()
+        public Weapon(int dmg)
         {
-            this.Dmg = Dmg;
+            this.Dmg = dmg;
         }
-        protected int dmg;
+        private int dmg;
         public int Dmg { get => dmg; set => dmg = value; }
 
         public override string ToString()
         {
-            return "Shouldnt return this-.-";
+            return $"Weapon: {this.GetType().Name}\nDmg: {this.Dmg}{this.Additionalinfo()}";
+        }
+        public virtual string Additionalinfo()
+        {
+            return string.Empty;
         }
     }
 }

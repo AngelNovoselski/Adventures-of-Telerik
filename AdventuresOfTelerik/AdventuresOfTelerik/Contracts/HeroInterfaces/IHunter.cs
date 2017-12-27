@@ -8,5 +8,7 @@ namespace AdventuresOfTelerik.Contracts.HeroInterfaces
 {
     public interface IHunter
     {
+        int Energy { get; set; }
+        int FocusShot();
     }
 }

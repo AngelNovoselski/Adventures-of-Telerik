@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AdventuresOfTelerik.Contracts;
+using AdventuresOfTelerik.Contracts.WeaponInterfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,15 +8,20 @@ using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Models.Weapons
 {
-    public class Staff : Weapon
+    public class Staff : Weapon, IIntelligence, IStaff
     {
-        public Staff() :base()
+        private int intelligence;
+
+        public Staff() :base(10)
         {
-            this.Dmg = 10;
+            this.Intelligence = 20;   //number is not final
         }
-        public override string ToString()
+
+        public int Intelligence { get => intelligence; set => intelligence = value; }
+
+        public override string Additionalinfo()
         {
-            return "Staff";
+            return $"\nIntelligence: {this.Intelligence}";
         }
     }
 }

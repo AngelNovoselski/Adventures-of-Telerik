@@ -50,7 +50,11 @@
     <Compile Include="Contracts\HeroInterfaces\IHunter.cs" />
     <Compile Include="Contracts\HeroInterfaces\IMage.cs" />
     <Compile Include="Contracts\HeroInterfaces\IWarrior.cs" />
+    <Compile Include="Contracts\IAgility.cs" />
+    <Compile Include="Contracts\IDoDmg.cs" />
+    <Compile Include="Contracts\IIntelligence.cs" />
     <Compile Include="Contracts\IMap.cs" />
+    <Compile Include="Contracts\IStrenght.cs" />
     <Compile Include="Contracts\WeaponInterfaces\IBow.cs" />
     <Compile Include="Contracts\WeaponInterfaces\IKnife.cs" />
     <Compile Include="Contracts\WeaponInterfaces\IMace.cs" />

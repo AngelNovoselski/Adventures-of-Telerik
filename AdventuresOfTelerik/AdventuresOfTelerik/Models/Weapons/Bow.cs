@@ -1,21 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AdventuresOfTelerik.Contracts;
+using AdventuresOfTelerik.Contracts.WeaponInterfaces;
 
 namespace AdventuresOfTelerik.Models.Weapons
 {
-    public class Bow:Weapon
+    public class Bow:Weapon, IAgility, IBow
 
     {
-        public Bow() : base()
+        private int agility;
+        private int ammo;
+        public Bow() : base(15)
         {
-            this.Dmg = 15;
+            this.Agility = 20; // Number not final
+            this.Ammo = 10; //Number not final
         }
+
+        public int Agility { get => agility; set => agility = value; }
+        public int Ammo { get => ammo; set => ammo = value; }
+
         public override string ToString()
         {
-            return "Bow";
+            return $"\nAgility: {this.Agility}\nAmmo: {this.Ammo}";
         }
     }
 }

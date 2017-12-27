@@ -8,5 +8,6 @@ namespace AdventuresOfTelerik.Contracts.WeaponInterfaces
 {
     public interface IBow
     {
+        int Ammo { get; set; }
     }
 }

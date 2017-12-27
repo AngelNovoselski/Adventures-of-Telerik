@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Contracts.EnemyInterfaces
 {
-    public interface IBoss: IEnemy
+    public interface IBoss
     {
     }
 }

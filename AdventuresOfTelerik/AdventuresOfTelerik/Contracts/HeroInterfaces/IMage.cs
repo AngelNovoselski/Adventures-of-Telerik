@@ -8,5 +8,7 @@ namespace AdventuresOfTelerik.Contracts.HeroInterfaces
 {
     public interface IMage
     {
+        int Mana { get; set; }
+
     }
 }

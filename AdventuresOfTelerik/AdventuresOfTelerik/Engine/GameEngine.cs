@@ -1,4 +1,5 @@
 ﻿using AdventuresOfTelerik.Contracts.EnemyInterfaces;
+using AdventuresOfTelerik.Contracts.HeroInterfaces;
 using AdventuresOfTelerik.Contracts.WeaponInterfaces;
 using AdventuresOfTelerik.Factories;
 using AdventuresOfTelerik.Models;
@@ -43,8 +44,11 @@ namespace AdventuresOfTelerik.Engine
 
         public void Start()
         {
+            //var hero = this.factory.CreateHunter();
+            //Console.WriteLine(hero.Weapon.Ammo); 
             PrintScreen();
             this.ReadCommands();
+
             //var commandResult = this.ProcessCommands(commands);
             //this.PrintReports(commandResult);
         }
@@ -218,8 +222,8 @@ namespace AdventuresOfTelerik.Engine
                 Console.WriteLine(message);
                 Console.WriteLine("Hero Hp:" + hero.Hp);// + " " + "Hero Energy:" + hero.Energy);
                 Console.WriteLine("Enemy Hp:" + enemy.Hp + ", " + "Enemy Energy:" + enemy.Energy);
-                Console.WriteLine("enter 1 for hit with "+ hero.Weapon.GetType().Name);
-                Console.WriteLine("enter 2 to RUN");
+                Console.WriteLine("enter 1 for hit with " + hero.Weapon.GetType().Name);
+                Console.WriteLine("enter 2 to RUN for your life");
                 var a = Console.ReadLine();
                 switch (a)
                 {

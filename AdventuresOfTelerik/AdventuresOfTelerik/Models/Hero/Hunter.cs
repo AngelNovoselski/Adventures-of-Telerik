@@ -14,6 +14,7 @@ namespace AdventuresOfTelerik.Models.Hero
     {
         private int agility;
         private int energy;
+        private Weapon weapon;
 
         public Hunter()
             : base()
@@ -25,6 +26,7 @@ namespace AdventuresOfTelerik.Models.Hero
         
         public int Energy { get => this.energy; set => energy = value; }
         public int Agility { get => agility; set => agility = value; }
+        public override Weapon Weapon { get => this.weapon; set => this.weapon = value; }
 
         public int FocusShot()
         {

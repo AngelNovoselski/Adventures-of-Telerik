@@ -17,7 +17,7 @@ namespace AdventuresOfTelerik.Contracts.HeroInterfaces
         int Hp { get; set; }
         int Level { get; set; }
         int Exp { get; set; }
-        //Weapon Weapon{ get; set; }
+        Weapon Weapon{ get; set; }
         void Move(int input);
         void Print();
     }

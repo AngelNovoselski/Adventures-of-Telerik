@@ -38,7 +38,7 @@ namespace AdventuresOfTelerik.Models.Hero
         public int Hp { get => hp; set => hp = value; }
         public int Level { get => level; set => level = value; }
         public int Exp { get => exp; set => exp = value; }
-        public Weapon Weapon { get => this.weapon; set => this.weapon = value; }
+        public virtual Weapon Weapon { get => this.weapon; set => this.weapon = value; }
 
         public void Print()
         {

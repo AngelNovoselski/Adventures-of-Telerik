@@ -9,20 +9,22 @@ using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Models.Hero
 {
-    public class Warrior : Hero, IWarrior, IStrenght
+    public class Warrior : Hero, IWarrior, IStrength
     {
-        private int strenght;
+        private int strength;
         private int fury;
+        private Weapon weapon = new Mace();
 
         public Warrior() :
             base()
         {
             Fury = 100;
-            Strenght = 20;
-            this.Weapon = new Mace();
+            Strength = 20;
+            this.Weapon = weapon;
         }
 
-        public int Strenght { get => strenght; set => strenght = value; }
+        public int Strength { get => strength; set => strength = value; }
         public int Fury { get => fury; set => fury = value; }
+        public override Weapon Weapon { get => this.weapon; set => this.weapon = value; }
     }
 }

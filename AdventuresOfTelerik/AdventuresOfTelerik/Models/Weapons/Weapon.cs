@@ -1,4 +1,5 @@
-﻿using AdventuresOfTelerik.Contracts.WeaponInterfaces;
+﻿using AdventuresOfTelerik.Contracts;
+using AdventuresOfTelerik.Contracts.WeaponInterfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Models.Weapons
 {
-    public abstract class Weapon : IWeapon
+    public abstract class Weapon : IWeapon, IAmmo, IWeaponAgility, IStrength, IIntelligence
     {
         private int dmg;
 
@@ -31,6 +32,11 @@ namespace AdventuresOfTelerik.Models.Weapons
                 this.dmg = value;
             }
         }
+
+        public virtual int Ammo { get; set; }
+        public virtual int WeaponAgility { get; set; }
+        public virtual int Strength { get; set; }
+        public virtual int Intelligence { get; set; }
 
         public override string ToString()
         {

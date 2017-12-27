@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdventuresOfTelerik.Contracts.HeroInterfaces
+namespace AdventuresOfTelerik.Contracts.WeaponInterfaces
 {
-    public interface IMage
+    public interface IWeaponAgility
     {
-        int Mana { get; set; }
+        int WeaponAgility { get; set; }
     }
 }

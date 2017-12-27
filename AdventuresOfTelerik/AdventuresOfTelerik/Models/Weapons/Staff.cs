@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Models.Weapons
 {
-    public class Staff : Weapon, IIntelligence, IStaff
+    public class Staff : Weapon, IStaff
     {
         private int intelligence;
 
@@ -18,7 +18,7 @@ namespace AdventuresOfTelerik.Models.Weapons
             this.Intelligence = 20;
         }
 
-        public int Intelligence
+        public override int Intelligence
         {
             get
             {

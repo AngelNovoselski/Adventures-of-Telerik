@@ -54,12 +54,14 @@
     <Compile Include="Contracts\IDoDmg.cs" />
     <Compile Include="Contracts\IIntelligence.cs" />
     <Compile Include="Contracts\IMap.cs" />
-    <Compile Include="Contracts\IStrenght.cs" />
+    <Compile Include="Contracts\IStrength.cs" />
+    <Compile Include="Contracts\WeaponInterfaces\IAmmo.cs" />
     <Compile Include="Contracts\WeaponInterfaces\IBow.cs" />
     <Compile Include="Contracts\WeaponInterfaces\IKnife.cs" />
     <Compile Include="Contracts\WeaponInterfaces\IMace.cs" />
     <Compile Include="Contracts\WeaponInterfaces\IStaff.cs" />
     <Compile Include="Contracts\WeaponInterfaces\IWeapon.cs" />
+    <Compile Include="Contracts\WeaponInterfaces\IWeaponAgility.cs" />
     <Compile Include="Engine\Command.cs" />
     <Compile Include="Engine\GameEngine.cs" />
     <Compile Include="Engine\ICommand.cs" />

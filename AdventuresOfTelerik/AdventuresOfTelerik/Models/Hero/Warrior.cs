@@ -13,14 +13,14 @@ namespace AdventuresOfTelerik.Models.Hero
     {
         private int strength;
         private int fury;
-        private Weapon weapon = new Mace();
+        private Weapon weapon;
 
         public Warrior() :
             base()
         {
             Fury = 100;
             Strength = 20;
-            this.Weapon = weapon;
+            this.Weapon = new Mace();
         }
 
         public int Strength { get => strength; set => strength = value; }

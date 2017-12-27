@@ -18,13 +18,26 @@ namespace AdventuresOfTelerik.Models.Hero
         public Mage() : 
             base()
         {
-            Mana = 100;
-            Intelligence = 20;
+            this.Mana = 100;
+            this.Intelligence = 20;
             this.Weapon = new Staff();
         }
         
-        public int Mana { get => mana; set => mana = value; }
+        public override int Mana { get => mana; set => mana = value; }
         public int Intelligence { get => intelligence; set => intelligence = value; }
         public override Weapon Weapon { get => this.weapon; set => this.weapon = value; }
+
+        public override int CastSpell()
+        {
+            if (this.Mana >= 30)
+            {
+                this.Mana -= 30;
+                return this.Intelligence + this.Weapon.Dmg;
+            }
+            else
+            {
+                return 0;
+            }
+        }
     }
 }

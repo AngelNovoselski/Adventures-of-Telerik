@@ -33,6 +33,11 @@ namespace AdventuresOfTelerik.Models
                 msg = " dangerous monster ahead";
                 return msg;
             }
+            else if (a == 'x')
+            {
+                msg = " the exit of the labyrinth!!!";
+                return msg;
+            }
             return string.Empty;
         }
     }

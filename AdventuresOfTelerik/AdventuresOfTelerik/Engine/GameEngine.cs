@@ -22,6 +22,8 @@ namespace AdventuresOfTelerik.Engine
         private Map map;
         private Enemy enemy;
         private readonly GameFactory factory;
+        private string heroType;
+        private bool happyend;
 
         private GameEngine()
         {
@@ -48,7 +50,6 @@ namespace AdventuresOfTelerik.Engine
             //Console.WriteLine(hero.Weapon.Ammo); 
             PrintScreen();
             this.ReadCommands();
-
             //var commandResult = this.ProcessCommands(commands);
             //this.PrintReports(commandResult);
         }
@@ -82,15 +83,15 @@ namespace AdventuresOfTelerik.Engine
             {
                 case "1":
                     hero = this.factory.CreateMage();
-                    //hero.Weapon = this.factory.CreateStaff();
+                    heroType = "mage";
                     return "You are Telerik Mage!";
                 case "2":
                     hero = this.factory.CreateWarrior();
-                    //hero.Weapon = this.factory.CreateMace();
+                    heroType = "warrior";
                     return "You are Telerik Warrior!";
                 case "3":
                     hero = this.factory.CreateHunter();
-                    //hero.Weapon = this.factory.CreateBow();
+                    heroType = "hunter";
                     return "You are Telerik Hunter!";
                 default:
                     return "Wrong Class! Choose Again!";
@@ -108,7 +109,7 @@ namespace AdventuresOfTelerik.Engine
                 var msg = "Your journey begins now!";
 
                 //while (currentLine != 1 || currentLine != 2 || currentLine != 3 || currentLine != 4)
-                while (hero.Hp > 0)
+                while (hero.Hp > 0 && !happyend)
                 {
                     Console.Clear();
                     Console.WriteLine(msg);
@@ -126,8 +127,12 @@ namespace AdventuresOfTelerik.Engine
                     switch (currentLine)
                     {
                         case "1":
-                            //CheckMap(mappo);
-                            if (CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY - 1, map) == '@')
+                            if (CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY - 1, map) == 'x')
+                            {
+                                msg = "You escaped your nightmare!";
+                                break;
+                            }
+                            else if (CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY - 1, map) == '@')
                             {
                                 msg = "Tree here!";
                             }
@@ -135,7 +140,7 @@ namespace AdventuresOfTelerik.Engine
                             {
                                 enemy = factory.CreateMonster();
                                 msg = "You engage a monster!";
-                                msg = Fight(msg);
+                                msg = Fight(msg, heroType);
                                 hero.Move(1);
                                 map.FirstMap[hero.PositionX, hero.PositionY] = '-';
                             }
@@ -146,7 +151,12 @@ namespace AdventuresOfTelerik.Engine
                             }
                             break;
                         case "2":
-                            if (CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY + 1, map) == '@')
+                            if (CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY + 1, map) == 'x')
+                            {
+                                msg = "You escaped your nightmare!";
+                                break;
+                            }
+                            else if (CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY + 1, map) == '@')
                             {
                                 msg = "Tree here!";
                             }
@@ -154,7 +164,7 @@ namespace AdventuresOfTelerik.Engine
                             {
                                 enemy = factory.CreateMonster();
                                 msg = "You engage a monster!";
-                                msg = Fight(msg);
+                                msg = Fight(msg, heroType);
                                 hero.Move(2);
                                 map.FirstMap[hero.PositionX, hero.PositionY] = '-';
                             }
@@ -165,7 +175,12 @@ namespace AdventuresOfTelerik.Engine
                             }
                             break;
                         case "3":
-                            if (CollisionDetector.CheckCollisions(hero.PositionX - 1, hero.PositionY, map) == '@')
+                            if (CollisionDetector.CheckCollisions(hero.PositionX - 1, hero.PositionY, map) == 'x')
+                            {
+                                msg = "You escaped your nightmare!";
+                                break;
+                            }
+                            else if (CollisionDetector.CheckCollisions(hero.PositionX - 1, hero.PositionY, map) == '@')
                             {
                                 msg = "Tree here!";
                             }
@@ -173,7 +188,7 @@ namespace AdventuresOfTelerik.Engine
                             {
                                 enemy = factory.CreateMonster();
                                 msg = "You engage a monster!";
-                                msg = Fight(msg);
+                                msg = Fight(msg, heroType);
                                 hero.Move(3);
                                 map.FirstMap[hero.PositionX, hero.PositionY] = '-';
                             }
@@ -184,7 +199,13 @@ namespace AdventuresOfTelerik.Engine
                             }
                             break;
                         case "4":
-                            if (CollisionDetector.CheckCollisions(hero.PositionX + 1, hero.PositionY, map) == '@')
+                            if (CollisionDetector.CheckCollisions(hero.PositionX+1, hero.PositionY, map) == 'x')
+                            {
+                                msg = "You escaped your nightmare!";
+                                happyend = true;
+                                break;
+                            }
+                            else if (CollisionDetector.CheckCollisions(hero.PositionX + 1, hero.PositionY, map) == '@')
                             {
                                 msg = "Tree here!";
                             }
@@ -192,7 +213,7 @@ namespace AdventuresOfTelerik.Engine
                             {
                                 enemy = factory.CreateMonster();
                                 msg = "You engage a monster!";
-                                msg = Fight(msg);
+                                msg = Fight(msg, heroType);
                                 hero.Move(4);
                                 map.FirstMap[hero.PositionX, hero.PositionY] = '-';
                             }
@@ -206,39 +227,116 @@ namespace AdventuresOfTelerik.Engine
                             msg = "Wrong Input";
                             break;
                     }
+
+                    if (happyend)
+                    {
+                        Console.Clear();
+                        Console.WriteLine(msg);
+                    }
                 }
             }
             Console.WriteLine("You did just die!\r\nGAME OVER!!!");
         }
 
-        private string Fight(string message)
+        private string Fight(string message, string heroType)
         {
             enemy = factory.CreateMonster();
             message = "You engage a monster!";
-
-            while (hero.Hp > 0 && enemy.Hp > 0)
+            if (heroType == "hunter")
             {
-                Console.Clear();
-                Console.WriteLine(message);
-                Console.WriteLine("Hero Hp:" + hero.Hp);// + " " + "Hero Energy:" + hero.Energy);
-                Console.WriteLine("Enemy Hp:" + enemy.Hp + ", " + "Enemy Energy:" + enemy.Energy);
-                Console.WriteLine("enter 1 for hit with " + hero.Weapon.GetType().Name);
-                Console.WriteLine("enter 2 to RUN for your life");
-                var a = Console.ReadLine();
-                switch (a)
+                while (hero.Hp > 0 && enemy.Hp > 0)
                 {
-                    case "1":
-                        enemy.Hp -= hero.Weapon.Dmg;
-                        hero.Hp -= enemy.Dmg;
-                        break;
-                    case "2":
-                        hero.Hp = 0;
-                        break;
-                    default:
-                        break;
+                    Console.Clear();
+                    Console.WriteLine(message);
+                    Console.WriteLine("Hero Hp:" + hero.Hp + ", " + "Hero Energy:" + hero.Energy);
+                    Console.WriteLine("Enemy Hp:" + enemy.Hp + ", " + "Enemy Energy:" + enemy.Energy);
+                    Console.WriteLine("enter 1 to shoot with your " + hero.Weapon.GetType().Name);
+                    Console.WriteLine("enter 2 to RUN for your life");
+                    Console.WriteLine("enter 3 for FocusShot");
+                    var a = Console.ReadLine();
+                    switch (a)
+                    {
+                        case "1":
+                            enemy.Hp -= hero.Weapon.Dmg;
+                            hero.Weapon.Ammo -= 1;
+                            break;
+                        case "2":
+                            hero.Hp = 0;
+                            break;
+                        case "3":
+                            enemy.Hp -= hero.Weapon.Dmg + hero.FocusShot();
+                            hero.Weapon.Ammo -= 1;
+                            break;
+                        default:
+                            break;
+                    }
+                    Console.WriteLine("WAIT FOR ENEMY TURN");
+                    System.Threading.Thread.Sleep(1000);
+                    hero.Hp -= enemy.Dmg;
                 }
             }
-
+            if (heroType == "warrior")
+            {
+                while (hero.Hp > 0 && enemy.Hp > 0)
+                {
+                    Console.Clear();
+                    Console.WriteLine(message);
+                    Console.WriteLine("Hero Hp:" + hero.Hp + ", " + "Hero Fury:" + hero.Fury);
+                    Console.WriteLine("Enemy Hp:" + enemy.Hp + ", " + "Enemy Energy:" + enemy.Energy);
+                    Console.WriteLine("enter 1 for hit with " + hero.Weapon.GetType().Name);
+                    Console.WriteLine("enter 2 to RUN for your life");
+                    Console.WriteLine("enter 3 for RageAnger");
+                    var a = Console.ReadLine();
+                    switch (a)
+                    {
+                        case "1":
+                            enemy.Hp -= hero.Weapon.Dmg;
+                            break;
+                        case "2":
+                            hero.Hp = 0;
+                            break;
+                        case "3":
+                            enemy.Hp -= hero.Weapon.Dmg + hero.RageAnger();
+                            break;
+                        default:
+                            break;
+                    }
+                    Console.WriteLine("WAIT FOR ENEMY TURN");
+                    System.Threading.Thread.Sleep(1000);
+                    hero.Hp -= enemy.Dmg;
+                }
+            }
+            if (heroType == "mage")
+            {
+                while (hero.Hp > 0 && enemy.Hp > 0)
+                {
+                    Console.Clear();
+                    Console.WriteLine(message);
+                    Console.WriteLine("Hero Hp:" + hero.Hp + ", " + "Hero Mana:" + hero.Mana);
+                    Console.WriteLine("Enemy Hp:" + enemy.Hp + ", " + "Enemy Energy:" + enemy.Energy);
+                    Console.WriteLine("enter 1 for hit with " + hero.Weapon.GetType().Name);
+                    Console.WriteLine("enter 2 to RUN for your life");
+                    Console.WriteLine("enter 3 for CastSpell");
+                    var a = Console.ReadLine();
+                    switch (a)
+                    {
+                        case "1":
+                            enemy.Hp -= hero.Weapon.Dmg;
+                            break;
+                        case "2":
+                            hero.Hp = 0;
+                            break;
+                        case "3":
+                            enemy.Hp -= hero.Weapon.Dmg + hero.CastSpell();
+                            break;
+                        default:
+                            break;
+                    }
+                    Console.WriteLine("WAIT FOR ENEMY TURN");
+                    System.Threading.Thread.Sleep(1000);
+                    hero.Hp -= enemy.Dmg;
+                }
+            }
             return message = "you beat the monster!";
         }
 

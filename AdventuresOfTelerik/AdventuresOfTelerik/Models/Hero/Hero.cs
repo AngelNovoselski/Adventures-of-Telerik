@@ -39,6 +39,13 @@ namespace AdventuresOfTelerik.Models.Hero
         public int Level { get => level; set => level = value; }
         public int Exp { get => exp; set => exp = value; }
         public virtual Weapon Weapon { get => this.weapon; set => this.weapon = value; }
+        public virtual int Energy { get; set; }
+        public virtual int Mana { get; set; }
+        public virtual int Fury { get; set; }
+
+        public virtual int FocusShot() { throw new NotImplementedException(); }
+        public virtual int CastSpell() { throw new NotImplementedException(); }
+        public virtual int RageAnger() { throw new NotImplementedException(); }
 
         public void Print()
         {

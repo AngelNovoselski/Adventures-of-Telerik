@@ -19,18 +19,26 @@ namespace AdventuresOfTelerik.Models.Hero
         public Hunter()
             : base()
         {
-            Energy = 100;
-            Agility = 20;
+            this.Energy = 100;
+            this.Agility = 20;
             this.Weapon = new Bow();
         }
-        
-        public int Energy { get => this.energy; set => energy = value; }
+
+        public override int Energy { get => this.energy; set => energy = value; }
         public int Agility { get => agility; set => agility = value; }
         public override Weapon Weapon { get => this.weapon; set => this.weapon = value; }
 
-        public int FocusShot()
+        public override int FocusShot()
         {
-            throw new NotImplementedException();
+            if (this.Energy >= 20)
+            {
+                this.Energy -= 20;
+                return this.Agility + this.Weapon.Dmg;
+            }
+            else
+            {
+                return 0;
+            }
         }
     }
 }

@@ -8,21 +8,21 @@ using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Models.Weapons
 {
-    public class Mace : Weapon, IStrength
+    public class Mace : Weapon, IWeaponStrength
     {
-        private int strength;
+        private int weaponStrength;
 
         public Mace()
             : base(20)
         {
-            this.Strength = 20;
+            this.WeaponStrength = 20;
         }
 
-        public override int Strength
+        public override int WeaponStrength
         {
             get
             {
-                return this.strength;
+                return this.weaponStrength;
             }
             set
             {
@@ -30,13 +30,13 @@ namespace AdventuresOfTelerik.Models.Weapons
                 {
                     throw new ArgumentException("Strenght must be positive number!");
                 }
-                this.strength = value;
+                this.weaponStrength = value;
             }
         }
 
         public override string Additionalinfo()
         {
-            return $", Strength: {this.Strength}";
+            return $", WeaponStrength: {this.WeaponStrength}";
         }
     }
 }

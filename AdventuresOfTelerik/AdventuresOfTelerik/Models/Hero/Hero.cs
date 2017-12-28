@@ -20,6 +20,7 @@ namespace AdventuresOfTelerik.Models.Hero
         private int level;
         private int exp;
         private Weapon weapon;
+        private Weapon weaponSecond;
 
         public Hero()
         {
@@ -30,6 +31,7 @@ namespace AdventuresOfTelerik.Models.Hero
             this.Level = 1;
             this.Exp = 0;
             this.Weapon = weapon;
+            this.WeaponSecond = new Knife();
         }
 
         public int PositionX { get => positionX; set => positionX = value; }
@@ -39,6 +41,7 @@ namespace AdventuresOfTelerik.Models.Hero
         public int Level { get => level; set => level = value; }
         public int Exp { get => exp; set => exp = value; }
         public virtual Weapon Weapon { get => this.weapon; set => this.weapon = value; }
+        public Weapon WeaponSecond { get => this.weaponSecond; set => this.weaponSecond = value; }
         public virtual int Energy { get; set; }
         public virtual int Mana { get; set; }
         public virtual int Fury { get; set; }

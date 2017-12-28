@@ -13,7 +13,7 @@ namespace AdventuresOfTelerik.Models.Weapons
             : base(15)
         {
             this.WeaponAgility = 20;
-            this.Ammo = 10;
+            this.Ammo = 5;
         }
 
         public override int WeaponAgility

@@ -62,6 +62,8 @@
     <Compile Include="Contracts\WeaponInterfaces\IStaff.cs" />
     <Compile Include="Contracts\WeaponInterfaces\IWeapon.cs" />
     <Compile Include="Contracts\WeaponInterfaces\IWeaponAgility.cs" />
+    <Compile Include="Contracts\WeaponInterfaces\IWeaponIntelligence.cs" />
+    <Compile Include="Contracts\WeaponInterfaces\IWeaponStrength.cs" />
     <Compile Include="Engine\Command.cs" />
     <Compile Include="Engine\GameEngine.cs" />
     <Compile Include="Engine\ICommand.cs" />

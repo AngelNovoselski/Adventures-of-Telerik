@@ -8,21 +8,21 @@ using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Models.Weapons
 {
-    public class Staff : Weapon, IStaff
+    public class Staff : Weapon, IWeaponIntelligence
     {
-        private int intelligence;
+        private int weaponIntelligence;
 
         public Staff() 
             : base(10)
         {
-            this.Intelligence = 20;
+            this.WeaponIntelligence = 20;
         }
 
-        public override int Intelligence
+        public override int WeaponIntelligence
         {
             get
             {
-                return this.intelligence;
+                return this.weaponIntelligence;
             }
             set
             {
@@ -30,13 +30,13 @@ namespace AdventuresOfTelerik.Models.Weapons
                 {
                     throw new ArgumentException("Intelligence must be positive number!");
                 }
-                this.intelligence = value;
+                this.weaponIntelligence = value;
             }
         }
 
         public override string Additionalinfo()
         {
-            return $", Intelligence: {this.Intelligence}";
+            return $", WeaponIntelligence: {this.WeaponIntelligence}";
         }
     }
 }

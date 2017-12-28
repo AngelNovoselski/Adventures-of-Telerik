@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Models.Weapons
 {
-    public abstract class Weapon : IWeapon, IAmmo, IWeaponAgility, IStrength, IIntelligence
+    public abstract class Weapon : IWeapon, IAmmo, IWeaponAgility, IWeaponStrength, IWeaponIntelligence
     {
         private int dmg;
 
@@ -35,8 +35,8 @@ namespace AdventuresOfTelerik.Models.Weapons
 
         public virtual int Ammo { get; set; }
         public virtual int WeaponAgility { get; set; }
-        public virtual int Strength { get; set; }
-        public virtual int Intelligence { get; set; }
+        public virtual int WeaponStrength { get; set; }
+        public virtual int WeaponIntelligence { get; set; }
 
         public override string ToString()
         {

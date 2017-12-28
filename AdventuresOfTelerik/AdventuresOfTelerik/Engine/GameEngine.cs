@@ -299,14 +299,23 @@ namespace AdventuresOfTelerik.Engine
                     Console.WriteLine("Enter 1 to Shoot with your " + hero.Weapon.GetType().Name);
                     Console.WriteLine("Enter 2 to Run for your Life");
                     Console.WriteLine("Enter 3 for FocusShot");
+                    Console.WriteLine("Enter 4 to Stab with your " + hero.WeaponSecond.GetType().Name);
                     var a = Console.ReadLine();
                     switch (a)
                     {
                         case "1":
-                            enemy.Hp -= hero.Weapon.Dmg;
-                            hero.Weapon.Ammo -= 1;
-                            Console.WriteLine($"The monster loses {hero.Weapon.Dmg} HP!");
-                            break;
+                            if (hero.Weapon.Ammo == 0)
+                            {
+                                Console.WriteLine($"No more ammo, try something else!");
+                                break;
+                            }
+                            else
+                            {
+                                enemy.Hp -= hero.Weapon.Dmg;
+                                hero.Weapon.Ammo -= 1;
+                                Console.WriteLine($"The monster loses {hero.Weapon.Dmg} HP!");
+                                break;
+                            }
                         case "2":
                             hero.Hp -= 5;
                             Console.WriteLine($"It is too late to run!");
@@ -326,6 +335,10 @@ namespace AdventuresOfTelerik.Engine
                                 hero.Weapon.Ammo -= 1;
                                 break;
                             }
+                        case "4":
+                            enemy.Hp -= hero.WeaponSecond.Dmg;
+                            Console.WriteLine($"The monster loses {hero.WeaponSecond.Dmg} HP!");
+                            break;
                         default:
                             break;
                     }
@@ -347,6 +360,7 @@ namespace AdventuresOfTelerik.Engine
                     Console.WriteLine("Enter 1 for hit with " + hero.Weapon.GetType().Name);
                     Console.WriteLine("Enter 2 to Run for your Life");
                     Console.WriteLine("Enter 3 for RageAnger");
+                    Console.WriteLine("Enter 4 to Stab with your " + hero.WeaponSecond.GetType().Name);
                     var a = Console.ReadLine();
                     switch (a)
                     {
@@ -372,6 +386,10 @@ namespace AdventuresOfTelerik.Engine
                                 Console.WriteLine($"The monster loses {hero.Weapon.Dmg + score} HP!");
                                 break;
                             }
+                        case "4":
+                            enemy.Hp -= hero.WeaponSecond.Dmg;
+                            Console.WriteLine($"The monster loses {hero.WeaponSecond.Dmg} HP!");
+                            break;
                         default:
                             break;
                     }
@@ -393,6 +411,7 @@ namespace AdventuresOfTelerik.Engine
                     Console.WriteLine("Enter 1 for hit with " + hero.Weapon.GetType().Name);
                     Console.WriteLine("Enter 2 to Run for your Life");
                     Console.WriteLine("Enter 3 for CastSpell");
+                    Console.WriteLine("Enter 4 to Stab with your " + hero.WeaponSecond.GetType().Name);
                     var a = Console.ReadLine();
                     switch (a)
                     {
@@ -418,6 +437,10 @@ namespace AdventuresOfTelerik.Engine
                                 Console.WriteLine($"The monster loses {hero.Weapon.Dmg + score} HP!");
                                 break;
                             }
+                        case "4":
+                            enemy.Hp -= hero.WeaponSecond.Dmg;
+                            Console.WriteLine($"The monster loses {hero.WeaponSecond.Dmg} HP!");
+                            break;
                         default:
                             break;
                     }

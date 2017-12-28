@@ -34,6 +34,11 @@ namespace AdventuresOfTelerik.Models
                 msg = GameEngine.MonsterMessage;
                 return msg;
             }
+            else if (a == '2')
+            {
+                msg = GameEngine.BossMonsterMessage;
+                return msg;
+            }
             else if (a == 'x')
             {
                 msg = GameEngine.ExitMessage;

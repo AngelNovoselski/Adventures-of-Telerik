@@ -14,7 +14,10 @@ namespace AdventuresOfTelerik.Engine
 {
     public sealed class GameEngine : IEngine
     {
+        public const string BossMonsterMessage = "The ground arround you trembles as the visious Xlliyu the spawn of Cthulhu appears before you!\n     It is time to prove you are worthy to protect this realm!";
         private const string DeadMonsterMessage = "You beat the monster!!";
+        private const string GameOverMessage = "GAME OVER!!!";
+        private const string DeadGameMessage = "You did just die!";
         private const string StartMessage = "ENTER into your adventure!";
         public const string EscapeMessage = "You escaped your nightmare!";
         public const string ExitMessage = "You see the exit of the labyrinth!!!";
@@ -24,7 +27,7 @@ namespace AdventuresOfTelerik.Engine
         public const string RockMessage = "There is a giant rock! If you dont want to get hurt you better not try anything funny like climbing it.";
         private const string WelcomeScreen = "Hello Adventurer!\n(Warning: hit ENTER after every choice to please the gods of your fate!!!)";
         private const string InvalidClassInput = "Wrong Class! Choose Again!";
-        private const string MageSelected= "You are Telerik Mage!";
+        private const string MageSelected = "You are Telerik Mage!";
         private const string WarriorSelected = "You are Telerik Warrior!";
         private const string HunterSelected = "You are Telerik Hunter!";
         private const string ChooseHero = "Choose your hero type:\n  Type 1 for mage:\n  Type 2 for warrior:\n  Type 3 for hunter:";
@@ -60,8 +63,6 @@ namespace AdventuresOfTelerik.Engine
         {
             this.PrintStartScreen();
             this.ReadCommands();
-            //var commandResult = this.ProcessCommands(commands);
-            //this.PrintReports(commandResult);
         }
 
         private void PrintStartScreen()
@@ -102,148 +103,185 @@ namespace AdventuresOfTelerik.Engine
 
         private void ReadCommands()
         {
-            while (hero.Hp > 0)
+            var currentLine = "0";
+            var msg = "Your journey begins now!";
+
+            while (hero.Hp > 0 && !happyend)
             {
-                var currentLine = "0";
-                var msg = "Your journey begins now!";
+                Console.Clear();
+                Console.WriteLine(msg);
+                //Console.WriteLine("Hero X:" + hero.PositionX + " " + "Hero Y:" + hero.PositionY);
+                Console.WriteLine("Hero Hp:" + hero.Hp);
+                Console.WriteLine("Hero Weapon:" + hero.Weapon.ToString());
+                Console.WriteLine("Choose where to go!");
+                Console.WriteLine(" 1 = " + CollisionDetector.GuideMessage(CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY - 1, map)));
+                Console.WriteLine(" 2 = " + CollisionDetector.GuideMessage(CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY + 1, map)));
+                Console.WriteLine(" 3 = " + CollisionDetector.GuideMessage(CollisionDetector.CheckCollisions(hero.PositionX - 1, hero.PositionY, map)));
+                Console.WriteLine(" 4 = " + CollisionDetector.GuideMessage(CollisionDetector.CheckCollisions(hero.PositionX + 1, hero.PositionY, map)));
+                Console.WriteLine("Enter the number!");
+                currentLine = Console.ReadLine();
 
-                while (hero.Hp > 0 && !happyend)
+                switch (currentLine)
                 {
-                    Console.Clear();
-                    Console.WriteLine(msg);
-                    //Console.WriteLine("Hero X:" + hero.PositionX + " " + "Hero Y:" + hero.PositionY);
-                    Console.WriteLine("Hero Hp:" + hero.Hp);
-                    Console.WriteLine("Hero Weapon:" + hero.Weapon.ToString());
-                    Console.WriteLine("Choose where to go!");
-                    Console.WriteLine(" 1 = " + CollisionDetector.GuideMessage(CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY - 1, map)));
-                    Console.WriteLine(" 2 = " + CollisionDetector.GuideMessage(CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY + 1, map)));
-                    Console.WriteLine(" 3 = " + CollisionDetector.GuideMessage(CollisionDetector.CheckCollisions(hero.PositionX - 1, hero.PositionY, map)));
-                    Console.WriteLine(" 4 = " + CollisionDetector.GuideMessage(CollisionDetector.CheckCollisions(hero.PositionX + 1, hero.PositionY, map)));
-                    Console.WriteLine("Enter the number!");
-                    currentLine = Console.ReadLine();
-
-                    switch (currentLine)
-                    {
-                        case "1":
-                            if (CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY - 1, map) == 'x')
-                            {
-                                msg = EscapeMessage;
-                                break;
-                            }
-                            else if (CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY - 1, map) == '@')
-                            {
-                                msg = ClimbRockMessage;
-                                hero.Hp -= 1;
-                            }
-                            else if (CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY - 1, map) == '1')
-                            {
-                                enemy = factory.CreateMonster();
-                                Fight();
-                                msg = DeadMonsterMessage;
-                                hero.Move(1);
-                                map.FirstMap[hero.PositionX, hero.PositionY] = '-';
-                            }
-                            else
-                            {
-                                hero.Move(1);
-                                msg = "You went left along the road!";
-                            }
+                    case "1":
+                        if (CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY - 1, map) == 'x')
+                        {
+                            msg = EscapeMessage;
                             break;
-                        case "2":
-                            if (CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY + 1, map) == 'x')
-                            {
-                                msg = EscapeMessage;
-                                break;
-                            }
-                            else if (CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY + 1, map) == '@')
-                            {
-                                msg = ClimbRockMessage;
-                                hero.Hp -= 1;
-                            }
-                            else if (CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY + 1, map) == '1')
-                            {
-                                enemy = factory.CreateMonster();
-                                Fight();
-                                msg = DeadMonsterMessage;
-                                hero.Move(2);
-                                map.FirstMap[hero.PositionX, hero.PositionY] = '-';
-                            }
-                            else
-                            {
-                                hero.Move(2);
-                                msg = "You went to the right side of the road!";
-                            }
+                        }
+                        else if (CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY - 1, map) == '@')
+                        {
+                            msg = ClimbRockMessage;
+                            hero.Hp -= 1;
+                        }
+                        else if (CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY - 1, map) == '1')
+                        {
+                            enemy = factory.CreateMonster();
+                            Fight();
+                            msg = DeadMonsterMessage;
+                            hero.Move(1);
+                            map.FirstMap[hero.PositionX, hero.PositionY] = '-';
+                        }
+                        else if (CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY - 1, map) == '2')
+                        {
+                            enemy = factory.CreateBossMonster();
+                            Fight();
+                            msg = DeadMonsterMessage;
+                            hero.Move(1);
+                            map.FirstMap[hero.PositionX, hero.PositionY] = '-';
+                        }
+                        else
+                        {
+                            hero.Move(1);
+                            msg = "You went left along the road!";
+                        }
+                        break;
+                    case "2":
+                        if (CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY + 1, map) == 'x')
+                        {
+                            msg = EscapeMessage;
                             break;
-                        case "3":
-                            if (CollisionDetector.CheckCollisions(hero.PositionX - 1, hero.PositionY, map) == 'x')
-                            {
-                                msg = EscapeMessage;
-                                break;
-                            }
-                            else if (CollisionDetector.CheckCollisions(hero.PositionX - 1, hero.PositionY, map) == '@')
-                            {
-                                msg = ClimbRockMessage;
-                                hero.Hp -= 1;
-                            }
-                            else if (CollisionDetector.CheckCollisions(hero.PositionX - 1, hero.PositionY, map) == '1')
-                            {
-                                enemy = factory.CreateMonster();
-                                Fight();
-                                msg = DeadMonsterMessage;
-                                hero.Move(3);
-                                map.FirstMap[hero.PositionX, hero.PositionY] = '-';
-                            }
-                            else
-                            {
-                                hero.Move(3);
-                                msg = "You went up to the hill!";
-                            }
+                        }
+                        else if (CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY + 1, map) == '@')
+                        {
+                            msg = ClimbRockMessage;
+                            hero.Hp -= 1;
+                        }
+                        else if (CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY + 1, map) == '1')
+                        {
+                            enemy = factory.CreateMonster();
+                            Fight();
+                            msg = DeadMonsterMessage;
+                            hero.Move(2);
+                            map.FirstMap[hero.PositionX, hero.PositionY] = '-';
+                        }
+                        else if (CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY + 1, map) == '2')
+                        {
+                            enemy = factory.CreateBossMonster();
+                            Fight();
+                            msg = DeadMonsterMessage;
+                            hero.Move(2);
+                            map.FirstMap[hero.PositionX, hero.PositionY] = '-';
+                        }
+                        else
+                        {
+                            hero.Move(2);
+                            msg = "You went to the right side of the road!";
+                        }
+                        break;
+                    case "3":
+                        if (CollisionDetector.CheckCollisions(hero.PositionX - 1, hero.PositionY, map) == 'x')
+                        {
+                            msg = EscapeMessage;
                             break;
-                        case "4":
-                            if (CollisionDetector.CheckCollisions(hero.PositionX+1, hero.PositionY, map) == 'x')
-                            {
-                                msg = EscapeMessage;
-                                happyend = true;
-                                break;
-                            }
-                            else if (CollisionDetector.CheckCollisions(hero.PositionX + 1, hero.PositionY, map) == '@')
-                            {
-                                msg = ClimbRockMessage;
-                                hero.Hp -= 1;
-                            }
-                            else if (CollisionDetector.CheckCollisions(hero.PositionX + 1, hero.PositionY, map) == '1')
-                            {
-                                enemy = factory.CreateMonster();
-                                Fight();
-                                msg = DeadMonsterMessage;
-                                hero.Move(4);
-                                map.FirstMap[hero.PositionX, hero.PositionY] = '-';
-                            }
-                            else
-                            {
-                                hero.Move(4);
-                                msg = "You went down the road!";
-                            }
+                        }
+                        else if (CollisionDetector.CheckCollisions(hero.PositionX - 1, hero.PositionY, map) == '@')
+                        {
+                            msg = ClimbRockMessage;
+                            hero.Hp -= 1;
+                        }
+                        else if (CollisionDetector.CheckCollisions(hero.PositionX - 1, hero.PositionY, map) == '1')
+                        {
+                            enemy = factory.CreateMonster();
+                            Fight();
+                            msg = DeadMonsterMessage;
+                            hero.Move(3);
+                            map.FirstMap[hero.PositionX, hero.PositionY] = '-';
+                        }
+                        else if (CollisionDetector.CheckCollisions(hero.PositionX - 1, hero.PositionY, map) == '2')
+                        {
+                            enemy = factory.CreateBossMonster();
+                            Fight();
+                            msg = DeadMonsterMessage;
+                            hero.Move(3);
+                            map.FirstMap[hero.PositionX, hero.PositionY] = '-';
+                        }
+                        else
+                        {
+                            hero.Move(3);
+                            msg = "You went up to the hill!";
+                        }
+                        break;
+                    case "4":
+                        if (CollisionDetector.CheckCollisions(hero.PositionX + 1, hero.PositionY, map) == 'x')
+                        {
+                            msg = EscapeMessage;
+                            happyend = true;
                             break;
-                        default:
-                            msg = "Wrong Input";
-                            break;
-                    }
-
-                    if (happyend)
-                    {
-                        Console.Clear();
-                        Console.WriteLine(msg);
-                    }
+                        }
+                        else if (CollisionDetector.CheckCollisions(hero.PositionX + 1, hero.PositionY, map) == '@')
+                        {
+                            msg = ClimbRockMessage;
+                            hero.Hp -= 1;
+                        }
+                        else if (CollisionDetector.CheckCollisions(hero.PositionX + 1, hero.PositionY, map) == '1')
+                        {
+                            enemy = factory.CreateMonster();
+                            Fight();
+                            msg = DeadMonsterMessage;
+                            hero.Move(4);
+                            map.FirstMap[hero.PositionX, hero.PositionY] = '-';
+                        }
+                        else if (CollisionDetector.CheckCollisions(hero.PositionX + 1, hero.PositionY, map) == '2')
+                        {
+                            enemy = factory.CreateBossMonster();
+                            Fight();
+                            msg = DeadMonsterMessage;
+                            hero.Move(4);
+                            map.FirstMap[hero.PositionX, hero.PositionY] = '-';
+                        }
+                        else
+                        {
+                            hero.Move(4);
+                            msg = "You went down the road!";
+                        }
+                        break;
+                    default:
+                        msg = "Wrong Input";
+                        break;
                 }
             }
-            Console.WriteLine("You did just die!\r\nGAME OVER!!!");
+
+            Console.Clear();
+            if (happyend)
+            {
+                Console.WriteLine(msg);
+                System.Threading.Thread.Sleep(1000);
+                Console.WriteLine("For now!!!");
+            }
+            else
+            {
+                Console.WriteLine(DeadGameMessage);
+                System.Threading.Thread.Sleep(1000);
+                Console.WriteLine("Congratulations!!!");
+            }
+            Console.WriteLine(GameOverMessage);
         }
 
         private void Fight()
         {
-            enemy = factory.CreateMonster();
-            var message = "You engage a monster!";
+            //enemy = factory.CreateMonster();
+            var message = "You engage a " + enemy.GetType().Name + "!!!";
             heroType = hero.GetType().Name;
             if (heroType == "Hunter")
             {

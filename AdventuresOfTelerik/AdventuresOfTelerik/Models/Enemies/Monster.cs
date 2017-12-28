@@ -15,7 +15,9 @@ namespace AdventuresOfTelerik.Models.Enemies
         public Monster() 
             : base()
         {
-
+            this.Hp = 100;
+            this.Dmg = 10;
+            this.Energy = 10;
         }
     }
 }

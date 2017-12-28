@@ -8,9 +8,12 @@ namespace AdventuresOfTelerik.Models.Enemies
 {
     public class BossMonster: Enemy
     {
-        public BossMonster() : base()
+        public BossMonster() 
+            : base()
         {
-
+            this.Hp = 150;
+            this.Dmg = 20;
+            this.Energy = 20;
         }
     }
 }

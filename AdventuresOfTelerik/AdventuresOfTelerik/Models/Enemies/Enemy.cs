@@ -9,11 +9,15 @@ namespace AdventuresOfTelerik.Models.Enemies
 {
     public abstract class Enemy : IEnemy
     {
+        private int hp;
+        private int dmg;
+        private int energy;
+
         public Enemy()
         {
-            this.Hp = 100;
-            this.Dmg = 5;
-            this.Energy = 10;
+            this.Hp = hp;
+            this.Dmg = dmg;
+            this.Energy = energy;
         }
 
         public int Hp { get; set; }

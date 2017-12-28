@@ -19,8 +19,8 @@ namespace AdventuresOfTelerik.Models.Hero
         public Hunter()
             : base()
         {
-            this.Energy = 100;
-            this.Agility = 20;
+            this.Energy = 99;
+            this.Agility = 15;
             this.Weapon = new Bow();
         }
 
@@ -30,9 +30,9 @@ namespace AdventuresOfTelerik.Models.Hero
 
         public override int FocusShot()
         {
-            if (this.Energy >= 20)
+            if (this.Energy >= 44)
             {
-                this.Energy -= 20;
+                this.Energy -= 44;
                 return this.Agility + this.Weapon.Dmg;
             }
             else

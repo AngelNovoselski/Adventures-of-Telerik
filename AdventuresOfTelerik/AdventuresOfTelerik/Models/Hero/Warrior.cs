@@ -18,8 +18,8 @@ namespace AdventuresOfTelerik.Models.Hero
         public Warrior() :
             base()
         {
-            this.Fury = 100;
-            this.Strength = 20;
+            this.Fury = 88;
+            this.Strength = 16;
             this.Weapon = new Mace();
         }
 

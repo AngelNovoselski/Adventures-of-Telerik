@@ -18,8 +18,8 @@ namespace AdventuresOfTelerik.Models.Hero
         public Mage() : 
             base()
         {
-            this.Mana = 100;
-            this.Intelligence = 20;
+            this.Mana = 90;
+            this.Intelligence = 18;
             this.Weapon = new Staff();
         }
         
@@ -29,9 +29,9 @@ namespace AdventuresOfTelerik.Models.Hero
 
         public override int CastSpell()
         {
-            if (this.Mana >= 30)
+            if (this.Mana >= 35)
             {
-                this.Mana -= 30;
+                this.Mana -= 35;
                 return this.Intelligence + this.Weapon.Dmg;
             }
             else

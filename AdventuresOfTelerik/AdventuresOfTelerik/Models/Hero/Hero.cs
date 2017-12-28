@@ -23,8 +23,8 @@ namespace AdventuresOfTelerik.Models.Hero
 
         public Hero()
         {
-            this.PositionX = 7;
-            this.PositionY = 7;
+            this.PositionX = 4;
+            this.PositionY = 4;
             this.Name = "Telerik";
             this.Hp = 100;
             this.Level = 1;

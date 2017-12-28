@@ -14,8 +14,18 @@ namespace AdventuresOfTelerik.Engine
 {
     public sealed class GameEngine : IEngine
     {
-        //private const string InvalidCommand = "Invalid command name: {0}!";
-        //private const string CategoryExists = "Category with name {0} already exists!";
+        public const string EscapeMessage = "You escaped your nightmare!";
+        public const string ExitMessage = "You see the exit of the labyrinth!!!";
+        public const string MonsterMessage = "You see a dark silhouette! Weird that you cant see what it is even tought its midday.";
+        public const string PathMessage = "There is a path! It looks safe but you have a feeling this may not be the case.";
+        public const string ClimbRockMessage = "You try to climb the giant rock. you fall down and hit your head! Lose 1 HP!";
+        public const string RockMessage = "There is a giant rock! If you dont want to get hurt you better not try anything funny like climbing it.";
+        private const string WelcomeScreen = "Hello Adventurer!\n(Warning: hit ENTER after every choice to please the gods of your fate!!!)";
+        private const string InvalidClassInput = "Wrong Class! Choose Again!";
+        private const string MageSelected= "You are Telerik Mage!";
+        private const string WarriorSelected = "You are Telerik Warrior!";
+        private const string HunterSelected = "You are Telerik Hunter!";
+        private const string ChooseHero = "Choose your hero type:\n  Type 1 for mage:\n  Type 2 for warrior:\n  Type 3 for hunter:";
 
         private static GameEngine SingleInstance;
         private Hero hero;
@@ -48,20 +58,19 @@ namespace AdventuresOfTelerik.Engine
         {
             //var hero = this.factory.CreateHunter();
             //Console.WriteLine(hero.Weapon.Ammo); 
-            PrintScreen();
+            PrintStartScreen();
             this.ReadCommands();
             //var commandResult = this.ProcessCommands(commands);
             //this.PrintReports(commandResult);
         }
 
-        private void PrintScreen()
+        private void PrintStartScreen()
         {
-            Console.WriteLine("Choose hero type:");
-            Console.WriteLine("  Type 1 for mage:");
-            Console.WriteLine("  Type 2 for warrior:");
-            Console.WriteLine("  Type 3 for hunter:");
-            string type = Console.ReadLine();
-            Console.WriteLine(ProcessStartScreen(type));
+            Console.WriteLine(WelcomeScreen);
+            Console.WriteLine(ChooseHero);
+            string command = Console.ReadLine();
+            Console.WriteLine(ProcessStartScreen(command));
+            heroType = hero.GetType().Name;
             Console.WriteLine("ENTER into your adventure!");
             Console.ReadKey();
         }
@@ -71,11 +80,8 @@ namespace AdventuresOfTelerik.Engine
             while (command != "1" && command != "2" && command != "3")
             {
                 Console.Clear();
-                Console.WriteLine("Wrong Class! Choose Again!");
-                Console.WriteLine("Choose hero type:");
-                Console.WriteLine("  Type 1 for mage:");
-                Console.WriteLine("  Type 2 for warrior:");
-                Console.WriteLine("  Type 3 for hunter:");
+                Console.WriteLine(InvalidClassInput);
+                Console.WriteLine(ChooseHero);
                 command = Console.ReadLine();
             }
 
@@ -83,18 +89,15 @@ namespace AdventuresOfTelerik.Engine
             {
                 case "1":
                     hero = this.factory.CreateMage();
-                    heroType = "mage";
-                    return "You are Telerik Mage!";
+                    return MageSelected;
                 case "2":
                     hero = this.factory.CreateWarrior();
-                    heroType = "warrior";
-                    return "You are Telerik Warrior!";
+                    return WarriorSelected;
                 case "3":
                     hero = this.factory.CreateHunter();
-                    heroType = "hunter";
-                    return "You are Telerik Hunter!";
+                    return HunterSelected;
                 default:
-                    return "Wrong Class! Choose Again!";
+                    return InvalidClassInput;
             }
         }
 
@@ -117,10 +120,10 @@ namespace AdventuresOfTelerik.Engine
                     Console.WriteLine("Hero Hp:" + hero.Hp);// + " " + "Hero Energy:" + hero.Energy);
                     Console.WriteLine("Hero Weapon:" + hero.Weapon.ToString());
                     Console.WriteLine("Choose where to go!");
-                    Console.WriteLine(" 1 = You see a" + CollisionDetector.GuideMessage(CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY - 1, map)));
-                    Console.WriteLine(" 2 = You see a" + CollisionDetector.GuideMessage(CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY + 1, map)));
-                    Console.WriteLine(" 3 = You see a" + CollisionDetector.GuideMessage(CollisionDetector.CheckCollisions(hero.PositionX - 1, hero.PositionY, map)));
-                    Console.WriteLine(" 4 = You see a" + CollisionDetector.GuideMessage(CollisionDetector.CheckCollisions(hero.PositionX + 1, hero.PositionY, map)));
+                    Console.WriteLine(" 1 = " + CollisionDetector.GuideMessage(CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY - 1, map)));
+                    Console.WriteLine(" 2 = " + CollisionDetector.GuideMessage(CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY + 1, map)));
+                    Console.WriteLine(" 3 = " + CollisionDetector.GuideMessage(CollisionDetector.CheckCollisions(hero.PositionX - 1, hero.PositionY, map)));
+                    Console.WriteLine(" 4 = " + CollisionDetector.GuideMessage(CollisionDetector.CheckCollisions(hero.PositionX + 1, hero.PositionY, map)));
                     Console.WriteLine("Enter the number!");
                     currentLine = Console.ReadLine();
 
@@ -129,18 +132,19 @@ namespace AdventuresOfTelerik.Engine
                         case "1":
                             if (CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY - 1, map) == 'x')
                             {
-                                msg = "You escaped your nightmare!";
+                                msg = EscapeMessage;
                                 break;
                             }
                             else if (CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY - 1, map) == '@')
                             {
-                                msg = "Tree here!";
+                                msg = ClimbRockMessage;
+                                hero.Hp -= 1;
                             }
                             else if (CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY - 1, map) == '1')
                             {
                                 enemy = factory.CreateMonster();
                                 msg = "You engage a monster!";
-                                msg = Fight(msg, heroType);
+                                msg = Fight(msg);
                                 hero.Move(1);
                                 map.FirstMap[hero.PositionX, hero.PositionY] = '-';
                             }
@@ -153,18 +157,19 @@ namespace AdventuresOfTelerik.Engine
                         case "2":
                             if (CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY + 1, map) == 'x')
                             {
-                                msg = "You escaped your nightmare!";
+                                msg = EscapeMessage;
                                 break;
                             }
                             else if (CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY + 1, map) == '@')
                             {
-                                msg = "Tree here!";
+                                msg = ClimbRockMessage;
+                                hero.Hp -= 1;
                             }
                             else if (CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY + 1, map) == '1')
                             {
                                 enemy = factory.CreateMonster();
                                 msg = "You engage a monster!";
-                                msg = Fight(msg, heroType);
+                                msg = Fight(msg);
                                 hero.Move(2);
                                 map.FirstMap[hero.PositionX, hero.PositionY] = '-';
                             }
@@ -177,18 +182,19 @@ namespace AdventuresOfTelerik.Engine
                         case "3":
                             if (CollisionDetector.CheckCollisions(hero.PositionX - 1, hero.PositionY, map) == 'x')
                             {
-                                msg = "You escaped your nightmare!";
+                                msg = EscapeMessage;
                                 break;
                             }
                             else if (CollisionDetector.CheckCollisions(hero.PositionX - 1, hero.PositionY, map) == '@')
                             {
-                                msg = "Tree here!";
+                                msg = ClimbRockMessage;
+                                hero.Hp -= 1;
                             }
                             else if (CollisionDetector.CheckCollisions(hero.PositionX - 1, hero.PositionY, map) == '1')
                             {
                                 enemy = factory.CreateMonster();
                                 msg = "You engage a monster!";
-                                msg = Fight(msg, heroType);
+                                msg = Fight(msg);
                                 hero.Move(3);
                                 map.FirstMap[hero.PositionX, hero.PositionY] = '-';
                             }
@@ -201,19 +207,20 @@ namespace AdventuresOfTelerik.Engine
                         case "4":
                             if (CollisionDetector.CheckCollisions(hero.PositionX+1, hero.PositionY, map) == 'x')
                             {
-                                msg = "You escaped your nightmare!";
+                                msg = EscapeMessage;
                                 happyend = true;
                                 break;
                             }
                             else if (CollisionDetector.CheckCollisions(hero.PositionX + 1, hero.PositionY, map) == '@')
                             {
-                                msg = "Tree here!";
+                                msg = ClimbRockMessage;
+                                hero.Hp -= 1;
                             }
                             else if (CollisionDetector.CheckCollisions(hero.PositionX + 1, hero.PositionY, map) == '1')
                             {
                                 enemy = factory.CreateMonster();
                                 msg = "You engage a monster!";
-                                msg = Fight(msg, heroType);
+                                msg = Fight(msg);
                                 hero.Move(4);
                                 map.FirstMap[hero.PositionX, hero.PositionY] = '-';
                             }
@@ -238,11 +245,12 @@ namespace AdventuresOfTelerik.Engine
             Console.WriteLine("You did just die!\r\nGAME OVER!!!");
         }
 
-        private string Fight(string message, string heroType)
+        private string Fight(string message)
         {
             enemy = factory.CreateMonster();
             message = "You engage a monster!";
-            if (heroType == "hunter")
+            heroType = hero.GetType().Name;
+            if (heroType == "Hunter")
             {
                 while (hero.Hp > 0 && enemy.Hp > 0)
                 {
@@ -275,7 +283,7 @@ namespace AdventuresOfTelerik.Engine
                     hero.Hp -= enemy.Dmg;
                 }
             }
-            if (heroType == "warrior")
+            if (heroType == "Warrior")
             {
                 while (hero.Hp > 0 && enemy.Hp > 0)
                 {
@@ -306,7 +314,7 @@ namespace AdventuresOfTelerik.Engine
                     hero.Hp -= enemy.Dmg;
                 }
             }
-            if (heroType == "mage")
+            if (heroType == "Mage")
             {
                 while (hero.Hp > 0 && enemy.Hp > 0)
                 {

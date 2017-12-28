@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdventuresOfTelerik.Engine;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,22 +21,22 @@ namespace AdventuresOfTelerik.Models
 
             if (a == '-')
             {
-                msg = "n empty path..";
+                msg = GameEngine.PathMessage;
                 return msg;
             }
             else if (a == '@')
             {
-                msg = " tree there!";
+                msg = GameEngine.RockMessage;
                 return msg;
             }
             else if (a == '1')
             {
-                msg = " dangerous monster ahead";
+                msg = GameEngine.MonsterMessage;
                 return msg;
             }
             else if (a == 'x')
             {
-                msg = " the exit of the labyrinth!!!";
+                msg = GameEngine.ExitMessage;
                 return msg;
             }
             return string.Empty;

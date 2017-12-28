@@ -12,8 +12,10 @@ namespace AdventuresOfTelerik.Models.Enemies
 {
     public class Monster : Enemy
     {
-        public Monster() : base()
+        public Monster() 
+            : base()
         {
+
         }
     }
 }

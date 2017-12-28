@@ -14,6 +14,8 @@ namespace AdventuresOfTelerik.Engine
 {
     public sealed class GameEngine : IEngine
     {
+        private const string DeadMonsterMessage = "You beat the monster!!";
+        private const string StartMessage = "ENTER into your adventure!";
         public const string EscapeMessage = "You escaped your nightmare!";
         public const string ExitMessage = "You see the exit of the labyrinth!!!";
         public const string MonsterMessage = "You see a dark silhouette! Weird that you cant see what it is even tought its midday.";
@@ -56,9 +58,7 @@ namespace AdventuresOfTelerik.Engine
 
         public void Start()
         {
-            //var hero = this.factory.CreateHunter();
-            //Console.WriteLine(hero.Weapon.Ammo); 
-            PrintStartScreen();
+            this.PrintStartScreen();
             this.ReadCommands();
             //var commandResult = this.ProcessCommands(commands);
             //this.PrintReports(commandResult);
@@ -69,9 +69,8 @@ namespace AdventuresOfTelerik.Engine
             Console.WriteLine(WelcomeScreen);
             Console.WriteLine(ChooseHero);
             string command = Console.ReadLine();
-            Console.WriteLine(ProcessStartScreen(command));
-            heroType = hero.GetType().Name;
-            Console.WriteLine("ENTER into your adventure!");
+            Console.WriteLine(this.ProcessStartScreen(command));
+            Console.WriteLine(StartMessage);
             Console.ReadKey();
         }
 
@@ -105,19 +104,15 @@ namespace AdventuresOfTelerik.Engine
         {
             while (hero.Hp > 0)
             {
-                // Console.ReadLine();
-                //var commands = new List<ICommand>();
-
                 var currentLine = "0";
                 var msg = "Your journey begins now!";
 
-                //while (currentLine != 1 || currentLine != 2 || currentLine != 3 || currentLine != 4)
                 while (hero.Hp > 0 && !happyend)
                 {
                     Console.Clear();
                     Console.WriteLine(msg);
-                    Console.WriteLine("Hero X:" + hero.PositionX + " " + "Hero Y:" + hero.PositionY);
-                    Console.WriteLine("Hero Hp:" + hero.Hp);// + " " + "Hero Energy:" + hero.Energy);
+                    //Console.WriteLine("Hero X:" + hero.PositionX + " " + "Hero Y:" + hero.PositionY);
+                    Console.WriteLine("Hero Hp:" + hero.Hp);
                     Console.WriteLine("Hero Weapon:" + hero.Weapon.ToString());
                     Console.WriteLine("Choose where to go!");
                     Console.WriteLine(" 1 = " + CollisionDetector.GuideMessage(CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY - 1, map)));
@@ -143,15 +138,15 @@ namespace AdventuresOfTelerik.Engine
                             else if (CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY - 1, map) == '1')
                             {
                                 enemy = factory.CreateMonster();
-                                msg = "You engage a monster!";
-                                msg = Fight(msg);
+                                Fight();
+                                msg = DeadMonsterMessage;
                                 hero.Move(1);
                                 map.FirstMap[hero.PositionX, hero.PositionY] = '-';
                             }
                             else
                             {
                                 hero.Move(1);
-                                msg = "You went left!";
+                                msg = "You went left along the road!";
                             }
                             break;
                         case "2":
@@ -168,15 +163,15 @@ namespace AdventuresOfTelerik.Engine
                             else if (CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY + 1, map) == '1')
                             {
                                 enemy = factory.CreateMonster();
-                                msg = "You engage a monster!";
-                                msg = Fight(msg);
+                                Fight();
+                                msg = DeadMonsterMessage;
                                 hero.Move(2);
                                 map.FirstMap[hero.PositionX, hero.PositionY] = '-';
                             }
                             else
                             {
                                 hero.Move(2);
-                                msg = "You went right!";
+                                msg = "You went to the right side of the road!";
                             }
                             break;
                         case "3":
@@ -193,15 +188,15 @@ namespace AdventuresOfTelerik.Engine
                             else if (CollisionDetector.CheckCollisions(hero.PositionX - 1, hero.PositionY, map) == '1')
                             {
                                 enemy = factory.CreateMonster();
-                                msg = "You engage a monster!";
-                                msg = Fight(msg);
+                                Fight();
+                                msg = DeadMonsterMessage;
                                 hero.Move(3);
                                 map.FirstMap[hero.PositionX, hero.PositionY] = '-';
                             }
                             else
                             {
                                 hero.Move(3);
-                                msg = "You went up!";
+                                msg = "You went up to the hill!";
                             }
                             break;
                         case "4":
@@ -219,15 +214,15 @@ namespace AdventuresOfTelerik.Engine
                             else if (CollisionDetector.CheckCollisions(hero.PositionX + 1, hero.PositionY, map) == '1')
                             {
                                 enemy = factory.CreateMonster();
-                                msg = "You engage a monster!";
-                                msg = Fight(msg);
+                                Fight();
+                                msg = DeadMonsterMessage;
                                 hero.Move(4);
                                 map.FirstMap[hero.PositionX, hero.PositionY] = '-';
                             }
                             else
                             {
                                 hero.Move(4);
-                                msg = "You went down!";
+                                msg = "You went down the road!";
                             }
                             break;
                         default:
@@ -245,10 +240,10 @@ namespace AdventuresOfTelerik.Engine
             Console.WriteLine("You did just die!\r\nGAME OVER!!!");
         }
 
-        private string Fight(string message)
+        private void Fight()
         {
             enemy = factory.CreateMonster();
-            message = "You engage a monster!";
+            var message = "You engage a monster!";
             heroType = hero.GetType().Name;
             if (heroType == "Hunter")
             {
@@ -258,9 +253,9 @@ namespace AdventuresOfTelerik.Engine
                     Console.WriteLine(message);
                     Console.WriteLine("Hero Hp:" + hero.Hp + ", " + "Hero Energy:" + hero.Energy);
                     Console.WriteLine("Enemy Hp:" + enemy.Hp + ", " + "Enemy Energy:" + enemy.Energy);
-                    Console.WriteLine("enter 1 to shoot with your " + hero.Weapon.GetType().Name);
-                    Console.WriteLine("enter 2 to RUN for your life");
-                    Console.WriteLine("enter 3 for FocusShot");
+                    Console.WriteLine("Enter 1 to Shoot with your " + hero.Weapon.GetType().Name);
+                    Console.WriteLine("Enter 2 to Run for your Life");
+                    Console.WriteLine("Enter 3 for FocusShot");
                     var a = Console.ReadLine();
                     switch (a)
                     {
@@ -291,9 +286,9 @@ namespace AdventuresOfTelerik.Engine
                     Console.WriteLine(message);
                     Console.WriteLine("Hero Hp:" + hero.Hp + ", " + "Hero Fury:" + hero.Fury);
                     Console.WriteLine("Enemy Hp:" + enemy.Hp + ", " + "Enemy Energy:" + enemy.Energy);
-                    Console.WriteLine("enter 1 for hit with " + hero.Weapon.GetType().Name);
-                    Console.WriteLine("enter 2 to RUN for your life");
-                    Console.WriteLine("enter 3 for RageAnger");
+                    Console.WriteLine("Enter 1 for hit with " + hero.Weapon.GetType().Name);
+                    Console.WriteLine("Enter 2 to Run for your Life");
+                    Console.WriteLine("Enter 3 for RageAnger");
                     var a = Console.ReadLine();
                     switch (a)
                     {
@@ -322,9 +317,9 @@ namespace AdventuresOfTelerik.Engine
                     Console.WriteLine(message);
                     Console.WriteLine("Hero Hp:" + hero.Hp + ", " + "Hero Mana:" + hero.Mana);
                     Console.WriteLine("Enemy Hp:" + enemy.Hp + ", " + "Enemy Energy:" + enemy.Energy);
-                    Console.WriteLine("enter 1 for hit with " + hero.Weapon.GetType().Name);
-                    Console.WriteLine("enter 2 to RUN for your life");
-                    Console.WriteLine("enter 3 for CastSpell");
+                    Console.WriteLine("Enter 1 for hit with " + hero.Weapon.GetType().Name);
+                    Console.WriteLine("Enter 2 to Run for your Life");
+                    Console.WriteLine("Enter 3 for CastSpell");
                     var a = Console.ReadLine();
                     switch (a)
                     {
@@ -345,7 +340,6 @@ namespace AdventuresOfTelerik.Engine
                     hero.Hp -= enemy.Dmg;
                 }
             }
-            return message = "you beat the monster!";
         }
 
         //private IList<string> ProcessCommands(IList<ICommand> commands)

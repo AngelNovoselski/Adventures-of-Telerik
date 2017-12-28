@@ -312,7 +312,10 @@ namespace AdventuresOfTelerik.Engine
                             else
                             {
                                 enemy.Hp -= hero.Weapon.Dmg;
-                                hero.Weapon.Ammo -= 1;
+                                if (hero.Weapon.Ammo > 0)
+                                {
+                                    hero.Weapon.Ammo -= 1;
+                                }
                                 Console.WriteLine($"The monster loses {hero.Weapon.Dmg} HP!");
                                 break;
                             }

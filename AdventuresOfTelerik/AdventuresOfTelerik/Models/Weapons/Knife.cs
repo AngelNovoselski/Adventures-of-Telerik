@@ -15,7 +15,7 @@ namespace AdventuresOfTelerik.Models.Weapons
         public Knife()
             : base(5)
         {
-            this.WeaponAgility = 25;
+            this.WeaponAgility = 7;
         }
 
         public override int WeaponAgility

@@ -9,5 +9,6 @@ namespace AdventuresOfTelerik.Contracts.HeroInterfaces
     public interface IWarrior
     {
         int Fury { get; set; }
+        int RageAnger();
     }
 }

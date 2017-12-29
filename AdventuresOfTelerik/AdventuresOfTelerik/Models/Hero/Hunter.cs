@@ -19,13 +19,43 @@ namespace AdventuresOfTelerik.Models.Hero
         public Hunter()
             : base()
         {
-            this.Energy = 99;
             this.Agility = 15;
+            this.Energy = 99;
             this.Weapon = new Bow();
         }
 
-        public override int Energy { get => this.energy; set => energy = value; }
-        public int Agility { get => agility; set => agility = value; }
+        public int Agility
+        {
+            get
+            {
+                return this.agility;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("Agility must be positive number!!!");
+                }
+                this.agility = value;
+            }
+        }
+
+        public override int Energy
+        {
+            get
+            {
+                return this.energy;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("Energy must be positive number!!!");
+                }
+                this.energy = value;
+            }
+        }
+
         public override Weapon Weapon { get => this.weapon; set => this.weapon = value; }
 
         public override int FocusShot()
@@ -33,12 +63,17 @@ namespace AdventuresOfTelerik.Models.Hero
             if (this.Energy >= 44)
             {
                 this.Energy -= 44;
-                return this.Agility + this.Weapon.Dmg;
+                return this.Agility + this.Weapon.Dmg + this.Weapon.WeaponAgility;
             }
             else
             {
                 return 0;
             }
+        }
+
+        public override string Additionalinfo()
+        {
+            return $"Special Ability: FocusShot, Energy: {this.Energy}, Agility: {this.Agility}";
         }
     }
 }

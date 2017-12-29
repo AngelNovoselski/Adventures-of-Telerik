@@ -15,7 +15,7 @@ namespace AdventuresOfTelerik.Models.Weapons
         public Mace()
             : base(20)
         {
-            this.WeaponStrength = 20;
+            this.WeaponStrength = 9;
         }
 
         public override int WeaponStrength

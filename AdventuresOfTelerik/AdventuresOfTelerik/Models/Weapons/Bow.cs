@@ -12,7 +12,7 @@ namespace AdventuresOfTelerik.Models.Weapons
         public Bow()
             : base(15)
         {
-            this.WeaponAgility = 20;
+            this.WeaponAgility = 11;
             this.Ammo = 5;
         }
 

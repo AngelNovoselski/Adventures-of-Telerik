@@ -34,26 +34,52 @@ namespace AdventuresOfTelerik.Models.Hero
             this.WeaponSecond = new Knife();
         }
 
-        public int PositionX { get => positionX; set => positionX = value; }
-        public int PositionY { get => positionY; set => positionY = value; }
-        public string Name { get => name; set => name = value; }
-        public int Hp { get => hp; set => hp = value; }
-        public int Level { get => level; set => level = value; }
-        public int Exp { get => exp; set => exp = value; }
-        public virtual Weapon Weapon { get => this.weapon; set => this.weapon = value; }
-        public Weapon WeaponSecond { get => this.weaponSecond; set => this.weaponSecond = value; }
+        public int PositionX { get => this.positionX; set => this.positionX = value; }
+        public int PositionY { get => this.positionY; set => this.positionY = value; }
+        public string Name { get => this.name; set => this.name = value; }
+        public int Hp { get => this.hp; set => this.hp = value; }
+        public int Level { get => this.level; set => this.level = value; }
+        public int Exp { get => this.exp; set => this.exp = value; }
+
+        public virtual Weapon Weapon
+        {
+            get
+            {
+                return this.weapon;
+            }
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentException("Weapon must be created!!!");
+                }
+                this.weapon = value;
+            }
+        }
+
+        public Weapon WeaponSecond
+        {
+            get
+            {
+                return this.weaponSecond;
+            }
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentException("Weapon must be created!!!");
+                }
+                this.weaponSecond = value;
+            }
+        }
+
         public virtual int Energy { get; set; }
         public virtual int Mana { get; set; }
         public virtual int Fury { get; set; }
 
-        public virtual int FocusShot() { throw new NotImplementedException(); }
-        public virtual int CastSpell() { throw new NotImplementedException(); }
-        public virtual int RageAnger() { throw new NotImplementedException(); }
-
-        public void Print()
-        {
-            throw new NotImplementedException();
-        }
+        public virtual int FocusShot() { throw new NotImplementedException("This hero doesn't have this ability!!!"); }
+        public virtual int CastSpell() { throw new NotImplementedException("This hero doesn't have this ability!!!"); }
+        public virtual int RageAnger() { throw new NotImplementedException("This hero doesn't have this ability!!!"); }
 
         public void Move(int input)
         {
@@ -73,6 +99,18 @@ namespace AdventuresOfTelerik.Models.Hero
             {
                 this.PositionX += 1;
             }
+        }
+
+        public override string ToString()
+        {
+            return $"Hero Hp: {this.Hp}, Name: {this.Name}\n" +
+                $"{this.Additionalinfo()}\n" +
+                $"Hero Weapon:{this.Weapon.ToString()}\nHero Secret Weapon:{this.WeaponSecond.ToString()}";
+        }
+
+        public virtual string Additionalinfo()
+        {
+            return string.Empty;
         }
     }
 }

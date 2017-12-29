@@ -23,8 +23,38 @@ namespace AdventuresOfTelerik.Models.Hero
             this.Weapon = new Mace();
         }
 
-        public int Strength { get => strength; set => strength = value; }
-        public override int Fury { get => fury; set => fury = value; }
+        public int Strength
+        {
+            get
+            {
+                return this.strength;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("Strength must be positive number!!!");
+                }
+                this.strength = value;
+            }
+        }
+
+        public override int Fury
+        {
+            get
+            {
+                return this.fury;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("Fury must be positive number!!!");
+                }
+                this.fury = value;
+            }
+        }
+
         public override Weapon Weapon { get => this.weapon; set => this.weapon = value; }
 
         public override int RageAnger()
@@ -32,12 +62,17 @@ namespace AdventuresOfTelerik.Models.Hero
             if (this.Fury >= 40)
             {
                 this.Fury -= 40;
-                return this.Strength + this.Weapon.Dmg;
+                return this.Strength + this.Weapon.Dmg + this.Weapon.WeaponStrength;
             }
             else
             {
                 return 0;
             }
+        }
+
+        public override string Additionalinfo()
+        {
+            return $"Special Ability: RageAnger, Fury: {this.Fury}, Strength: {this.Strength}";
         }
     }
 }

@@ -112,10 +112,10 @@ namespace AdventuresOfTelerik.Engine
             while (hero.Hp > 0 && !happyend)
             {
                 Console.Clear();
+                Console.BackgroundColor = ConsoleColor.Red;
                 Console.WriteLine(message);
-                //Console.WriteLine("Hero X:" + hero.PositionX + " " + "Hero Y:" + hero.PositionY);
-                Console.WriteLine("Hero Hp:" + hero.Hp);
-                Console.WriteLine("Hero Weapon:" + hero.Weapon.ToString());
+                Console.ResetColor();
+                Console.WriteLine(hero.ToString());
                 Console.WriteLine("Choose where to go!");
                 Console.WriteLine(" 1 = " + CollisionDetector.GuideMessage(CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY - 1, map)));
                 Console.WriteLine(" 2 = " + CollisionDetector.GuideMessage(CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY + 1, map)));
@@ -335,7 +335,7 @@ namespace AdventuresOfTelerik.Engine
                                 int score = hero.FocusShot();
                                 enemy.Hp -= hero.Weapon.Dmg + score;
                                 Console.WriteLine($"The monster loses {hero.Weapon.Dmg + score} HP!");
-                                hero.Weapon.Ammo -= 1;
+                                //hero.Weapon.Ammo -= 1;
                                 break;
                             }
                         case "4":

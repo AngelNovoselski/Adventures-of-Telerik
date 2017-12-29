@@ -15,16 +15,46 @@ namespace AdventuresOfTelerik.Models.Hero
         private int intelligence;
         private Weapon weapon;
 
-        public Mage() : 
+        public Mage() :
             base()
         {
             this.Mana = 90;
             this.Intelligence = 18;
             this.Weapon = new Staff();
         }
-        
-        public override int Mana { get => mana; set => mana = value; }
-        public int Intelligence { get => intelligence; set => intelligence = value; }
+
+        public int Intelligence
+        {
+            get
+            {
+                return this.intelligence;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("Intelligence must be positive number!!!");
+                }
+                this.intelligence = value;
+            }
+        }
+
+        public override int Mana
+        {
+            get
+            {
+                return this.mana;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("Mana must be positive number!!!");
+                }
+                this.mana = value;
+            }
+        }
+
         public override Weapon Weapon { get => this.weapon; set => this.weapon = value; }
 
         public override int CastSpell()
@@ -32,12 +62,17 @@ namespace AdventuresOfTelerik.Models.Hero
             if (this.Mana >= 35)
             {
                 this.Mana -= 35;
-                return this.Intelligence + this.Weapon.Dmg;
+                return this.Intelligence + this.Weapon.Dmg + this.Weapon.WeaponIntelligence;
             }
             else
             {
                 return 0;
             }
+        }
+
+        public override string Additionalinfo()
+        {
+            return $"Special Ability: CastSpell, Mana: {this.Mana}, Intelligence: {this.Intelligence}";
         }
     }
 }

@@ -15,7 +15,7 @@ namespace AdventuresOfTelerik.Models.Weapons
         public Staff() 
             : base(10)
         {
-            this.WeaponIntelligence = 20;
+            this.WeaponIntelligence = 12;
         }
 
         public override int WeaponIntelligence

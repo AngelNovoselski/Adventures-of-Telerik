@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AdventuresOfTelerik.Common.Enums;
 
 namespace AdventuresOfTelerik.Models.Hero
 {
@@ -16,7 +17,7 @@ namespace AdventuresOfTelerik.Models.Hero
         private Weapon weapon;
 
         public Mage() :
-            base()
+            base(HeroColor.darkBlue)
         {
             this.Mana = 90;
             this.Intelligence = 18;
@@ -33,7 +34,7 @@ namespace AdventuresOfTelerik.Models.Hero
             {
                 if (value < 0)
                 {
-                    throw new ArgumentException("Intelligence must be positive number!!!");
+                    throw new NegativeArgumentException("Intelligence must be positive number!!!");
                 }
                 this.intelligence = value;
             }
@@ -49,7 +50,7 @@ namespace AdventuresOfTelerik.Models.Hero
             {
                 if (value < 0)
                 {
-                    throw new ArgumentException("Mana must be positive number!!!");
+                    throw new NegativeArgumentException("Mana must be positive number!!!");
                 }
                 this.mana = value;
             }

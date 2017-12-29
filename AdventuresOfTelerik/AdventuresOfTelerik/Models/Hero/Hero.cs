@@ -8,6 +8,7 @@ using AdventuresOfTelerik.Contracts.WeaponInterfaces;
 using AdventuresOfTelerik;
 using AdventuresOfTelerik.Contracts;
 using AdventuresOfTelerik.Models.Weapons;
+using AdventuresOfTelerik.Common.Enums;
 
 namespace AdventuresOfTelerik.Models.Hero
 {
@@ -21,8 +22,9 @@ namespace AdventuresOfTelerik.Models.Hero
         private int exp;
         private Weapon weapon;
         private Weapon weaponSecond;
+        private readonly HeroColor heroColor;
 
-        public Hero()
+        public Hero(HeroColor heroColor)
         {
             this.PositionX = 4;
             this.PositionY = 4;
@@ -32,6 +34,7 @@ namespace AdventuresOfTelerik.Models.Hero
             this.Exp = 0;
             this.Weapon = weapon;
             this.WeaponSecond = new Knife();
+            this.heroColor = heroColor;
         }
 
         public int PositionX { get => this.positionX; set => this.positionX = value; }
@@ -40,6 +43,7 @@ namespace AdventuresOfTelerik.Models.Hero
         public int Hp { get => this.hp; set => this.hp = value; }
         public int Level { get => this.level; set => this.level = value; }
         public int Exp { get => this.exp; set => this.exp = value; }
+        public HeroColor HeroColor { get => this.heroColor; }
 
         public virtual Weapon Weapon
         {

@@ -112,7 +112,7 @@ namespace AdventuresOfTelerik.Engine
             while (hero.Hp > 0 && !happyend)
             {
                 Console.Clear();
-                Console.BackgroundColor = ConsoleColor.Red;
+                Console.BackgroundColor = (ConsoleColor)hero.HeroColor;
                 Console.WriteLine(message);
                 Console.ResetColor();
                 Console.WriteLine(hero.ToString());
@@ -347,9 +347,25 @@ namespace AdventuresOfTelerik.Engine
                     }
                     Console.WriteLine("WAIT FOR ENEMY TURN");
                     System.Threading.Thread.Sleep(1000);
-                    Console.WriteLine($"You lose {enemy.Dmg} HP!");
-                    System.Threading.Thread.Sleep(2000);
-                    hero.Hp -= enemy.Dmg;
+
+                    if (enemy.Energy < 5)
+                    {
+                        Console.WriteLine($"You lose {enemy.Dmg} HP!");
+                        System.Threading.Thread.Sleep(2000);
+                        hero.Hp -= enemy.Dmg;
+                    }
+                    else
+                    {
+                        int score = enemy.Roar();
+                        Console.WriteLine($"The Monster Roars!");
+                        Console.WriteLine($"You lose {enemy.Dmg + score} HP!");
+                        System.Threading.Thread.Sleep(2000);
+                        hero.Hp -= enemy.Dmg + score;
+                    }
+
+                    //Console.WriteLine($"You lose {enemy.Dmg} HP!");
+                    //System.Threading.Thread.Sleep(2000);
+                    //hero.Hp -= enemy.Dmg;
                 }
             }
             if (heroType == "Warrior")
@@ -398,9 +414,25 @@ namespace AdventuresOfTelerik.Engine
                     }
                     Console.WriteLine("WAIT FOR ENEMY TURN");
                     System.Threading.Thread.Sleep(1000);
-                    Console.WriteLine($"You lose {enemy.Dmg} HP!");
-                    System.Threading.Thread.Sleep(2000);
-                    hero.Hp -= enemy.Dmg;
+
+                    if (enemy.Energy < 5)
+                    {
+                        Console.WriteLine($"You lose {enemy.Dmg} HP!");
+                        System.Threading.Thread.Sleep(2000);
+                        hero.Hp -= enemy.Dmg;
+                    }
+                    else
+                    {
+                        int score = enemy.Roar();
+                        Console.WriteLine($"The Monster Roars!");
+                        Console.WriteLine($"You lose {enemy.Dmg + score} HP!");
+                        System.Threading.Thread.Sleep(2000);
+                        hero.Hp -= enemy.Dmg + score;
+                    }
+
+                    //Console.WriteLine($"You lose {enemy.Dmg} HP!");
+                    //System.Threading.Thread.Sleep(2000);
+                    //hero.Hp -= enemy.Dmg;
                 }
             }
             if (heroType == "Mage")
@@ -449,9 +481,25 @@ namespace AdventuresOfTelerik.Engine
                     }
                     Console.WriteLine("WAIT FOR ENEMY TURN");
                     System.Threading.Thread.Sleep(1000);
-                    Console.WriteLine($"You lose {enemy.Dmg} HP!");
-                    System.Threading.Thread.Sleep(2000);
-                    hero.Hp -= enemy.Dmg;
+
+                    if (enemy.Energy < 5)
+                    {
+                        Console.WriteLine($"You lose {enemy.Dmg} HP!");
+                        System.Threading.Thread.Sleep(2000);
+                        hero.Hp -= enemy.Dmg;
+                    }
+                    else
+                    {
+                        int score = enemy.Roar();
+                        Console.WriteLine($"The Monster Roars!");
+                        Console.WriteLine($"You lose {enemy.Dmg + score} HP!");
+                        System.Threading.Thread.Sleep(2000);
+                        hero.Hp -= enemy.Dmg + score;
+                    }
+
+                    //Console.WriteLine($"You lose {enemy.Dmg} HP!");
+                    //System.Threading.Thread.Sleep(2000);
+                    //hero.Hp -= enemy.Dmg;
                 }
             }
         }

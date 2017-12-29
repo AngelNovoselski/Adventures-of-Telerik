@@ -10,7 +10,7 @@ using AdventuresOfTelerik.Contracts.EnemyInterfaces;
 
 namespace AdventuresOfTelerik.Models.Enemies
 {
-    public class Monster : Enemy
+    public class Monster : Enemy, IMonster
     {
         public Monster() 
             : base()
@@ -18,6 +18,19 @@ namespace AdventuresOfTelerik.Models.Enemies
             this.Hp = 100;
             this.Dmg = 10;
             this.Energy = 10;
+        }
+
+        public override int Roar()
+        {
+            if (this.Energy >= 5)
+            {
+                this.Energy -= 5;
+                return this.Dmg * 2;
+            }
+            else
+            {
+                return 0;
+            }
         }
     }
 }

@@ -20,8 +20,54 @@ namespace AdventuresOfTelerik.Models.Enemies
             this.Energy = energy;
         }
 
-        public int Hp { get; set; }
-        public int Dmg { get; set; }
-        public int Energy { get; set; }
+        public int Hp
+        {
+            get
+            {
+                return this.hp;
+            }
+            set
+            {
+                //if (value < 0)
+                //{
+                //    throw new NegativeArgumentException("Hp must be positive number!!!");
+                //}
+                this.hp = value;
+            }
+        }
+
+        public int Dmg
+        {
+            get
+            {
+                return this.dmg;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new NegativeArgumentException("Dmg must be positive number!!!");
+                }
+                this.dmg = value;
+            }
+        }
+
+        public int Energy
+        {
+            get
+            {
+                return this.energy;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new NegativeArgumentException("Energy must be positive number!!!");
+                }
+                this.energy = value;
+            }
+        }
+
+        public virtual int Roar() { throw new NotImplementedException("This enemy doesn't have this ability!!!"); }
     }
 }

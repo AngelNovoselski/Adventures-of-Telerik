@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Enums\HeroColor.cs" />
     <Compile Include="Contracts\EnemyInterfaces\IBoss.cs" />
     <Compile Include="Contracts\EnemyInterfaces\IDragon.cs" />
     <Compile Include="Contracts\EnemyInterfaces\IEnemy.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Models\Hero\Mage.cs" />
     <Compile Include="Models\Hero\Warrior.cs" />
     <Compile Include="Models\Map.cs" />
+    <Compile Include="Models\NegativeArgumentException.cs" />
     <Compile Include="Models\Weapons\Bow.cs" />
     <Compile Include="Models\Weapons\Knife.cs" />
     <Compile Include="Models\Weapons\Mace.cs" />
@@ -92,8 +94,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Common\Enums\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

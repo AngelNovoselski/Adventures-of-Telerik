@@ -29,7 +29,7 @@ namespace AdventuresOfTelerik.Models.Hero
             this.PositionX = 4;
             this.PositionY = 4;
             this.Name = "Telerik";
-            this.Hp = 100;
+            this.Hp = 200;
             this.Level = 1;
             this.Exp = 0;
             this.Weapon = weapon;

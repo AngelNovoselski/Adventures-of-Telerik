@@ -11,17 +11,17 @@ using AdventuresOfTelerik.Common.Enums;
 
 namespace AdventuresOfTelerik.Models.Hero
 {
-    public class Hunter : Hero, IHunter, IAgility
+    public class Hunter : Hero, IHunter
     {
         private int agility;
-        private int energy;
+        private int specialEnergy;
         private Weapon weapon;
 
         public Hunter()
             : base(HeroColor.red)
         {
             this.Agility = 15;
-            this.Energy = 99;
+            this.SpecialEnergy = 150;
             this.Weapon = new Bow();
         }
 
@@ -41,11 +41,11 @@ namespace AdventuresOfTelerik.Models.Hero
             }
         }
 
-        public override int Energy
+        public override int SpecialEnergy
         {
             get
             {
-                return this.energy;
+                return this.specialEnergy;
             }
             set
             {
@@ -53,17 +53,17 @@ namespace AdventuresOfTelerik.Models.Hero
                 {
                     throw new NegativeArgumentException("Energy must be positive number!!!");
                 }
-                this.energy = value;
+                this.specialEnergy = value;
             }
         }
 
         public override Weapon Weapon { get => this.weapon; set => this.weapon = value; }
 
-        public override int FocusShot()
+        public override int SpecialAttack()
         {
-            if (this.Energy >= 44)
+            if (this.SpecialEnergy >= 44)
             {
-                this.Energy -= 44;
+                this.SpecialEnergy -= 44;
                 return this.Agility + this.Weapon.Dmg + this.Weapon.WeaponAgility;
             }
             else
@@ -74,7 +74,7 @@ namespace AdventuresOfTelerik.Models.Hero
 
         public override string Additionalinfo()
         {
-            return $"Special Ability: FocusShot, Energy: {this.Energy}, Agility: {this.Agility}";
+            return $"Special Attack: FocusShot, Energy: {this.SpecialEnergy}, Agility: {this.Agility}";
         }
     }
 }

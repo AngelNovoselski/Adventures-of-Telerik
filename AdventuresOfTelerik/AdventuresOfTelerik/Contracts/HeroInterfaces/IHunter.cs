@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Contracts.HeroInterfaces
 {
-    public interface IHunter
+    public interface IHunter : IHero
     {
-        int Energy { get; set; }
-        int FocusShot();
+        int Agility { get; set; }
     }
 }

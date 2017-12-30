@@ -62,9 +62,9 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="AdventuresOfTelerik.Models.Hero.Hero" Collapsed="true">
-    <Position X="4.75" Y="5" Width="1.5" />
+    <Position X="4.5" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAIAAAAQkgABEIAQASEEEGEgBAABAIAAAQgA=</HashCode>
+      <HashCode>AAACAAAAAIAAAAQkgEBEIBQASAEEAAgBAABAAAAAQgA=</HashCode>
       <FileName>Models\Hero\Hero.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -72,7 +72,7 @@
   <Class Name="AdventuresOfTelerik.Models.Hero.Hunter" Collapsed="true">
     <Position X="6.25" Y="6.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAQBgAAEAQAACAAAEAgAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAABgEAAARAACAAQAAgAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Hero\Hunter.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -80,7 +80,7 @@
   <Class Name="AdventuresOfTelerik.Models.Hero.Mage" Collapsed="true">
     <Position X="8.25" Y="6.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAAAAAAAAAAgAAAAAAACEAAAAgAAAAAIAAAACA=</HashCode>
+      <HashCode>AAAAIAAAAAAAAAAAgEAAABAACAAQAAgAAAAAAAAAACA=</HashCode>
       <FileName>Models\Hero\Mage.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -88,7 +88,7 @@
   <Class Name="AdventuresOfTelerik.Models.Hero.Warrior" Collapsed="true">
     <Position X="4.5" Y="6.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAASABACEgAQAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAgEAAABAACABQAAgAQAAAAAAAAAA=</HashCode>
       <FileName>Models\Hero\Warrior.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -190,30 +190,30 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="AdventuresOfTelerik.Contracts.HeroInterfaces.IHero" Collapsed="true">
-    <Position X="4" Y="0.5" Width="1.5" />
+    <Position X="4.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAIAAAAAgAAAEAAQAAAAAAAgBAAAAAAAAQAA=</HashCode>
+      <HashCode>AAACAAAAAIAAAAAkgEBEABQAAAAAAAgBAAAAAAAAQAA=</HashCode>
       <FileName>Contracts\HeroInterfaces\IHero.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="AdventuresOfTelerik.Contracts.HeroInterfaces.IHunter" Collapsed="true">
-    <Position X="4" Y="1.25" Width="1.5" />
+    <Position X="4.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Contracts\HeroInterfaces\IHunter.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="AdventuresOfTelerik.Contracts.HeroInterfaces.IMage" Collapsed="true">
-    <Position X="4" Y="2" Width="1.5" />
+    <Position X="4.25" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAIAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
       <FileName>Contracts\HeroInterfaces\IMage.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="AdventuresOfTelerik.Contracts.HeroInterfaces.IWarrior" Collapsed="true">
-    <Position X="4" Y="2.75" Width="1.5" />
+    <Position X="4.25" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Contracts\HeroInterfaces\IWarrior.cs</FileName>
     </TypeIdentifier>
   </Interface>

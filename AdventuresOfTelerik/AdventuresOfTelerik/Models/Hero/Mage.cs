@@ -10,17 +10,17 @@ using AdventuresOfTelerik.Common.Enums;
 
 namespace AdventuresOfTelerik.Models.Hero
 {
-    public class Mage : Hero, IMage, IIntelligence
+    public class Mage : Hero, IMage
     {
-        private int mana;
+        private int specialEnergy;
         private int intelligence;
         private Weapon weapon;
 
         public Mage() :
             base(HeroColor.darkBlue)
         {
-            this.Mana = 90;
             this.Intelligence = 18;
+            this.SpecialEnergy = 120;
             this.Weapon = new Staff();
         }
 
@@ -40,11 +40,11 @@ namespace AdventuresOfTelerik.Models.Hero
             }
         }
 
-        public override int Mana
+        public override int SpecialEnergy
         {
             get
             {
-                return this.mana;
+                return this.specialEnergy;
             }
             set
             {
@@ -52,17 +52,17 @@ namespace AdventuresOfTelerik.Models.Hero
                 {
                     throw new NegativeArgumentException("Mana must be positive number!!!");
                 }
-                this.mana = value;
+                this.specialEnergy = value;
             }
         }
 
         public override Weapon Weapon { get => this.weapon; set => this.weapon = value; }
 
-        public override int CastSpell()
+        public override int SpecialAttack()
         {
-            if (this.Mana >= 35)
+            if (this.SpecialEnergy >= 35)
             {
-                this.Mana -= 35;
+                this.SpecialEnergy -= 35;
                 return this.Intelligence + this.Weapon.Dmg + this.Weapon.WeaponIntelligence;
             }
             else
@@ -73,7 +73,7 @@ namespace AdventuresOfTelerik.Models.Hero
 
         public override string Additionalinfo()
         {
-            return $"Special Ability: CastSpell, Mana: {this.Mana}, Intelligence: {this.Intelligence}";
+            return $"Special Attack: CastSpell, Mana: {this.SpecialEnergy}, Intelligence: {this.Intelligence}";
         }
     }
 }

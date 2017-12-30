@@ -1,4 +1,5 @@
-﻿using AdventuresOfTelerik.Contracts.WeaponInterfaces;
+﻿using AdventuresOfTelerik.Common.Enums;
+using AdventuresOfTelerik.Contracts.WeaponInterfaces;
 using AdventuresOfTelerik.Models;
 using AdventuresOfTelerik.Models.Weapons;
 using System;
@@ -17,9 +18,13 @@ namespace AdventuresOfTelerik.Contracts.HeroInterfaces
         int Hp { get; set; }
         int Level { get; set; }
         int Exp { get; set; }
-        int Energy { get; set; }
+        HeroColor HeroColor { get; }
         Weapon Weapon { get; set; }
         Weapon WeaponSecond { get; set; }
+        int SpecialEnergy { get; set; }
+        int SpecialAttack();
         void Move(int input);
+        string ToString();
+        string Additionalinfo();
     }
 }

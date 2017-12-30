@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Contracts.HeroInterfaces
 {
-    public interface IMage
+    public interface IMage : IHero
     {
-        int Mana { get; set; }
-        int CastSpell();
+        int Intelligence { get; set; }
     }
 }

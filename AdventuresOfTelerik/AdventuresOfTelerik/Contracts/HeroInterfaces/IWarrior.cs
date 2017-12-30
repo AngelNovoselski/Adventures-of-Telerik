@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Contracts.HeroInterfaces
 {
-    public interface IWarrior
+    public interface IWarrior : IHero
     {
-        int Fury { get; set; }
-        int RageAnger();
+        int Strength { get; set; }
     }
 }

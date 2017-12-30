@@ -294,7 +294,7 @@ namespace AdventuresOfTelerik.Engine
                 {
                     Console.Clear();
                     Console.WriteLine(message);
-                    Console.WriteLine("Hero Hp:" + hero.Hp + ", " + "Hero Energy:" + hero.Energy + ", " + "Bow Ammo:" + hero.Weapon.Ammo);
+                    Console.WriteLine("Hero Hp:" + hero.Hp + ", " + "Hero Energy:" + hero.SpecialEnergy + ", " + "Bow Ammo:" + hero.Weapon.Ammo);
                     Console.WriteLine("Enemy Hp:" + enemy.Hp + ", " + "Enemy Energy:" + enemy.Energy);
                     Console.WriteLine("Enter 1 to Shoot with your " + hero.Weapon.GetType().Name);
                     Console.WriteLine("Enter 2 to Run for your Life");
@@ -324,7 +324,7 @@ namespace AdventuresOfTelerik.Engine
                             Console.WriteLine($"It is too late to run!");
                             break;
                         case "3":
-                            if (hero.Energy < 44)
+                            if (hero.SpecialEnergy < 44)
                             {
                                 Console.WriteLine($"Not enough energy for FocusShot!");
                                 System.Threading.Thread.Sleep(1000);
@@ -332,10 +332,9 @@ namespace AdventuresOfTelerik.Engine
                             }
                             else
                             {
-                                int score = hero.FocusShot();
+                                int score = hero.SpecialAttack();
                                 enemy.Hp -= hero.Weapon.Dmg + score;
                                 Console.WriteLine($"The monster loses {hero.Weapon.Dmg + score} HP!");
-                                //hero.Weapon.Ammo -= 1;
                                 break;
                             }
                         case "4":
@@ -362,10 +361,6 @@ namespace AdventuresOfTelerik.Engine
                         System.Threading.Thread.Sleep(2000);
                         hero.Hp -= enemy.Dmg + score;
                     }
-
-                    //Console.WriteLine($"You lose {enemy.Dmg} HP!");
-                    //System.Threading.Thread.Sleep(2000);
-                    //hero.Hp -= enemy.Dmg;
                 }
             }
             if (heroType == "Warrior")
@@ -374,7 +369,7 @@ namespace AdventuresOfTelerik.Engine
                 {
                     Console.Clear();
                     Console.WriteLine(message);
-                    Console.WriteLine("Hero Hp:" + hero.Hp + ", " + "Hero Fury:" + hero.Fury);
+                    Console.WriteLine("Hero Hp:" + hero.Hp + ", " + "Hero Fury:" + hero.SpecialEnergy);
                     Console.WriteLine("Enemy Hp:" + enemy.Hp + ", " + "Enemy Energy:" + enemy.Energy);
                     Console.WriteLine("Enter 1 for hit with " + hero.Weapon.GetType().Name);
                     Console.WriteLine("Enter 2 to Run for your Life");
@@ -392,7 +387,7 @@ namespace AdventuresOfTelerik.Engine
                             Console.WriteLine($"It is too late to run!");
                             break;
                         case "3":
-                            if (hero.Fury < 40)
+                            if (hero.SpecialEnergy < 40)
                             {
                                 Console.WriteLine($"Not enough fury for RageAnger!");
                                 System.Threading.Thread.Sleep(1000);
@@ -400,7 +395,7 @@ namespace AdventuresOfTelerik.Engine
                             }
                             else
                             {
-                                int score = hero.RageAnger();
+                                int score = hero.SpecialAttack();
                                 enemy.Hp -= hero.Weapon.Dmg + score;
                                 Console.WriteLine($"The monster loses {hero.Weapon.Dmg + score} HP!");
                                 break;
@@ -429,10 +424,6 @@ namespace AdventuresOfTelerik.Engine
                         System.Threading.Thread.Sleep(2000);
                         hero.Hp -= enemy.Dmg + score;
                     }
-
-                    //Console.WriteLine($"You lose {enemy.Dmg} HP!");
-                    //System.Threading.Thread.Sleep(2000);
-                    //hero.Hp -= enemy.Dmg;
                 }
             }
             if (heroType == "Mage")
@@ -441,7 +432,7 @@ namespace AdventuresOfTelerik.Engine
                 {
                     Console.Clear();
                     Console.WriteLine(message);
-                    Console.WriteLine("Hero Hp:" + hero.Hp + ", " + "Hero Mana:" + hero.Mana);
+                    Console.WriteLine("Hero Hp:" + hero.Hp + ", " + "Hero Mana:" + hero.SpecialEnergy);
                     Console.WriteLine("Enemy Hp:" + enemy.Hp + ", " + "Enemy Energy:" + enemy.Energy);
                     Console.WriteLine("Enter 1 for hit with " + hero.Weapon.GetType().Name);
                     Console.WriteLine("Enter 2 to Run for your Life");
@@ -459,7 +450,7 @@ namespace AdventuresOfTelerik.Engine
                             Console.WriteLine($"It is too late to run!");
                             break;
                         case "3":
-                            if (hero.Mana < 35)
+                            if (hero.SpecialEnergy < 35)
                             {
                                 Console.WriteLine($"Not enough mana for CastSpell!");
                                 System.Threading.Thread.Sleep(1000);
@@ -467,7 +458,7 @@ namespace AdventuresOfTelerik.Engine
                             }
                             else
                             {
-                                int score = hero.CastSpell();
+                                int score = hero.SpecialAttack();
                                 enemy.Hp -= hero.Weapon.Dmg + score;
                                 Console.WriteLine($"The monster loses {hero.Weapon.Dmg + score} HP!");
                                 break;
@@ -496,10 +487,6 @@ namespace AdventuresOfTelerik.Engine
                         System.Threading.Thread.Sleep(2000);
                         hero.Hp -= enemy.Dmg + score;
                     }
-
-                    //Console.WriteLine($"You lose {enemy.Dmg} HP!");
-                    //System.Threading.Thread.Sleep(2000);
-                    //hero.Hp -= enemy.Dmg;
                 }
             }
         }

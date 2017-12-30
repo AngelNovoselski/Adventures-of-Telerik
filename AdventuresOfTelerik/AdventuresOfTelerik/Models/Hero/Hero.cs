@@ -29,7 +29,7 @@ namespace AdventuresOfTelerik.Models.Hero
             this.PositionX = 4;
             this.PositionY = 4;
             this.Name = "Telerik";
-            this.Hp = 200;
+            this.Hp = 300;
             this.Level = 1;
             this.Exp = 0;
             this.Weapon = weapon;
@@ -43,7 +43,6 @@ namespace AdventuresOfTelerik.Models.Hero
         public int Hp { get => this.hp; set => this.hp = value; }
         public int Level { get => this.level; set => this.level = value; }
         public int Exp { get => this.exp; set => this.exp = value; }
-        public HeroColor HeroColor { get => this.heroColor; }
 
         public virtual Weapon Weapon
         {
@@ -77,13 +76,11 @@ namespace AdventuresOfTelerik.Models.Hero
             }
         }
 
-        public virtual int Energy { get; set; }
-        public virtual int Mana { get; set; }
-        public virtual int Fury { get; set; }
+        public HeroColor HeroColor { get => this.heroColor; }
 
-        public virtual int FocusShot() { throw new NotImplementedException("This hero doesn't have this ability!!!"); }
-        public virtual int CastSpell() { throw new NotImplementedException("This hero doesn't have this ability!!!"); }
-        public virtual int RageAnger() { throw new NotImplementedException("This hero doesn't have this ability!!!"); }
+        public abstract int SpecialEnergy { get; set; }
+
+        public abstract int SpecialAttack();
 
         public void Move(int input)
         {

@@ -10,17 +10,17 @@ using AdventuresOfTelerik.Common.Enums;
 
 namespace AdventuresOfTelerik.Models.Hero
 {
-    public class Warrior : Hero, IWarrior, IStrength
+    public class Warrior : Hero, IWarrior
     {
         private int strength;
-        private int fury;
+        private int specialEnergy;
         private Weapon weapon;
 
         public Warrior() :
             base(HeroColor.magenta)
         {
-            this.Fury = 88;
             this.Strength = 16;
+            this.SpecialEnergy = 131;
             this.Weapon = new Mace();
         }
 
@@ -40,11 +40,11 @@ namespace AdventuresOfTelerik.Models.Hero
             }
         }
 
-        public override int Fury
+        public override int SpecialEnergy
         {
             get
             {
-                return this.fury;
+                return this.specialEnergy;
             }
             set
             {
@@ -52,17 +52,17 @@ namespace AdventuresOfTelerik.Models.Hero
                 {
                     throw new NegativeArgumentException("Fury must be positive number!!!");
                 }
-                this.fury = value;
+                this.specialEnergy = value;
             }
         }
 
         public override Weapon Weapon { get => this.weapon; set => this.weapon = value; }
 
-        public override int RageAnger()
+        public override int SpecialAttack()
         {
-            if (this.Fury >= 40)
+            if (this.SpecialEnergy >= 40)
             {
-                this.Fury -= 40;
+                this.SpecialEnergy -= 40;
                 return this.Strength + this.Weapon.Dmg + this.Weapon.WeaponStrength;
             }
             else
@@ -73,7 +73,7 @@ namespace AdventuresOfTelerik.Models.Hero
 
         public override string Additionalinfo()
         {
-            return $"Special Ability: RageAnger, Fury: {this.Fury}, Strength: {this.Strength}";
+            return $"Special Attack: RageAnger, Fury: {this.SpecialEnergy}, Strength: {this.Strength}";
         }
     }
 }

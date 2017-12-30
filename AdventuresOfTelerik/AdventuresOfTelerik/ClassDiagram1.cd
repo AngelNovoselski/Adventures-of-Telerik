@@ -3,7 +3,7 @@
   <Class Name="AdventuresOfTelerik.Engine.GameEngine" Collapsed="true">
     <Position X="2.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IAEAEIAAAWAoAQAAIAAgQAgIAAAQACACwgAAAEUAIAI=</HashCode>
+      <HashCode>AAEAEAAAAGAgAQAAIAAAAAgIAAAQACgAQgAAAAEAIAA=</HashCode>
       <FileName>Engine\GameEngine.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -39,7 +39,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="AdventuresOfTelerik.Models.Enemies.BossMonster" Collapsed="true">
-    <Position X="6.5" Y="6.75" Width="1.5" />
+    <Position X="6.5" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Enemies\BossMonster.cs</FileName>
@@ -47,7 +47,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="AdventuresOfTelerik.Models.Enemies.Monster" Collapsed="true">
-    <Position X="6.5" Y="5.75" Width="1.5" />
+    <Position X="6.5" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Enemies\Monster.cs</FileName>
@@ -142,7 +142,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="AdventuresOfTelerik.Models.Enemies.Dragon" Collapsed="true">
-    <Position X="9" Y="5.75" Width="1.5" />
+    <Position X="9" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Enemies\Dragon.cs</FileName>
@@ -150,12 +150,26 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="AdventuresOfTelerik.Models.Enemies.BossDragon" Collapsed="true">
-    <Position X="9" Y="6.75" Width="1.5" />
+    <Position X="9" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Enemies\BossDragon.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AdventuresOfTelerik.Models.CommandSelection" Collapsed="true">
+    <Position X="8.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAQoACAAAgAQEAIAAgQAgYAAAQACACAAABAkUAIAA=</HashCode>
+      <FileName>Models\CommandSelection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AdventuresOfTelerik.Models.FightMode" Collapsed="true">
+    <Position X="10.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\FightMode.cs</FileName>
+    </TypeIdentifier>
   </Class>
   <Interface Name="AdventuresOfTelerik.Contracts.IMap" Collapsed="true">
     <Position X="6.5" Y="1.5" Width="1.5" />
@@ -211,13 +225,6 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Hero\Contracts\IWarrior.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="AdventuresOfTelerik.Contracts.WeaponInterfaces.IAmmo" Collapsed="true">
-    <Position X="2.75" Y="8" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>ACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\Weapons\Contracts\IAmmo.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="AdventuresOfTelerik.Contracts.WeaponInterfaces.IWeapon" Collapsed="true">

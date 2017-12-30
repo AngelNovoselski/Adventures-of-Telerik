@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Enums\HeroColor.cs" />
+    <Compile Include="Models\CommandSelection.cs" />
     <Compile Include="Models\Enemies\Contracts\IBoss.cs" />
     <Compile Include="Models\Enemies\Contracts\IDragon.cs" />
     <Compile Include="Models\Enemies\Contracts\IEnemy.cs" />
@@ -56,7 +57,7 @@
     <Compile Include="Contracts\IIntelligence.cs" />
     <Compile Include="Models\Contracts\IMap.cs" />
     <Compile Include="Contracts\IStrength.cs" />
-    <Compile Include="Models\Weapons\Contracts\IAmmo.cs" />
+    <Compile Include="Models\FightMode.cs" />
     <Compile Include="Models\Weapons\Contracts\IBow.cs" />
     <Compile Include="Models\Weapons\Contracts\IKnife.cs" />
     <Compile Include="Models\Weapons\Contracts\IMace.cs" />

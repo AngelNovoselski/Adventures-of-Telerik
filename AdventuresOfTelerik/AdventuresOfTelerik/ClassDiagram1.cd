@@ -68,7 +68,6 @@
       <HashCode>AAACAAAAAIAAAAQkgEBEIBQASAEEAAgBAABAAAAAQgA=</HashCode>
       <FileName>Models\Hero\Hero.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="AdventuresOfTelerik.Models.Hero.Hunter" Collapsed="true">
     <Position X="4.25" Y="6" Width="1.5" />
@@ -171,6 +170,13 @@
       <FileName>Models\FightMode.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Struct Name="AdventuresOfTelerik.Models.HeroCoordinates" Collapsed="true">
+    <Position X="4.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAYAA=</HashCode>
+      <FileName>Models\HeroCoordinates.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
   <Interface Name="AdventuresOfTelerik.Contracts.IMap" Collapsed="true">
     <Position X="6.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>

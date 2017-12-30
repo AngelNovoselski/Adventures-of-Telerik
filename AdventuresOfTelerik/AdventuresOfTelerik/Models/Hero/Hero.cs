@@ -12,7 +12,7 @@ using AdventuresOfTelerik.Common.Enums;
 
 namespace AdventuresOfTelerik.Models.Hero
 {
-    public abstract class Hero : IHero
+    public abstract class Hero
     {
         private int positionX;
         private int positionY;
@@ -104,14 +104,21 @@ namespace AdventuresOfTelerik.Models.Hero
 
         public override string ToString()
         {
-            return $"Hero Hp: {this.Hp}, Name: {this.Name}\n" +
-                $"{this.Additionalinfo()}\n" +
-                $"Hero Weapon:{this.Weapon.ToString()}\nHero Secret Weapon:{this.WeaponSecond.ToString()}";
+            return $"Hero Hp: {this.Hp}, Name: {this.Name}, Class: { this.GetType().Name}\n" +
+                   $"{this.Additionalinfo()}\n" +
+                   $"Hero Weapon:{this.Weapon.ToString()}\nHero Secret Weapon:{this.WeaponSecond.ToString()}";
         }
 
         public virtual string Additionalinfo()
         {
             return string.Empty;
+        }
+
+        public event EventHandler FightMonster;
+
+        public void OnFightMonster()
+        {
+            this.FightMonster?.Invoke(this, null);
         }
     }
 }

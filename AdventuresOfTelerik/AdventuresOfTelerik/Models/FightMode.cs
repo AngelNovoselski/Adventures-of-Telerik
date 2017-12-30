@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AdventuresOfTelerik.Models.Hero;
+using System.Media;
 
 namespace AdventuresOfTelerik.Models
 {
@@ -12,6 +13,9 @@ namespace AdventuresOfTelerik.Models
     {
         public static void Fight(Hero.Hero hero, Enemy enemy)
         {
+            hero.FightMonster += new EventHandler(OnFightedMonster);
+            hero.OnFightMonster();
+
             var message = "You engage a " + enemy.GetType().Name + "!!!";
             var heroType = hero.GetType().Name;
 
@@ -221,6 +225,12 @@ namespace AdventuresOfTelerik.Models
                     }
                 }
             }
+        }
+
+        public static void OnFightedMonster(object sender, EventArgs args)
+        {
+            SoundPlayer simpleSound = new SoundPlayer(@"..\..\..\monster2.wav");
+            simpleSound.Play();
         }
     }
 }

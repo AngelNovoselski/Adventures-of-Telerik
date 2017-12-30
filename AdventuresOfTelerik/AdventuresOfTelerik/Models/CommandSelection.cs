@@ -47,6 +47,8 @@ namespace AdventuresOfTelerik.Models
                 Console.WriteLine(message);
                 Console.ResetColor();
                 Console.WriteLine(hero.ToString());
+                var coord = new HeroCoordinates(hero);
+                Console.WriteLine(coord.ToString());
                 Console.WriteLine(ChooseMessage);
                 Console.WriteLine(" 1 = " + CollisionDetector.GuideMessage(CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY - 1, map)));
                 Console.WriteLine(" 2 = " + CollisionDetector.GuideMessage(CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY + 1, map)));

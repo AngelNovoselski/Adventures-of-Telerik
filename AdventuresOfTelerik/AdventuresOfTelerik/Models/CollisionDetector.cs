@@ -9,6 +9,12 @@ namespace AdventuresOfTelerik.Models
 {
     public static class CollisionDetector
     {
+        private const string ExitMessage = "You see the exit of the labyrinth!!!";
+        private const string BossMonsterMessage = "The ground arround you trembles as the visious Xlliyu the spawn of Cthulhu appears before you!\n     It is time to prove you are worthy to protect this realm!";
+        private const string MonsterMessage = "You see a dark silhouette! Weird that you cant see what it is even tought its midday.";
+        private const string PathMessage = "There is a path! It looks safe but you have a feeling this may not be the case.";
+        private const string RockMessage = "There is a giant rock! If you dont want to get hurt you better not try anything funny like climbing it.";
+
         public static char CheckCollisions(int positionX, int positionY, Map map)
         {
             char result = ' ';
@@ -21,27 +27,27 @@ namespace AdventuresOfTelerik.Models
 
             if (a == '-')
             {
-                msg = GameEngine.PathMessage;
+                msg = PathMessage;
                 return msg;
             }
             else if (a == '@')
             {
-                msg = GameEngine.RockMessage;
+                msg = RockMessage;
                 return msg;
             }
             else if (a == '1')
             {
-                msg = GameEngine.MonsterMessage;
+                msg = MonsterMessage;
                 return msg;
             }
             else if (a == '2')
             {
-                msg = GameEngine.BossMonsterMessage;
+                msg = BossMonsterMessage;
                 return msg;
             }
             else if (a == 'x')
             {
-                msg = GameEngine.ExitMessage;
+                msg = ExitMessage;
                 return msg;
             }
             return string.Empty;

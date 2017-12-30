@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Contracts.WeaponInterfaces
 {
-    public interface IStaff : IWeapon
+    public interface IWeapon
     {
+        int Dmg { get; }
+        int SpecialDmg { get; }
+        string ToString();
+        string Additionalinfo();
     }
 }

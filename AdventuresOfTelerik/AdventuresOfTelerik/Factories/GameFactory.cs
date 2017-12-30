@@ -11,79 +11,54 @@ using AdventuresOfTelerik.Contracts.WeaponInterfaces;
 
 namespace AdventuresOfTelerik.Factories
 {
-    public class GameFactory : IFactory
+    public class GameFactory : IGameFactory
     {
-        public BossDragon CreateBossDragon()
+        public Map CreateMap()
         {
-            BossDragon dragBoss = new BossDragon();
-            return dragBoss;
-        }
-        public BossMonster CreateBossMonster()
-        {
-            BossMonster monstBoss = new BossMonster();
-            return monstBoss;
-        }
-        public Bow CreateBow()
-        {
-            Bow bow = new Bow();
-            return bow;
-        }
-        public Dragon CreateDragon()
-        {
-            Dragon drag = new Dragon();
-            return drag;
-        }
-        public Hunter CreateHunter()
-        {
-            Hunter hunt = new Hunter();
-            return hunt;
-        }
-
-        public Knife CreateKnife()
-        {
-            Knife knife = new Knife();
-            return knife;
-        }
-
-        public Mace CreateMace()
-        {
-            Mace mace = new Mace();
-            return mace;
+            Map map = new Map();
+            return map;
         }
 
         public Mage CreateMage()
         {
-            Mage mag= new Mage();
-
-            return mag;
-        }
-
-        public Monster CreateMonster()
-        {
-            Monster mosnt = new Monster();
-
-            return mosnt;
-        }
-
-        public Staff CreateStaff()
-        {
-            Staff sta = new Staff();
-
-            return sta;
+            Mage mage = new Mage();
+            return mage;
         }
 
         public Warrior CreateWarrior()
         {
-            Warrior war = new Warrior();
-
-            return war;
+            Warrior warrior = new Warrior();
+            return warrior;
         }
 
-        public Map CreateMap()
+        public Hunter CreateHunter()
         {
-            Map map = new Map();
+            Hunter hunter = new Hunter();
+            return hunter;
+        }
 
-            return map;
+        public Monster CreateMonster()
+        {
+            Monster monster = new Monster();
+            return monster;
+        }
+
+        public BossMonster CreateBossMonster()
+        {
+            BossMonster bossMonster = new BossMonster();
+            return bossMonster;
+        }
+
+        public Dragon CreateDragon()
+        {
+            Dragon dragon = new Dragon();
+            return dragon;
+        }
+
+        public BossDragon CreateBossDragon()
+        {
+            BossDragon bossDragon = new BossDragon();
+            return bossDragon;
         }
     }
 }

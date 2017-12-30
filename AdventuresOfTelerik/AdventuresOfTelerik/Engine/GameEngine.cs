@@ -12,27 +12,27 @@ using System.Text;
 
 namespace AdventuresOfTelerik.Engine
 {
-    public sealed class GameEngine : IEngine
+    public sealed class GameEngine : IGameEngine
     {
+        private const string EscapeMessage = "You escaped your nightmare!";
+        private const string EscapeMessageFun = "For now!!!";
+        private const string ClimbRockMessage = "You try to climb the giant rock. You fall down and hit your head! Lose 1 HP!";
+        //public const string RockMessage = "There is a giant rock! If you dont want to get hurt you better not try anything funny like climbing it.";
+        //public const string ExitMessage = "You see the exit of the labyrinth!!!";
+        //public const string BossMonsterMessage = "The ground arround you trembles as the visious Xlliyu the spawn of Cthulhu appears before you!\n     It is time to prove you are worthy to protect this realm!";
+        //public const string MonsterMessage = "You see a dark silhouette! Weird that you cant see what it is even tought its midday.";
+        //public const string PathMessage = "There is a path! It looks safe but you have a feeling this may not be the case.";
+        private const string WelcomeScreen = "Hello Adventurer!\n(Warning: hit ENTER after every choice to please the gods of your fate!!!)";
+        private const string InvalidClassInput = "Wrong Class! Choose Again!";
         private const string JourneyMessage = "Your journey begins now!";
         private const string StartMessage = "ENTER into your adventure!";
         private const string GameOverMessage = "GAME OVER!!!";
         private const string DeadGameMessage = "You did just die!";
         private const string DeadGameMessageFun = "Congratulations!!!";
-        public const string EscapeMessage = "You escaped your nightmare!";
-        public const string EscapeMessageFun = "For now!!!";
-        public const string ExitMessage = "You see the exit of the labyrinth!!!";
-        public const string BossMonsterMessage = "The ground arround you trembles as the visious Xlliyu the spawn of Cthulhu appears before you!\n     It is time to prove you are worthy to protect this realm!";
-        private const string DeadMonsterMessage = "You beat the monster!!";
-        public const string MonsterMessage = "You see a dark silhouette! Weird that you cant see what it is even tought its midday.";
-        public const string PathMessage = "There is a path! It looks safe but you have a feeling this may not be the case.";
-        public const string ClimbRockMessage = "You try to climb the giant rock. You fall down and hit your head! Lose 1 HP!";
-        public const string RockMessage = "There is a giant rock! If you dont want to get hurt you better not try anything funny like climbing it.";
-        private const string WelcomeScreen = "Hello Adventurer!\n(Warning: hit ENTER after every choice to please the gods of your fate!!!)";
-        private const string InvalidClassInput = "Wrong Class! Choose Again!";
         private const string MageSelected = "You are Telerik Mage!";
         private const string WarriorSelected = "You are Telerik Warrior!";
         private const string HunterSelected = "You are Telerik Hunter!";
+        private const string DeadMonsterMessage = "You beat the monster!!";
         private const string ChooseHero = "Choose your hero type:\n  Type 1 for mage:\n  Type 2 for warrior:\n  Type 3 for hunter:";
 
         private static GameEngine SingleInstance;

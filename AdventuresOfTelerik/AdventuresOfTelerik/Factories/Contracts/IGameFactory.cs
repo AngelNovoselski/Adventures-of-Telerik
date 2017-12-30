@@ -1,4 +1,5 @@
 ﻿using AdventuresOfTelerik.Contracts.WeaponInterfaces;
+using AdventuresOfTelerik.Models;
 using AdventuresOfTelerik.Models.Enemies;
 using AdventuresOfTelerik.Models.Hero;
 using AdventuresOfTelerik.Models.Weapons;
@@ -10,28 +11,22 @@ using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Factories
 {
-    public interface IFactory
+    public interface IGameFactory
     {
-        BossDragon CreateBossDragon();
-
-        BossMonster CreateBossMonster();
-
-        Monster CreateMonster();
-
-        Dragon CreateDragon();
-
-        Warrior CreateWarrior();
+        Map CreateMap();
 
         Mage CreateMage();
 
+        Warrior CreateWarrior();
+
         Hunter CreateHunter();
 
-        Knife CreateKnife();
+        Monster CreateMonster();
 
-        Mace CreateMace();
+        BossMonster CreateBossMonster();
 
-        Staff CreateStaff();
+        Dragon CreateDragon();
 
-        Bow CreateBow();
+        BossDragon CreateBossDragon();
     }
 }

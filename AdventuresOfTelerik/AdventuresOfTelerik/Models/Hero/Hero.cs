@@ -26,10 +26,10 @@ namespace AdventuresOfTelerik.Models.Hero
 
         public Hero(HeroColor heroColor)
         {
-            this.PositionX = 4;
-            this.PositionY = 4;
+            this.PositionX = 1;
+            this.PositionY = 1;
             this.Name = "Telerik";
-            this.Hp = 300;
+            this.Hp = 444;
             this.Level = 1;
             this.Exp = 0;
             this.Weapon = weapon;

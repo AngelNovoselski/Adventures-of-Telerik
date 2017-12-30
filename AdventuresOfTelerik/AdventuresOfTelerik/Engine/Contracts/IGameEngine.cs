@@ -1,6 +1,6 @@
 ﻿namespace AdventuresOfTelerik.Engine
 {
-    public interface IEngine
+    public interface IGameEngine
     {
         void Start();
     }

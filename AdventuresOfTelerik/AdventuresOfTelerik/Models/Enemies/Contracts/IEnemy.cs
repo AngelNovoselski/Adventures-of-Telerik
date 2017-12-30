@@ -8,8 +8,9 @@ namespace AdventuresOfTelerik.Contracts.EnemyInterfaces
 {
     public interface IEnemy
     {
-        int Hp { get; set; }
-        int Dmg { get; set; }
-        int Energy { get; set; }
+        int Hp { get; }
+        int Dmg { get; }
+        int Energy { get; }
+        int Roar();
     }
 }

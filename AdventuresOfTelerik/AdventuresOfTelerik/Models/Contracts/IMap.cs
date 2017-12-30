@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdventuresOfTelerik.Contracts.WeaponInterfaces
+namespace AdventuresOfTelerik.Contracts
 {
-    public interface IWeaponStrength
+    public interface IMap
     {
-        int WeaponStrength { get; set; }
+        int Row { get; }
+        int Col { get; }
     }
 }

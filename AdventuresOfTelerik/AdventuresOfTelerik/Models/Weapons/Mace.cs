@@ -8,23 +8,24 @@ using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Models.Weapons
 {
-    public class Mace : Weapon, IWeaponStrength
+    public class Mace : Weapon, IMace
     {
         private int weaponStrength;
 
         public Mace()
-            : base(20)
+            : base(18)
         {
-            this.WeaponStrength = 9;
+            this.WeaponStrength = 5;
+            this.SpecialDmg = this.Dmg + this.WeaponStrength/2;
         }
 
-        public override int WeaponStrength
+        public int WeaponStrength
         {
             get
             {
                 return this.weaponStrength;
             }
-            set
+            private set
             {
                 if (value < 0)
                 {
@@ -36,7 +37,7 @@ namespace AdventuresOfTelerik.Models.Weapons
 
         public override string Additionalinfo()
         {
-            return $", WeaponStrength: {this.WeaponStrength}";
+            return $", Dmg: {this.Dmg}, WeaponStrength: {this.WeaponStrength}, SpecialDmg: {this.SpecialDmg}";
         }
     }
 }

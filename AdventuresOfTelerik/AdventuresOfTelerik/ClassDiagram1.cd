@@ -1,44 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="AdventuresOfTelerik.Engine.GameEngine" Collapsed="true">
-    <Position X="7.75" Y="0.5" Width="1.5" />
+    <Position X="2.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IAEAEIAAAWAoAQAAIAAgQAgIABAQACACxgQAAE0AIAI=</HashCode>
+      <HashCode>IAEAEIAAAWAoAQAAIAAgQAgIAAAQACACwgAAAEUAIAI=</HashCode>
       <FileName>Engine\GameEngine.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="AdventuresOfTelerik.Factories.GameFactory" Collapsed="true">
-    <Position X="9.5" Y="0.5" Width="1.5" />
+    <Position X="4.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QAAAgBAAAAAAQAAgiAAAAAAAAACAAAAAAAAAAEAAEAI=</HashCode>
+      <HashCode>QAAAABAAAAAAAAAgiAAAAAAAAACAAAAAAAAAAEAAEAA=</HashCode>
       <FileName>Factories\GameFactory.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="AdventuresOfTelerik.Models.CollisionDetector" Collapsed="true">
-    <Position X="0.5" Y="5.75" Width="1.5" />
+    <Position X="8.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAIABAAAACABAQAAAgAAAA=</HashCode>
       <FileName>Models\CollisionDetector.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AdventuresOfTelerik.Models.Map" Collapsed="true">
-    <Position X="0.5" Y="6.5" Width="1.5" />
+    <Position X="6.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAACAAAAAgAAAAQACAAEAAgAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Map.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="AdventuresOfTelerik.Models.NegativeArgumentException" Collapsed="true">
-    <Position X="0.5" Y="7.25" Width="1.5" />
+    <Position X="10.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\NegativeArgumentException.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="AdventuresOfTelerik.Models.Enemies.BossMonster" Collapsed="true">
-    <Position X="2.5" Y="7.25" Width="1.5" />
+    <Position X="6.5" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Enemies\BossMonster.cs</FileName>
@@ -46,7 +47,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="AdventuresOfTelerik.Models.Enemies.Monster" Collapsed="true">
-    <Position X="2.5" Y="6" Width="1.5" />
+    <Position X="6.5" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Enemies\Monster.cs</FileName>
@@ -54,7 +55,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="AdventuresOfTelerik.Models.Enemies.Enemy" Collapsed="true">
-    <Position X="2.5" Y="5" Width="1.5" />
+    <Position X="6.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAgAAAAIQAAAAEAAAAAAAAAAAAAABAAAAAQAA=</HashCode>
       <FileName>Models\Enemies\Enemy.cs</FileName>
@@ -62,7 +63,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="AdventuresOfTelerik.Models.Hero.Hero" Collapsed="true">
-    <Position X="4.5" Y="5.25" Width="1.5" />
+    <Position X="0.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAIAAAAQkgEBEIBQASAEEAAgBAABAAAAAQgA=</HashCode>
       <FileName>Models\Hero\Hero.cs</FileName>
@@ -70,7 +71,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="AdventuresOfTelerik.Models.Hero.Hunter" Collapsed="true">
-    <Position X="6.25" Y="6.75" Width="1.5" />
+    <Position X="4.25" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAABgEAAARAACAAQAAgAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Hero\Hunter.cs</FileName>
@@ -78,7 +79,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="AdventuresOfTelerik.Models.Hero.Mage" Collapsed="true">
-    <Position X="8.25" Y="6.75" Width="1.5" />
+    <Position X="0.5" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAIAAAAAAAAAAAgEAAABAACAAQAAgAAAAAAAAAACA=</HashCode>
       <FileName>Models\Hero\Mage.cs</FileName>
@@ -86,7 +87,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="AdventuresOfTelerik.Models.Hero.Warrior" Collapsed="true">
-    <Position X="4.5" Y="6.75" Width="1.5" />
+    <Position X="2.25" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAgEAAABAACABQAAgAQAAAAAAAAAA=</HashCode>
       <FileName>Models\Hero\Warrior.cs</FileName>
@@ -94,7 +95,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="AdventuresOfTelerik.Models.Weapons.Bow" Collapsed="true">
-    <Position X="8" Y="4" Width="1.5" />
+    <Position X="0.5" Y="11.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ACAAAAAAAAAAAAAAgAAAAAAAAAAgAAAAIAAAAAAgAAA=</HashCode>
       <FileName>Models\Weapons\Bow.cs</FileName>
@@ -102,7 +103,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="AdventuresOfTelerik.Models.Weapons.Knife" Collapsed="true">
-    <Position X="7.75" Y="5.25" Width="1.5" />
+    <Position X="7.25" Y="11.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAgAAAAIAAAAAAAAAA=</HashCode>
       <FileName>Models\Weapons\Knife.cs</FileName>
@@ -110,7 +111,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="AdventuresOfTelerik.Models.Weapons.Mace" Collapsed="true">
-    <Position X="9.75" Y="5.25" Width="1.5" />
+    <Position X="5" Y="11.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
       <FileName>Models\Weapons\Mace.cs</FileName>
@@ -118,7 +119,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="AdventuresOfTelerik.Models.Weapons.Staff" Collapsed="true">
-    <Position X="10.75" Y="6.75" Width="1.5" />
+    <Position X="2.75" Y="11.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAgAAAAAAEAAAABAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Weapons\Staff.cs</FileName>
@@ -126,148 +127,157 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="AdventuresOfTelerik.Models.Weapons.Weapon" Collapsed="true">
-    <Position X="10" Y="3" Width="1.5" />
+    <Position X="0.5" Y="10.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AKAAAAAAgAAAAIAEgAAAAAAEAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <HashCode>ACAAAAAAgAAABIAEgAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Weapons\Weapon.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Interface Name="AdventuresOfTelerik.Contracts.IAgility" Collapsed="true">
-    <Position X="0.5" Y="1.25" Width="1.5" />
+  <Class Name="AdventuresOfTelerik.StartUp" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Contracts\IAgility.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>StartUp.cs</FileName>
     </TypeIdentifier>
-  </Interface>
-  <Interface Name="AdventuresOfTelerik.Contracts.IDoDmg" Collapsed="true">
-    <Position X="0.5" Y="3.5" Width="1.5" />
+  </Class>
+  <Class Name="AdventuresOfTelerik.Models.Enemies.Dragon" Collapsed="true">
+    <Position X="9" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Contracts\IDoDmg.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Enemies\Dragon.cs</FileName>
     </TypeIdentifier>
-  </Interface>
-  <Interface Name="AdventuresOfTelerik.Contracts.IIntelligence" Collapsed="true">
-    <Position X="0.5" Y="2.75" Width="1.5" />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AdventuresOfTelerik.Models.Enemies.BossDragon" Collapsed="true">
+    <Position X="9" Y="6.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
-      <FileName>Contracts\IIntelligence.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Enemies\BossDragon.cs</FileName>
     </TypeIdentifier>
-  </Interface>
+    <Lollipop Position="0.2" />
+  </Class>
   <Interface Name="AdventuresOfTelerik.Contracts.IMap" Collapsed="true">
-    <Position X="0.5" Y="2" Width="1.5" />
+    <Position X="6.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Contracts\IMap.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="AdventuresOfTelerik.Contracts.IStrength" Collapsed="true">
-    <Position X="0.5" Y="4.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Contracts\IStrength.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Contracts\IMap.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="AdventuresOfTelerik.Contracts.EnemyInterfaces.IBoss" Collapsed="true">
-    <Position X="2.25" Y="0.5" Width="1.5" />
+    <Position X="10.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Contracts\EnemyInterfaces\IBoss.cs</FileName>
+      <FileName>Models\Enemies\Contracts\IBoss.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="AdventuresOfTelerik.Contracts.EnemyInterfaces.IEnemy" Collapsed="true">
-    <Position X="2.25" Y="1.25" Width="1.5" />
+    <Position X="6.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAgAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
-      <FileName>Contracts\EnemyInterfaces\IEnemy.cs</FileName>
+      <HashCode>AAAAAAAAgAAAAIAAAAAEAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Models\Enemies\Contracts\IEnemy.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="AdventuresOfTelerik.Contracts.EnemyInterfaces.IMonster" Collapsed="true">
-    <Position X="2.25" Y="2" Width="1.5" />
+    <Position X="6.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Contracts\EnemyInterfaces\IMonster.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Enemies\Contracts\IMonster.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="AdventuresOfTelerik.Contracts.HeroInterfaces.IHero" Collapsed="true">
-    <Position X="4.25" Y="0.5" Width="1.5" />
+    <Position X="0.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAIAAAAAkgEBEABQAAAAAAAgBAAAAAAAAQAA=</HashCode>
-      <FileName>Contracts\HeroInterfaces\IHero.cs</FileName>
+      <FileName>Models\Hero\Contracts\IHero.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="AdventuresOfTelerik.Contracts.HeroInterfaces.IHunter" Collapsed="true">
-    <Position X="4.25" Y="1.5" Width="1.5" />
+    <Position X="4.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Contracts\HeroInterfaces\IHunter.cs</FileName>
+      <FileName>Models\Hero\Contracts\IHunter.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="AdventuresOfTelerik.Contracts.HeroInterfaces.IMage" Collapsed="true">
-    <Position X="4.25" Y="2.75" Width="1.5" />
+    <Position X="0.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
-      <FileName>Contracts\HeroInterfaces\IMage.cs</FileName>
+      <FileName>Models\Hero\Contracts\IMage.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="AdventuresOfTelerik.Contracts.HeroInterfaces.IWarrior" Collapsed="true">
-    <Position X="4.25" Y="4" Width="1.5" />
+    <Position X="2.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Contracts\HeroInterfaces\IWarrior.cs</FileName>
+      <FileName>Models\Hero\Contracts\IWarrior.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="AdventuresOfTelerik.Contracts.WeaponInterfaces.IAmmo" Collapsed="true">
-    <Position X="6" Y="1.25" Width="1.5" />
+    <Position X="2.75" Y="8" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Contracts\WeaponInterfaces\IAmmo.cs</FileName>
+      <FileName>Models\Weapons\Contracts\IAmmo.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="AdventuresOfTelerik.Contracts.WeaponInterfaces.IWeapon" Collapsed="true">
-    <Position X="6" Y="0.5" Width="1.5" />
+    <Position X="0.5" Y="8" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Contracts\WeaponInterfaces\IWeapon.cs</FileName>
+      <HashCode>AAAAAAAAgAAAAAAEgAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Weapons\Contracts\IWeapon.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="AdventuresOfTelerik.Contracts.WeaponInterfaces.IWeaponAgility" Collapsed="true">
-    <Position X="6" Y="2" Width="1.5" />
+  <Interface Name="AdventuresOfTelerik.Contracts.WeaponInterfaces.IBow" Collapsed="true">
+    <Position X="0.5" Y="9" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
-      <FileName>Contracts\WeaponInterfaces\IWeaponAgility.cs</FileName>
+      <HashCode>ACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Models\Weapons\Contracts\IBow.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="AdventuresOfTelerik.Contracts.WeaponInterfaces.IWeaponIntelligence" Collapsed="true">
-    <Position X="6" Y="2.75" Width="1.5" />
+  <Interface Name="AdventuresOfTelerik.Contracts.WeaponInterfaces.IStaff" Collapsed="true">
+    <Position X="2.75" Y="9" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Contracts\WeaponInterfaces\IWeaponIntelligence.cs</FileName>
+      <FileName>Models\Weapons\Contracts\IStaff.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="AdventuresOfTelerik.Contracts.WeaponInterfaces.IWeaponStrength" Collapsed="true">
-    <Position X="6" Y="3.5" Width="1.5" />
+  <Interface Name="AdventuresOfTelerik.Contracts.WeaponInterfaces.IMace" Collapsed="true">
+    <Position X="4.75" Y="9" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Contracts\WeaponInterfaces\IWeaponStrength.cs</FileName>
+      <FileName>Models\Weapons\Contracts\IMace.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="AdventuresOfTelerik.Engine.IEngine" Collapsed="true">
-    <Position X="7.75" Y="1.25" Width="1.5" />
+  <Interface Name="AdventuresOfTelerik.Engine.IGameEngine" Collapsed="true">
+    <Position X="2.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Engine\IEngine.cs</FileName>
+      <FileName>Engine\Contracts\IGameEngine.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="AdventuresOfTelerik.Factories.IFactory" Collapsed="true">
-    <Position X="9.5" Y="1.25" Width="1.5" />
+  <Interface Name="AdventuresOfTelerik.Contracts.EnemyInterfaces.IDragon" Collapsed="true">
+    <Position X="8.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QAAAgBAAAAAAQAAgiAAAAAAAAACAAAAAAAAAAEAAAAI=</HashCode>
-      <FileName>Factories\IFactory.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Enemies\Contracts\IDragon.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AdventuresOfTelerik.Factories.IGameFactory" Collapsed="true">
+    <Position X="4.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAABAAAAAAAAAgiAAAAAAAAACAAAAAAAAAAEAAEAA=</HashCode>
+      <FileName>Factories\Contracts\IGameFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="AdventuresOfTelerik.Contracts.WeaponInterfaces.IKnife" Collapsed="true">
+    <Position X="7" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Models\Weapons\Contracts\IKnife.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Enum Name="AdventuresOfTelerik.Common.Enums.HeroColor" Collapsed="true">
-    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Position X="2.25" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AEAAAAAAAAAEAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Common\Enums\HeroColor.cs</FileName>

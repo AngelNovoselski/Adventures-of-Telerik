@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdventuresOfTelerik.Contracts.WeaponInterfaces
+namespace AdventuresOfTelerik.Contracts.EnemyInterfaces
 {
-    public interface IWeaponAgility
+    public interface IDragon : IEnemy
     {
-        int WeaponAgility { get; set; }
     }
 }

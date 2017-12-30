@@ -8,23 +8,24 @@ using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Models.Weapons
 {
-    public class Knife : Weapon, IWeaponAgility
+    public class Knife : Weapon, IKnife
     {
         private int weaponAgility;
 
         public Knife()
-            : base(5)
+            : base(11)
         {
-            this.WeaponAgility = 7;
+            this.WeaponAgility = 4;
+            this.Dmg += this.WeaponAgility/2;
         }
 
-        public override int WeaponAgility
+        public int WeaponAgility
         {
             get
             {
                 return this.weaponAgility;
             }
-            set
+            private set
             {
                 if (value < 0)
                 {
@@ -36,7 +37,7 @@ namespace AdventuresOfTelerik.Models.Weapons
 
         public override string Additionalinfo()
         {
-            return $", WeaponAgility: {this.WeaponAgility}";
+            return $", Dmg: {this.Dmg}, WeaponAgility: {this.WeaponAgility}";
         }
     }
 }

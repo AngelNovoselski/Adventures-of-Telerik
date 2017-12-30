@@ -64,7 +64,7 @@ namespace AdventuresOfTelerik.Models.Hero
             if (this.SpecialEnergy >= 44)
             {
                 this.SpecialEnergy -= 44;
-                return this.Agility + this.Weapon.Dmg + this.Weapon.WeaponAgility;
+                return this.Agility + this.Weapon.SpecialDmg;
             }
             else
             {

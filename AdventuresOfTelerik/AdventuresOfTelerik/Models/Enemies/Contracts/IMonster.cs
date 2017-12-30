@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdventuresOfTelerik.Contracts
+namespace AdventuresOfTelerik.Contracts.EnemyInterfaces
 {
-    public interface IMap
+    public interface IMonster : IEnemy
     {
     }
 }

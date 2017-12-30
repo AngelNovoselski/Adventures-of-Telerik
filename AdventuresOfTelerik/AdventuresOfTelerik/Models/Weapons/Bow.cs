@@ -4,25 +4,26 @@ using System;
 
 namespace AdventuresOfTelerik.Models.Weapons
 {
-    public class Bow : Weapon, IAmmo, IWeaponAgility
+    public class Bow : Weapon, IBow
     {
         private int weaponAgility;
         private int ammo;
 
         public Bow()
-            : base(15)
+            : base(19)
         {
-            this.WeaponAgility = 11;
+            this.WeaponAgility = 6;
+            this.SpecialDmg = this.Dmg + this.WeaponAgility/2;
             this.Ammo = 5;
         }
 
-        public override int WeaponAgility
+        public int WeaponAgility
         {
             get
             {
                 return this.weaponAgility;
             }
-            set
+            private set
             {
                 if (value < 0)
                 {
@@ -50,7 +51,7 @@ namespace AdventuresOfTelerik.Models.Weapons
 
         public override string Additionalinfo()
         {
-            return $", WeaponAgility: {this.WeaponAgility}, Ammo: {this.Ammo}";
+            return $", Dmg: {this.Dmg}, WeaponAgility: {this.WeaponAgility}, Ammo: {this.Ammo}, SpecialDmg: {this.SpecialDmg}";
         }
     }
 }

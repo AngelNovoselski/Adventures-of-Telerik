@@ -28,10 +28,6 @@ namespace AdventuresOfTelerik.Models.Enemies
             }
             set
             {
-                //if (value < 0)
-                //{
-                //    throw new NegativeArgumentException("Hp must be positive number!!!");
-                //}
                 this.hp = value;
             }
         }
@@ -42,7 +38,7 @@ namespace AdventuresOfTelerik.Models.Enemies
             {
                 return this.dmg;
             }
-            set
+            protected set
             {
                 if (value < 0)
                 {
@@ -58,7 +54,7 @@ namespace AdventuresOfTelerik.Models.Enemies
             {
                 return this.energy;
             }
-            set
+            protected set
             {
                 if (value < 0)
                 {
@@ -68,6 +64,6 @@ namespace AdventuresOfTelerik.Models.Enemies
             }
         }
 
-        public virtual int Roar() { throw new NotImplementedException("This enemy doesn't have this ability!!!"); }
+        public abstract int Roar();
     }
 }

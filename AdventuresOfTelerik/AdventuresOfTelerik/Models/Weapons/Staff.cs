@@ -8,23 +8,24 @@ using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Models.Weapons
 {
-    public class Staff : Weapon, IWeaponIntelligence
+    public class Staff : Weapon, IStaff
     {
         private int weaponIntelligence;
 
-        public Staff() 
-            : base(10)
+        public Staff()
+            : base(17)
         {
             this.WeaponIntelligence = 12;
+            this.SpecialDmg = this.Dmg + this.WeaponIntelligence/2;
         }
 
-        public override int WeaponIntelligence
+        public int WeaponIntelligence
         {
             get
             {
                 return this.weaponIntelligence;
             }
-            set
+            private set
             {
                 if (value < 0)
                 {
@@ -36,7 +37,7 @@ namespace AdventuresOfTelerik.Models.Weapons
 
         public override string Additionalinfo()
         {
-            return $", WeaponIntelligence: {this.WeaponIntelligence}";
+            return $", Dmg: {this.Dmg}, WeaponIntelligence: {this.WeaponIntelligence}, SpecialDmg: {this.SpecialDmg}";
         }
     }
 }

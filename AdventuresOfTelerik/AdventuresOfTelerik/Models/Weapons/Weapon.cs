@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Models.Weapons
 {
-    public abstract class Weapon : IWeapon, IAmmo, IWeaponAgility, IWeaponStrength, IWeaponIntelligence
+    public abstract class Weapon : IWeapon
     {
         private int dmg;
+        private int specialDmg;
 
         public Weapon(int dmg)
         {
@@ -23,7 +24,7 @@ namespace AdventuresOfTelerik.Models.Weapons
             {
                 return this.dmg;
             }
-            set
+            protected set
             {
                 if (value < 0)
                 {
@@ -33,14 +34,23 @@ namespace AdventuresOfTelerik.Models.Weapons
             }
         }
 
+        public virtual int SpecialDmg
+        {
+            get
+            {
+                return this.specialDmg;
+            }
+            protected set
+            {
+                this.specialDmg = value;
+            }
+        }
+
         public virtual int Ammo { get; set; }
-        public virtual int WeaponAgility { get; set; }
-        public virtual int WeaponStrength { get; set; }
-        public virtual int WeaponIntelligence { get; set; }
 
         public override string ToString()
         {
-            return $" {this.GetType().Name}, Dmg: {this.Dmg}{this.Additionalinfo()}";
+            return $" {this.GetType().Name}{this.Additionalinfo()}";
         }
 
         public virtual string Additionalinfo()

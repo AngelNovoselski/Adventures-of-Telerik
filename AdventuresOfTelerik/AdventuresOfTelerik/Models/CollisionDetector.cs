@@ -11,7 +11,9 @@ namespace AdventuresOfTelerik.Models
     {
         private const string ExitMessage = "You see the exit of the labyrinth!!!";
         private const string BossMonsterMessage = "The ground arround you trembles as the visious Xlliyu the spawn of Cthulhu appears before you!\n     It is time to prove you are worthy to protect this realm!";
+        private const string BossDragonMessage = "You see a small hill. Before you can do anything the hill spreads its wings and releases a roar which can be heard across the world!\nIts the legendary Claw of Jormagg! 'Your fate is sealed puny human! You shall die by my claw!'";
         private const string MonsterMessage = "You see a dark silhouette! Weird that you cant see what it is even tought its midday.";
+        private const string DragonMessage = "You see a dark silhouette! Never mind its a Dragon...";
         private const string PathMessage = "There is a path! It looks safe but you have a feeling this may not be the case.";
         private const string RockMessage = "There is a giant rock! If you dont want to get hurt you better not try anything funny like climbing it.";
 
@@ -42,7 +44,17 @@ namespace AdventuresOfTelerik.Models
             }
             else if (a == '2')
             {
+                msg = DragonMessage;
+                return msg;
+            }
+            else if (a == '3')
+            {
                 msg = BossMonsterMessage;
+                return msg;
+            }
+            else if (a == '4')
+            {
+                msg = BossDragonMessage;
                 return msg;
             }
             else if (a == 'x')

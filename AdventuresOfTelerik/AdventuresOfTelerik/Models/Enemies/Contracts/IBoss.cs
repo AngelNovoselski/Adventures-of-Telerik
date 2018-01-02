@@ -8,5 +8,7 @@ namespace AdventuresOfTelerik.Contracts.EnemyInterfaces
 {
     public interface IBoss
     {
+        void SecondWind();
+        int SpecialAttack();
     }
 }

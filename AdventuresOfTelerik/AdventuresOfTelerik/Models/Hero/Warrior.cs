@@ -63,7 +63,7 @@ namespace AdventuresOfTelerik.Models.Hero
             if (this.SpecialEnergy >= 40)
             {
                 this.SpecialEnergy -= 40;
-                return this.Strength + this.Weapon.SpecialDmg;
+                return this.Strength + this.Weapon.SpecialDmg + this.Weapon.Dmg;
             }
             else
             {

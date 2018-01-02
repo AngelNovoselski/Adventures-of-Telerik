@@ -1,5 +1,6 @@
 ﻿using AdventuresOfTelerik.Factories;
 using AdventuresOfTelerik.Models.Enemies;
+using AdventuresOfTelerik.Models.Hero;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -80,7 +81,23 @@ namespace AdventuresOfTelerik.Models
                         }
                         else if (CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY - 1, map) == '2')
                         {
+                            enemy = factory.CreateDragon();
+                            FightMode.Fight(hero, enemy);
+                            message = DeadMonsterMessage;
+                            hero.Move(1);
+                            map.FirstMap[hero.PositionX, hero.PositionY] = '-';
+                        }
+                        else if (CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY - 1, map) == '3')
+                        {
                             enemy = factory.CreateBossMonster();
+                            FightMode.Fight(hero, enemy);
+                            message = DeadMonsterMessage;
+                            hero.Move(1);
+                            map.FirstMap[hero.PositionX, hero.PositionY] = '-';
+                        }
+                        else if (CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY - 1, map) == '4')
+                        {
+                            enemy = factory.CreateBossDragon();
                             FightMode.Fight(hero, enemy);
                             message = DeadMonsterMessage;
                             hero.Move(1);
@@ -88,6 +105,18 @@ namespace AdventuresOfTelerik.Models
                         }
                         else
                         {
+                            if (hero is Mage && hero.SpecialEnergy < 100)
+                            {
+                                hero.SpecialEnergy += 20;
+                            }
+                            if (hero is Hunter)
+                            {
+                                hero.Weapon.Ammo += 1;
+                                if (hero.SpecialEnergy < 100)
+                                {
+                                    hero.SpecialEnergy += 20;
+                                }
+                            }
                             hero.Move(1);
                             message = LeftMessage;
                         }
@@ -113,7 +142,23 @@ namespace AdventuresOfTelerik.Models
                         }
                         else if (CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY + 1, map) == '2')
                         {
+                            enemy = factory.CreateDragon();
+                            FightMode.Fight(hero, enemy);
+                            message = DeadMonsterMessage;
+                            hero.Move(2);
+                            map.FirstMap[hero.PositionX, hero.PositionY] = '-';
+                        }
+                        else if (CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY + 1, map) == '3')
+                        {
                             enemy = factory.CreateBossMonster();
+                            FightMode.Fight(hero, enemy);
+                            message = DeadMonsterMessage;
+                            hero.Move(2);
+                            map.FirstMap[hero.PositionX, hero.PositionY] = '-';
+                        }
+                        else if (CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY + 1, map) == '4')
+                        {
+                            enemy = factory.CreateBossDragon();
                             FightMode.Fight(hero, enemy);
                             message = DeadMonsterMessage;
                             hero.Move(2);
@@ -121,6 +166,18 @@ namespace AdventuresOfTelerik.Models
                         }
                         else
                         {
+                            if (hero is Mage && hero.SpecialEnergy < 100)
+                            {
+                                hero.SpecialEnergy += 20;
+                            }
+                            if (hero is Hunter)
+                            {
+                                hero.Weapon.Ammo += 1;
+                                if (hero.SpecialEnergy < 100)
+                                {
+                                    hero.SpecialEnergy += 20;
+                                }
+                            }
                             hero.Move(2);
                             message = RightMessage;
                         }
@@ -146,7 +203,23 @@ namespace AdventuresOfTelerik.Models
                         }
                         else if (CollisionDetector.CheckCollisions(hero.PositionX - 1, hero.PositionY, map) == '2')
                         {
+                            enemy = factory.CreateDragon();
+                            FightMode.Fight(hero, enemy);
+                            message = DeadMonsterMessage;
+                            hero.Move(3);
+                            map.FirstMap[hero.PositionX, hero.PositionY] = '-';
+                        }
+                        else if (CollisionDetector.CheckCollisions(hero.PositionX - 1, hero.PositionY, map) == '3')
+                        {
                             enemy = factory.CreateBossMonster();
+                            FightMode.Fight(hero, enemy);
+                            message = DeadMonsterMessage;
+                            hero.Move(3);
+                            map.FirstMap[hero.PositionX, hero.PositionY] = '-';
+                        }
+                        else if (CollisionDetector.CheckCollisions(hero.PositionX - 1, hero.PositionY, map) == '4')
+                        {
+                            enemy = factory.CreateBossDragon();
                             FightMode.Fight(hero, enemy);
                             message = DeadMonsterMessage;
                             hero.Move(3);
@@ -154,6 +227,18 @@ namespace AdventuresOfTelerik.Models
                         }
                         else
                         {
+                            if (hero is Mage && hero.SpecialEnergy < 100)
+                            {
+                                hero.SpecialEnergy += 20;
+                            }
+                            if (hero is Hunter)
+                            {
+                                hero.Weapon.Ammo += 1;
+                                if (hero.SpecialEnergy < 100)
+                                {
+                                    hero.SpecialEnergy += 20;
+                                }
+                            }
                             hero.Move(3);
                             message = UpMessage;
                         }
@@ -180,7 +265,23 @@ namespace AdventuresOfTelerik.Models
                         }
                         else if (CollisionDetector.CheckCollisions(hero.PositionX + 1, hero.PositionY, map) == '2')
                         {
+                            enemy = factory.CreateDragon();
+                            FightMode.Fight(hero, enemy);
+                            message = DeadMonsterMessage;
+                            hero.Move(4);
+                            map.FirstMap[hero.PositionX, hero.PositionY] = '-';
+                        }
+                        else if (CollisionDetector.CheckCollisions(hero.PositionX + 1, hero.PositionY, map) == '3')
+                        {
                             enemy = factory.CreateBossMonster();
+                            FightMode.Fight(hero, enemy);
+                            message = DeadMonsterMessage;
+                            hero.Move(4);
+                            map.FirstMap[hero.PositionX, hero.PositionY] = '-';
+                        }
+                        else if (CollisionDetector.CheckCollisions(hero.PositionX + 1, hero.PositionY, map) == '4')
+                        {
+                            enemy = factory.CreateBossDragon();
                             FightMode.Fight(hero, enemy);
                             message = DeadMonsterMessage;
                             hero.Move(4);
@@ -188,6 +289,18 @@ namespace AdventuresOfTelerik.Models
                         }
                         else
                         {
+                            if (hero is Mage && hero.SpecialEnergy < 100)
+                            {
+                                hero.SpecialEnergy += 20;
+                            }
+                            if (hero is Hunter)
+                            {
+                                hero.Weapon.Ammo += 1;
+                                if (hero.SpecialEnergy < 100)
+                                {
+                                    hero.SpecialEnergy += 20;
+                                }
+                            }
                             hero.Move(4);
                             message = DownMessage;
                         }

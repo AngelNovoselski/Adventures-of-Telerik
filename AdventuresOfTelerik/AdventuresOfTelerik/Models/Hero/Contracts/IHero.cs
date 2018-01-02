@@ -16,8 +16,8 @@ namespace AdventuresOfTelerik.Contracts.HeroInterfaces
         int PositionY { get; set; }
         string Name { get; set; }
         int Hp { get; set; }
-        int Level { get; set; }
-        int Exp { get; set; }
+        //int Level { get; set; }
+        //int Exp { get; set; }
         HeroColor HeroColor { get; }
         Weapon Weapon { get; set; }
         Weapon WeaponSecond { get; set; }

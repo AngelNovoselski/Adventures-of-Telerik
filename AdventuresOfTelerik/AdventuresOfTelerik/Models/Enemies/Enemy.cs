@@ -65,5 +65,7 @@ namespace AdventuresOfTelerik.Models.Enemies
         }
 
         public abstract int Roar();
+        public virtual int SpecialAttack() { return 0; }
+        public virtual void SecondWind() { return; }
     }
 }

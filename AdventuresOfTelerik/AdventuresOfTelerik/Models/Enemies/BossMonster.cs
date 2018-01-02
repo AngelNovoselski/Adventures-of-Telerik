@@ -29,5 +29,15 @@ namespace AdventuresOfTelerik.Models.Enemies
                 return 0;
             }
         }
+
+        public override void SecondWind()
+        {
+            this.Hp += 50;
+        }
+
+        public override int SpecialAttack()
+        {
+            return this.Dmg * 4;
+        }
     }
 }

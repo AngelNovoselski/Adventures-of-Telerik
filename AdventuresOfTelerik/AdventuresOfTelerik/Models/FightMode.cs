@@ -31,7 +31,6 @@ namespace AdventuresOfTelerik.Models
                     Console.WriteLine("Enter 2 to Run for your Life");
                     Console.WriteLine("Enter 3 for FocusShot");
                     Console.WriteLine("Enter 4 to Stab with your " + hero.WeaponSecond.GetType().Name);
-
                     var a = Console.ReadLine();
                     switch (a)
                     {
@@ -64,9 +63,8 @@ namespace AdventuresOfTelerik.Models
                             }
                             else
                             {
-                                int score = hero.SpecialAttack();
-                                enemy.Hp -= hero.Weapon.Dmg + score;
-                                Console.WriteLine($"The monster loses {hero.Weapon.Dmg + score} HP!");
+                                enemy.Hp -= hero.SpecialAttack();
+                                Console.WriteLine($"The monster loses {hero.SpecialAttack()} HP!");
                                 break;
                             }
                         case "4":
@@ -74,8 +72,15 @@ namespace AdventuresOfTelerik.Models
                             Console.WriteLine($"The monster loses {hero.WeaponSecond.Dmg} HP!");
                             break;
                         default:
+                            Console.WriteLine("You wasted your turn dummy! Now face the consequences!");
                             break;
                     }
+
+                    if(enemy.Hp <= 0)
+                    {
+                        break;
+                    }
+
                     Console.WriteLine("WAIT FOR ENEMY TURN");
                     System.Threading.Thread.Sleep(1000);
 
@@ -114,6 +119,10 @@ namespace AdventuresOfTelerik.Models
                     {
                         case "1":
                             enemy.Hp -= hero.Weapon.Dmg;
+                            if (hero.SpecialEnergy < 100)
+                            {
+                                hero.SpecialEnergy += 20;
+                            }
                             Console.WriteLine($"The monster loses {hero.Weapon.Dmg} HP!");
                             break;
                         case "2":
@@ -129,9 +138,8 @@ namespace AdventuresOfTelerik.Models
                             }
                             else
                             {
-                                int score = hero.SpecialAttack();
-                                enemy.Hp -= hero.Weapon.Dmg + score;
-                                Console.WriteLine($"The monster loses {hero.Weapon.Dmg + score} HP!");
+                                enemy.Hp -= hero.SpecialAttack();
+                                Console.WriteLine($"The monster loses {hero.SpecialAttack()} HP!");
                                 break;
                             }
                         case "4":
@@ -139,8 +147,15 @@ namespace AdventuresOfTelerik.Models
                             Console.WriteLine($"The monster loses {hero.WeaponSecond.Dmg} HP!");
                             break;
                         default:
+                            Console.WriteLine("You wasted your turn dummy! Now face the consequences!");
                             break;
                     }
+
+                    if (enemy.Hp <= 0)
+                    {
+                        break;
+                    }
+
                     Console.WriteLine("WAIT FOR ENEMY TURN");
                     System.Threading.Thread.Sleep(1000);
 
@@ -171,7 +186,7 @@ namespace AdventuresOfTelerik.Models
                     Console.WriteLine("Enemy Hp:" + enemy.Hp + ", " + "Enemy Energy:" + enemy.Energy);
                     Console.WriteLine("Enter 1 for hit with " + hero.Weapon.GetType().Name);
                     Console.WriteLine("Enter 2 to Run for your Life");
-                    Console.WriteLine("Enter 3 for CastSpell");
+                    Console.WriteLine("Enter 3 for FireBlast");
                     Console.WriteLine("Enter 4 to Stab with your " + hero.WeaponSecond.GetType().Name);
 
                     var a = Console.ReadLine();
@@ -194,9 +209,8 @@ namespace AdventuresOfTelerik.Models
                             }
                             else
                             {
-                                int score = hero.SpecialAttack();
-                                enemy.Hp -= hero.Weapon.Dmg + score;
-                                Console.WriteLine($"The monster loses {hero.Weapon.Dmg + score} HP!");
+                                enemy.Hp -= hero.SpecialAttack();
+                                Console.WriteLine($"The monster loses {hero.SpecialAttack()} HP!");
                                 break;
                             }
                         case "4":
@@ -204,8 +218,15 @@ namespace AdventuresOfTelerik.Models
                             Console.WriteLine($"The monster loses {hero.WeaponSecond.Dmg} HP!");
                             break;
                         default:
+                            Console.WriteLine("You wasted your turn dummy! Now face the consequences!");
                             break;
                     }
+
+                    if (enemy.Hp <= 0)
+                    {
+                        break;
+                    }
+
                     Console.WriteLine("WAIT FOR ENEMY TURN");
                     System.Threading.Thread.Sleep(1000);
 

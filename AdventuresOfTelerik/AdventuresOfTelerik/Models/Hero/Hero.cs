@@ -12,26 +12,26 @@ using AdventuresOfTelerik.Common.Enums;
 
 namespace AdventuresOfTelerik.Models.Hero
 {
-    public abstract class Hero
+    public abstract class Hero: IHero
     {
         private int positionX;
         private int positionY;
         private string name;
         private int hp;
-        private int level;
-        private int exp;
+        //private int level;
+        //private int exp;
         private Weapon weapon;
         private Weapon weaponSecond;
         private readonly HeroColor heroColor;
 
         public Hero(HeroColor heroColor)
         {
-            this.PositionX = 1;
-            this.PositionY = 1;
+            this.PositionX = 11;
+            this.PositionY = 4;
             this.Name = "Telerik";
-            this.Hp = 444;
-            this.Level = 1;
-            this.Exp = 0;
+            this.Hp = 500;
+            //this.Level = 1;
+            //this.Exp = 0;
             this.Weapon = weapon;
             this.WeaponSecond = new Knife();
             this.heroColor = heroColor;
@@ -41,8 +41,8 @@ namespace AdventuresOfTelerik.Models.Hero
         public int PositionY { get => this.positionY; set => this.positionY = value; }
         public string Name { get => this.name; set => this.name = value; }
         public int Hp { get => this.hp; set => this.hp = value; }
-        public int Level { get => this.level; set => this.level = value; }
-        public int Exp { get => this.exp; set => this.exp = value; }
+        //public int Level { get => this.level; set => this.level = value; }
+        //public int Exp { get => this.exp; set => this.exp = value; }
 
         public virtual Weapon Weapon
         {

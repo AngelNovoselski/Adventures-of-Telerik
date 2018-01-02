@@ -37,7 +37,7 @@ namespace AdventuresOfTelerik.Models.Enemies
 
         public override int SpecialAttack()
         {
-            return this.Dmg * 4;
+            return this.Dmg * 3;
         }
     }
 }

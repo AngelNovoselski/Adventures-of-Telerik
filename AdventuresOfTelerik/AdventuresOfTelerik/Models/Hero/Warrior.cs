@@ -20,7 +20,7 @@ namespace AdventuresOfTelerik.Models.Hero
             base(HeroColor.magenta)
         {
             this.Strength = 16;
-            this.SpecialEnergy = 131;
+            this.SpecialEnergy = 200;
             this.Weapon = new Mace();
         }
 
@@ -73,7 +73,7 @@ namespace AdventuresOfTelerik.Models.Hero
 
         public override string Additionalinfo()
         {
-            return $"Special Attack: RageAnger, Fury: {this.SpecialEnergy}, Strength: {this.Strength}";
+            return $"Special Attack: RageAnger, Fury: {this.SpecialEnergy}";
         }
     }
 }

@@ -20,7 +20,7 @@ namespace AdventuresOfTelerik.Models.Hero
             base(HeroColor.darkBlue)
         {
             this.Intelligence = 18;
-            this.SpecialEnergy = 120;
+            this.SpecialEnergy = 200;
             this.Weapon = new Staff();
         }
 
@@ -73,7 +73,7 @@ namespace AdventuresOfTelerik.Models.Hero
 
         public override string Additionalinfo()
         {
-            return $"Special Attack: CastSpell, Mana: {this.SpecialEnergy}, Intelligence: {this.Intelligence}";
+            return $"Special Attack: CastSpell, Mana: {this.SpecialEnergy}";
         }
     }
 }

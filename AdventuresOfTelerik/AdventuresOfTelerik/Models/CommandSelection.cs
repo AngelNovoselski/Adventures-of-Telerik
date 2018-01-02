@@ -64,6 +64,7 @@ namespace AdventuresOfTelerik.Models
                         if (CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY - 1, map) == 'x')
                         {
                             message = EscapeMessage;
+                            happyend = true;
                             break;
                         }
                         else if (CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY - 1, map) == '@')
@@ -125,6 +126,7 @@ namespace AdventuresOfTelerik.Models
                         if (CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY + 1, map) == 'x')
                         {
                             message = EscapeMessage;
+                            happyend = true;
                             break;
                         }
                         else if (CollisionDetector.CheckCollisions(hero.PositionX, hero.PositionY + 1, map) == '@')
@@ -186,6 +188,7 @@ namespace AdventuresOfTelerik.Models
                         if (CollisionDetector.CheckCollisions(hero.PositionX - 1, hero.PositionY, map) == 'x')
                         {
                             message = EscapeMessage;
+                            happyend = true;
                             break;
                         }
                         else if (CollisionDetector.CheckCollisions(hero.PositionX - 1, hero.PositionY, map) == '@')

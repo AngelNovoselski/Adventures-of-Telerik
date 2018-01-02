@@ -21,7 +21,7 @@ namespace AdventuresOfTelerik.Models.Hero
             : base(HeroColor.red)
         {
             this.Agility = 15;
-            this.SpecialEnergy = 150;
+            this.SpecialEnergy = 200;
             this.Weapon = new Bow();
         }
 
@@ -74,7 +74,7 @@ namespace AdventuresOfTelerik.Models.Hero
 
         public override string Additionalinfo()
         {
-            return $"Special Attack: FocusShot, Energy: {this.SpecialEnergy}, Agility: {this.Agility}";
+            return $"Special Attack: FocusShot, Energy: {this.SpecialEnergy}";
         }
     }
 }

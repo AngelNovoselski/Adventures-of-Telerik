@@ -13,7 +13,7 @@ namespace AdventuresOfTelerik.Models.Weapons
         private int weaponStrength;
 
         public Mace()
-            : base(18)
+            : base(40)
         {
             this.WeaponStrength = 5;
             this.SpecialDmg = this.Dmg + this.WeaponStrength/2;
@@ -37,7 +37,7 @@ namespace AdventuresOfTelerik.Models.Weapons
 
         public override string Additionalinfo()
         {
-            return $", Dmg: {this.Dmg}, WeaponStrength: {this.WeaponStrength}, SpecialDmg: {this.SpecialDmg}";
+            return $", Dmg: {this.Dmg}, SpecialDmg: {this.SpecialDmg}";
         }
     }
 }

@@ -13,6 +13,7 @@ namespace AdventuresOfTelerik.Models
     {
         public static void Fight(Hero.Hero hero, Enemy enemy)
         {
+            bool SpUsed = false;
             hero.FightMonster += new EventHandler(OnFightedMonster);
             hero.OnFightMonster();
 
@@ -76,27 +77,51 @@ namespace AdventuresOfTelerik.Models
                             break;
                     }
 
-                    if(enemy.Hp <= 0)
+                    if (enemy.Hp <= 0)
                     {
                         break;
                     }
+                    
 
                     Console.WriteLine("WAIT FOR ENEMY TURN");
                     System.Threading.Thread.Sleep(1000);
-
                     if (enemy.Energy < 5)
                     {
-                        Console.WriteLine($"You lose {enemy.Dmg} HP!");
-                        System.Threading.Thread.Sleep(2000);
-                        hero.Hp -= enemy.Dmg;
+                        if (enemy.Hp <= 100 && !SpUsed)
+                        {
+                            SpUsed = true;
+                            enemy.SecondWind();
+                            Console.WriteLine($"You lose {enemy.Dmg + enemy.SpecialAttack()} HP!");
+                            System.Threading.Thread.Sleep(2000);
+                            hero.Hp -= enemy.Dmg + enemy.SpecialAttack();
+                        }
+                        else
+                        {
+                            Console.WriteLine($"You lose {enemy.Dmg} HP!");
+                            System.Threading.Thread.Sleep(2000);
+                            hero.Hp -= enemy.Dmg;
+                        }
                     }
                     else
                     {
-                        int score = enemy.Roar();
-                        Console.WriteLine($"The Monster Roars!");
-                        Console.WriteLine($"You lose {enemy.Dmg + score} HP!");
-                        System.Threading.Thread.Sleep(2000);
-                        hero.Hp -= enemy.Dmg + score;
+                        if (enemy.Hp <= 100 && !SpUsed)
+                        {
+
+                            SpUsed = true;
+                            enemy.SecondWind();
+                            Console.WriteLine($"The Monster Roars!");
+                            Console.WriteLine($"You lose {enemy.Dmg + enemy.Roar() + enemy.SpecialAttack()} HP!");
+                            System.Threading.Thread.Sleep(2000);
+                            hero.Hp -= enemy.Dmg + enemy.Roar() + enemy.SpecialAttack();
+                        }
+                        else
+                        {
+                            int score = enemy.Roar();
+                            Console.WriteLine($"The Monster Roars!");
+                            Console.WriteLine($"You lose {enemy.Dmg + score} HP!");
+                            System.Threading.Thread.Sleep(2000);
+                            hero.Hp -= enemy.Dmg + score;
+                        }
                     }
                 }
             }
@@ -158,20 +183,44 @@ namespace AdventuresOfTelerik.Models
 
                     Console.WriteLine("WAIT FOR ENEMY TURN");
                     System.Threading.Thread.Sleep(1000);
-
+                    
                     if (enemy.Energy < 5)
                     {
-                        Console.WriteLine($"You lose {enemy.Dmg} HP!");
-                        System.Threading.Thread.Sleep(2000);
-                        hero.Hp -= enemy.Dmg;
+                        if (enemy.Hp <= 100 && !SpUsed)
+                        {
+                            SpUsed = true;
+                            enemy.SecondWind();
+                            Console.WriteLine($"You lose {enemy.Dmg + enemy.SpecialAttack()} HP!");
+                            System.Threading.Thread.Sleep(2000);
+                            hero.Hp -= enemy.Dmg + enemy.SpecialAttack();
+                        }
+                        else
+                        {
+                            Console.WriteLine($"You lose {enemy.Dmg} HP!");
+                            System.Threading.Thread.Sleep(2000);
+                            hero.Hp -= enemy.Dmg;
+                        }
                     }
                     else
                     {
-                        int score = enemy.Roar();
-                        Console.WriteLine($"The Monster Roars!");
-                        Console.WriteLine($"You lose {enemy.Dmg + score} HP!");
-                        System.Threading.Thread.Sleep(2000);
-                        hero.Hp -= enemy.Dmg + score;
+                        if (enemy.Hp <= 100 && !SpUsed)
+                        {
+
+                            SpUsed = true;
+                            enemy.SecondWind();
+                            Console.WriteLine($"The Monster Roars!");
+                            Console.WriteLine($"You lose {enemy.Dmg + enemy.Roar() + enemy.SpecialAttack()} HP!");
+                            System.Threading.Thread.Sleep(2000);
+                            hero.Hp -= enemy.Dmg + enemy.Roar() + enemy.SpecialAttack();
+                        }
+                        else
+                        {
+                            int score = enemy.Roar();
+                            Console.WriteLine($"The Monster Roars!");
+                            Console.WriteLine($"You lose {enemy.Dmg + score} HP!");
+                            System.Threading.Thread.Sleep(2000);
+                            hero.Hp -= enemy.Dmg + score;
+                        }
                     }
                 }
             }
@@ -229,20 +278,43 @@ namespace AdventuresOfTelerik.Models
 
                     Console.WriteLine("WAIT FOR ENEMY TURN");
                     System.Threading.Thread.Sleep(1000);
-
                     if (enemy.Energy < 5)
                     {
-                        Console.WriteLine($"You lose {enemy.Dmg} HP!");
-                        System.Threading.Thread.Sleep(2000);
-                        hero.Hp -= enemy.Dmg;
+                        if (enemy.Hp <= 100 && !SpUsed)
+                        {
+                            SpUsed = true;
+                            enemy.SecondWind();
+                            Console.WriteLine($"You lose {enemy.Dmg + enemy.SpecialAttack()} HP!");
+                            System.Threading.Thread.Sleep(2000);
+                            hero.Hp -= enemy.Dmg + enemy.SpecialAttack();
+                        }
+                        else
+                        {
+                            Console.WriteLine($"You lose {enemy.Dmg} HP!");
+                            System.Threading.Thread.Sleep(2000);
+                            hero.Hp -= enemy.Dmg;
+                        }
                     }
                     else
                     {
-                        int score = enemy.Roar();
-                        Console.WriteLine($"The Monster Roars!");
-                        Console.WriteLine($"You lose {enemy.Dmg + score} HP!");
-                        System.Threading.Thread.Sleep(2000);
-                        hero.Hp -= enemy.Dmg + score;
+                        if (enemy.Hp <= 100 && !SpUsed)
+                        {
+
+                            SpUsed = true;
+                            enemy.SecondWind();
+                            Console.WriteLine($"The Monster Roars!");
+                            Console.WriteLine($"You lose {enemy.Dmg + enemy.Roar() + enemy.SpecialAttack()} HP!");
+                            System.Threading.Thread.Sleep(2000);
+                            hero.Hp -= enemy.Dmg + enemy.Roar() + enemy.SpecialAttack();
+                        }
+                        else
+                        {
+                            int score = enemy.Roar();
+                            Console.WriteLine($"The Monster Roars!");
+                            Console.WriteLine($"You lose {enemy.Dmg + score} HP!");
+                            System.Threading.Thread.Sleep(2000);
+                            hero.Hp -= enemy.Dmg + score;
+                        }
                     }
                 }
             }

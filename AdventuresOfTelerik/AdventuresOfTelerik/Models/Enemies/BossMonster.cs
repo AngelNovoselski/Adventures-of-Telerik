@@ -14,7 +14,7 @@ namespace AdventuresOfTelerik.Models.Enemies
         {
             this.Hp = 150;
             this.Dmg = 20;
-            this.Energy = 20;
+            this.Energy = 10;
         }
 
         public override int Roar()
@@ -22,7 +22,7 @@ namespace AdventuresOfTelerik.Models.Enemies
             if (this.Energy >= 5)
             {
                 this.Energy -= 5;
-                return this.Dmg * 3;
+                return this.Dmg * 2;
             }
             else
             {
@@ -37,7 +37,7 @@ namespace AdventuresOfTelerik.Models.Enemies
 
         public override int SpecialAttack()
         {
-            return this.Dmg * 4;
+            return this.Dmg * 3;
         }
     }
 }

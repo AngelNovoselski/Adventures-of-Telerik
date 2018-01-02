@@ -10,11 +10,11 @@ namespace AdventuresOfTelerik.Models.Weapons
         private int ammo;
 
         public Bow()
-            : base(19)
+            : base(30)
         {
             this.WeaponAgility = 6;
             this.SpecialDmg = this.Dmg + this.WeaponAgility/2;
-            this.Ammo = 5;
+            this.Ammo = 10;
         }
 
         public int WeaponAgility
@@ -51,7 +51,7 @@ namespace AdventuresOfTelerik.Models.Weapons
 
         public override string Additionalinfo()
         {
-            return $", Dmg: {this.Dmg}, WeaponAgility: {this.WeaponAgility}, Ammo: {this.Ammo}, SpecialDmg: {this.SpecialDmg}";
+            return $", Dmg: {this.Dmg}, Ammo: {this.Ammo}, SpecialDmg: {this.SpecialDmg}";
         }
     }
 }

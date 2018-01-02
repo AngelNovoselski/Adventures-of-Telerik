@@ -13,7 +13,7 @@ namespace AdventuresOfTelerik.Models.Weapons
         private int weaponAgility;
 
         public Knife()
-            : base(11)
+            : base(15)
         {
             this.WeaponAgility = 4;
             this.Dmg += this.WeaponAgility/2;
@@ -37,7 +37,7 @@ namespace AdventuresOfTelerik.Models.Weapons
 
         public override string Additionalinfo()
         {
-            return $", Dmg: {this.Dmg}, WeaponAgility: {this.WeaponAgility}";
+            return $", Dmg: {this.Dmg}";
         }
     }
 }

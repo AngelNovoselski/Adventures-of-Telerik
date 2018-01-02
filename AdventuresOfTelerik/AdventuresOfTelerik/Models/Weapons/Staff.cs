@@ -13,7 +13,7 @@ namespace AdventuresOfTelerik.Models.Weapons
         private int weaponIntelligence;
 
         public Staff()
-            : base(17)
+            : base(25)
         {
             this.WeaponIntelligence = 12;
             this.SpecialDmg = this.Dmg + this.WeaponIntelligence/2;
@@ -37,7 +37,7 @@ namespace AdventuresOfTelerik.Models.Weapons
 
         public override string Additionalinfo()
         {
-            return $", Dmg: {this.Dmg}, WeaponIntelligence: {this.WeaponIntelligence}, SpecialDmg: {this.SpecialDmg}";
+            return $", Dmg: {this.Dmg}, SpecialDmg: {this.SpecialDmg}";
         }
     }
 }

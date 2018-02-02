@@ -1,22 +1,21 @@
-﻿using AdventuresOfTelerik.Contracts;
-using AdventuresOfTelerik.Contracts.WeaponInterfaces;
+﻿using AdventuresOfTelerik.Contracts.WeaponInterfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Models.Weapons
 {
-    public class Staff : Weapon, IStaff
+    public class Staff : Weapon, IWeapon, IStaff
     {
         private int weaponIntelligence;
 
+        private const int WEAPON_INTELLIGENCE = 12;
+        private const int BASE_DMG = 17;
+        private const int DMG_DIVIDER = 2;
+
         public Staff()
-            : base(25)
+            : base(BASE_DMG)
         {
-            this.WeaponIntelligence = 12;
-            this.SpecialDmg = this.Dmg + this.WeaponIntelligence/2;
+            this.WeaponIntelligence = WEAPON_INTELLIGENCE;
+            this.SpecialDmg = this.Dmg + this.WeaponIntelligence / DMG_DIVIDER;
         }
 
         public int WeaponIntelligence
@@ -37,7 +36,7 @@ namespace AdventuresOfTelerik.Models.Weapons
 
         public override string Additionalinfo()
         {
-            return $", Dmg: {this.Dmg}, SpecialDmg: {this.SpecialDmg}";
+            return $", Dmg: {this.Dmg}, WeaponIntelligence: {this.WeaponIntelligence}, SpecialDmg: {this.SpecialDmg}";
         }
     }
 }

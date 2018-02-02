@@ -1,9 +1,5 @@
 ﻿using AdventuresOfTelerik.Contracts.EnemyInterfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using AdventuresOfTelerik.Models.MessagesForPrinting;
 
 namespace AdventuresOfTelerik.Models.Enemies
 {
@@ -42,7 +38,7 @@ namespace AdventuresOfTelerik.Models.Enemies
             {
                 if (value < 0)
                 {
-                    throw new NegativeArgumentException("Dmg must be positive number!!!");
+                    throw new NegativeArgumentException(GlobalMessages.DamageMessage);
                 }
                 this.dmg = value;
             }
@@ -58,14 +54,12 @@ namespace AdventuresOfTelerik.Models.Enemies
             {
                 if (value < 0)
                 {
-                    throw new NegativeArgumentException("Energy must be positive number!!!");
+                    throw new NegativeArgumentException(GlobalMessages.EnergyMessage);
                 }
                 this.energy = value;
             }
         }
 
         public abstract int Roar();
-        public virtual int SpecialAttack() { return 0; }
-        public virtual void SecondWind() { return; }
     }
 }

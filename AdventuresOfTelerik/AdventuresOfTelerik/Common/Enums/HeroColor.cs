@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AdventuresOfTelerik.Common.Enums
+﻿namespace AdventuresOfTelerik.Common.Enums
 {
     public enum HeroColor
     {

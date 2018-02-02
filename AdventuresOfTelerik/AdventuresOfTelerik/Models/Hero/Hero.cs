@@ -1,39 +1,38 @@
-﻿using AdventuresOfTelerik.Contracts.HeroInterfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using AdventuresOfTelerik.Contracts.HeroInterfaces;
 using AdventuresOfTelerik.Contracts.WeaponInterfaces;
-using AdventuresOfTelerik;
-using AdventuresOfTelerik.Contracts;
-using AdventuresOfTelerik.Models.Weapons;
 using AdventuresOfTelerik.Common.Enums;
 
 namespace AdventuresOfTelerik.Models.Hero
 {
-    public abstract class Hero: IHero
+    public abstract class Hero : IHero
     {
+        private const string HeroName = "Telerik";
+        private const int HeroStartingXPosition = 1;
+        private const int HeroStartingYPosition = 1;
+        private const int HP = 450;
+        private const int LEVEL = 1;
+        private const int EXP = 0;
+
         private int positionX;
         private int positionY;
         private string name;
         private int hp;
-        //private int level;
-        //private int exp;
-        private Weapon weapon;
-        private Weapon weaponSecond;
+        private int level;
+        private int exp;
+        private IWeapon weapon;
+        private IWeapon weaponSecond;
         private readonly HeroColor heroColor;
 
-        public Hero(HeroColor heroColor)
+        public Hero(HeroColor heroColor, IKnife knife)
         {
-            this.PositionX = 11;
-            this.PositionY = 4;
-            this.Name = "Telerik";
-            this.Hp = 700;
-            //this.Level = 1;
-            //this.Exp = 0;
-            this.Weapon = weapon;
-            this.WeaponSecond = new Knife();
+            this.PositionX = HeroStartingXPosition;
+            this.PositionY = HeroStartingYPosition;
+            this.Name = HeroName;
+            this.Hp = HP;
+            this.Level = LEVEL;
+            this.Exp = EXP;
+            this.WeaponSecond = knife;
             this.heroColor = heroColor;
         }
 
@@ -41,10 +40,10 @@ namespace AdventuresOfTelerik.Models.Hero
         public int PositionY { get => this.positionY; set => this.positionY = value; }
         public string Name { get => this.name; set => this.name = value; }
         public int Hp { get => this.hp; set => this.hp = value; }
-        //public int Level { get => this.level; set => this.level = value; }
-        //public int Exp { get => this.exp; set => this.exp = value; }
+        public int Level { get => this.level; set => this.level = value; }
+        public int Exp { get => this.exp; set => this.exp = value; }
 
-        public virtual Weapon Weapon
+        public IWeapon Weapon
         {
             get
             {
@@ -60,7 +59,7 @@ namespace AdventuresOfTelerik.Models.Hero
             }
         }
 
-        public Weapon WeaponSecond
+        public IWeapon WeaponSecond
         {
             get
             {

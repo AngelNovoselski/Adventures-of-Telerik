@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventuresOfTelerik", "AdventuresOfTelerik\AdventuresOfTelerik.csproj", "{EC87E572-ABEE-4CC7-ACF7-43C8B01E6479}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventuresOfTelerik.Tests", "AdventuresOfTelerik.Tests\AdventuresOfTelerik.Tests.csproj", "{FEEE2874-8E75-40B4-A649-69F13CDB21D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventuresOfTelerik.Client", "AdventuresOfTelerik.Client\AdventuresOfTelerik.Client.csproj", "{3F239594-67DB-4BBF-955D-F0B36C3273AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{EC87E572-ABEE-4CC7-ACF7-43C8B01E6479}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC87E572-ABEE-4CC7-ACF7-43C8B01E6479}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC87E572-ABEE-4CC7-ACF7-43C8B01E6479}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEEE2874-8E75-40B4-A649-69F13CDB21D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEEE2874-8E75-40B4-A649-69F13CDB21D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEEE2874-8E75-40B4-A649-69F13CDB21D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEEE2874-8E75-40B4-A649-69F13CDB21D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F239594-67DB-4BBF-955D-F0B36C3273AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F239594-67DB-4BBF-955D-F0B36C3273AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F239594-67DB-4BBF-955D-F0B36C3273AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F239594-67DB-4BBF-955D-F0B36C3273AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

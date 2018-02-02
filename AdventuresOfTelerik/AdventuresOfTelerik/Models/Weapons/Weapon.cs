@@ -1,10 +1,5 @@
-﻿using AdventuresOfTelerik.Contracts;
-using AdventuresOfTelerik.Contracts.WeaponInterfaces;
+﻿using AdventuresOfTelerik.Contracts.WeaponInterfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Models.Weapons
 {
@@ -45,8 +40,6 @@ namespace AdventuresOfTelerik.Models.Weapons
                 this.specialDmg = value;
             }
         }
-
-        public virtual int Ammo { get; set; }
 
         public override string ToString()
         {

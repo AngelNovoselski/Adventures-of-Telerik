@@ -1,12 +1,7 @@
-﻿using AdventuresOfTelerik.Engine;
+﻿using AdventuresOfTelerik.ConsoleLoggerMine;
+using AdventuresOfTelerik.Engine;
+using AdventuresOfTelerik.Factories;
 using AdventuresOfTelerik.Models;
-using AdventuresOfTelerik.Models.Hero;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Timers;
 
 namespace AdventuresOfTelerik
 {
@@ -14,8 +9,10 @@ namespace AdventuresOfTelerik
     {
         public static void Main()
         {
-            Console.SetWindowSize(120, 26);
-            GameEngine.Instance.Start();
+            //IGameEngine engine = new GameEngine(
+            //    new GameFactory(),
+            //    new ScreenPrinter(new ConsoleLogger(new ConsoleWriter(), new ConsoleReader())));
+            //engine.Start();
         }
     }
 }

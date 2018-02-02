@@ -1,20 +1,19 @@
 ﻿using AdventuresOfTelerik.Contracts.EnemyInterfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Models.Enemies
 {
-    public class BossDragon: Dragon, IBoss
+    public class BossDragon : Dragon, IBoss
     {
+        private const int HpValue = 166;
+        private const int DmgValue = 21;
+        private const int EnergyValue = 20;
+
         public BossDragon()
             : base()
         {
-            this.Hp = 166;
-            this.Dmg = 21;
-            this.Energy = 20;
+            this.Hp = HpValue;
+            this.Dmg = DmgValue;
+            this.Energy = EnergyValue;
         }
 
         public override int Roar()
@@ -28,16 +27,6 @@ namespace AdventuresOfTelerik.Models.Enemies
             {
                 return 0;
             }
-        }
-
-        public override void SecondWind()
-        {
-            this.Hp += 50;
-        }
-
-        public override int SpecialAttack()
-        {
-            return this.Dmg * 3;
         }
     }
 }

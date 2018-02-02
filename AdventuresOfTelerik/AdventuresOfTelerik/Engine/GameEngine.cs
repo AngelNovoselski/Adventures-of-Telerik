@@ -1,94 +1,64 @@
-﻿using AdventuresOfTelerik.Contracts.EnemyInterfaces;
+﻿using System;
+using AdventuresOfTelerik.Contracts;
 using AdventuresOfTelerik.Contracts.HeroInterfaces;
-using AdventuresOfTelerik.Contracts.WeaponInterfaces;
 using AdventuresOfTelerik.Factories;
 using AdventuresOfTelerik.Models;
-using AdventuresOfTelerik.Models.Enemies;
-using AdventuresOfTelerik.Models.Hero;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using AdventuresOfTelerik.Models.MessagesForPrinting;
 
 namespace AdventuresOfTelerik.Engine
 {
-    public sealed class GameEngine : IGameEngine
+    public class GameEngine : IGameEngine
     {
-        private const string StartMessage = "ENTER into your adventure!";
-        private const string WelcomeScreen = "Hello Adventurer!\n(Warning: hit ENTER after every choice to please the gods of your fate!!!)";
-        private const string InvalidClassInput = "Wrong Class! Choose Again!";
-        private const string MageSelected = "You are Telerik Mage!";
-        private const string WarriorSelected = "You are Telerik Warrior!";
-        private const string HunterSelected = "You are Telerik Hunter!";
-        private const string EscapeMessage = "You escaped your nightmare!";
-        private const string EscapeMessageFun = "For now!!!";
-        private const string ClimbRockMessage = "You try to climb the giant rock. You fall down and hit your head! Lose 1 HP!";
-        private const string ChooseHero = "Choose your hero type:\n  Type 1 for mage:\n  Type 2 for warrior:\n  Type 3 for hunter:";
+        private readonly IGameFactory factory;
+        private readonly IScreenPrinter printer;
+        private readonly IHeroPrinter heroPrint;
+        private readonly IFightMode fightMode;
+        private readonly ICollisionDetector detect;
+        private readonly ICommandSelection commandSelection;
+        private readonly IMap map;
+        private IHero hero;
+        private IHeroCoordinates heroCord;
 
-        private static GameEngine SingleInstance;
-        private readonly GameFactory factory;
-        private Hero hero;
-        private Map map;
-
-        private GameEngine()
+        public GameEngine(IGameFactory factory, IScreenPrinter printer, IHeroPrinter heroPrint,
+                            IFightMode fightMode, ICollisionDetector detect, ICommandSelection commandSelection)
         {
-            this.factory = new GameFactory();
-            this.map = this.factory.CreateMap();
+            this.factory = factory ?? throw new NullReferenceException();
+            this.printer = printer ?? throw new NullReferenceException();
+            this.heroPrint = heroPrint ?? throw new NullReferenceException();
+            this.fightMode = fightMode ?? throw new NullReferenceException();
+            this.detect = detect ?? throw new NullReferenceException();
+            this.commandSelection = commandSelection ?? throw new NullReferenceException();
+            this.Factory.HeroFactory();
+            this.map = this.Factory.CreateMap() ?? throw new NullReferenceException();
+            Console.SetWindowSize(120, 26);
         }
 
-        public static GameEngine Instance
+        public IGameFactory Factory { get { return this.factory; } }
+        public IScreenPrinter Printer { get { return this.printer; } }
+        public IHeroPrinter HeroPrint { get { return this.heroPrint; } }
+        public IFightMode FightMode { get { return this.fightMode; } }
+        public ICollisionDetector Detect { get { return this.detect; } }
+        public ICommandSelection CommandSelection { get { return this.commandSelection; } }
+        public IMap Map { get { return this.map; } }
+        public IHero Hero
         {
-            get
-            {
-                if (SingleInstance == null)
-                {
-                    SingleInstance = new GameEngine();
-                }
-
-                return SingleInstance;
-            }
+            get { return this.hero; }
+            set { this.hero = value ?? throw new NullReferenceException(); }
+        }
+        public IHeroCoordinates HeroCord
+        {
+            get { return this.heroCord; }
+            set { this.heroCord = value ?? throw new NullReferenceException(); }
         }
 
         public void Start()
         {
-            this.PrintStartScreen();
-            CommandSelection.ReadCommands(this.hero, this.map, this.factory);
-        }
-
-        private void PrintStartScreen()
-        {
-            Console.WriteLine(WelcomeScreen);
-            Console.WriteLine(ChooseHero);
-            string command = Console.ReadLine();
-            Console.WriteLine(this.ChooseHeroScreen(command));
-            Console.WriteLine(StartMessage);
-            Console.ReadKey();
-        }
-
-        private string ChooseHeroScreen(string command)
-        {
-            while (command != "1" && command != "2" && command != "3")
-            {
-                Console.Clear();
-                Console.WriteLine(InvalidClassInput);
-                Console.WriteLine(ChooseHero);
-                command = Console.ReadLine();
-            }
-
-            switch (command)
-            {
-                case "1":
-                    hero = this.factory.CreateMage();
-                    return MageSelected;
-                case "2":
-                    hero = this.factory.CreateWarrior();
-                    return WarriorSelected;
-                case "3":
-                    hero = this.factory.CreateHunter();
-                    return HunterSelected;
-                default:
-                    return InvalidClassInput;
-            }
+            this.Printer.PrintStartScreen();
+            var heroType = this.Printer.PrintChooseHeroScreen();
+            this.Printer.PrintAfterChoiceScreen();
+            this.Hero = this.Factory.GetHeroBasedOnType(heroType);
+            this.HeroCord = this.Factory.CreateHeroCoordinates(this.Hero);
+            this.CommandSelection.ReadCommands(this.Hero, this.Map, this.Factory, this.Printer.Logger, this.HeroPrint, this.FightMode, this.Detect, this.HeroCord);
         }
     }
 }

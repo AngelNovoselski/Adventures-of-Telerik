@@ -1,28 +1,23 @@
-﻿using AdventuresOfTelerik.Contracts;
-using AdventuresOfTelerik.Contracts.HeroInterfaces;
+﻿using AdventuresOfTelerik.Contracts.HeroInterfaces;
 using AdventuresOfTelerik.Contracts.WeaponInterfaces;
-using AdventuresOfTelerik.Models.Weapons;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AdventuresOfTelerik.Common.Enums;
 
 namespace AdventuresOfTelerik.Models.Hero
 {
     public class Hunter : Hero, IHunter
     {
+        private const int HunterAgilityValue = 15;
+        private const int HunterSpecialEnergyValue = 150;
+
         private int agility;
         private int specialEnergy;
-        private Weapon weapon;
 
-        public Hunter()
-            : base(HeroColor.red)
+        public Hunter(IWeapon bow, IKnife knife)
+            : base(HeroColor.red, knife)
         {
-            this.Agility = 15;
-            this.SpecialEnergy = 200;
-            this.Weapon = new Bow();
+            this.Agility = HunterAgilityValue;
+            this.SpecialEnergy = HunterSpecialEnergyValue;
+            this.Weapon = bow;
         }
 
         public int Agility
@@ -57,14 +52,12 @@ namespace AdventuresOfTelerik.Models.Hero
             }
         }
 
-        public override Weapon Weapon { get => this.weapon; set => this.weapon = value; }
-
         public override int SpecialAttack()
         {
             if (this.SpecialEnergy >= 44)
             {
                 this.SpecialEnergy -= 44;
-                return this.Agility + this.Weapon.SpecialDmg + this.Weapon.Dmg;
+                return this.Agility + this.Weapon.SpecialDmg;
             }
             else
             {
@@ -74,7 +67,7 @@ namespace AdventuresOfTelerik.Models.Hero
 
         public override string Additionalinfo()
         {
-            return $"Special Attack: FocusShot, Energy: {this.SpecialEnergy}";
+            return $"Special Attack: FocusShot, Energy: {this.SpecialEnergy}, Agility: {this.Agility}";
         }
     }
 }

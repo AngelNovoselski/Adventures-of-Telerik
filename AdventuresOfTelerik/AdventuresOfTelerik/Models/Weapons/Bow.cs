@@ -1,20 +1,24 @@
-﻿using AdventuresOfTelerik.Contracts;
-using AdventuresOfTelerik.Contracts.WeaponInterfaces;
+﻿using AdventuresOfTelerik.Contracts.WeaponInterfaces;
 using System;
 
 namespace AdventuresOfTelerik.Models.Weapons
 {
-    public class Bow : Weapon, IBow
+    public class Bow : Weapon, IWeapon, IBow
     {
         private int weaponAgility;
         private int ammo;
 
+        private const int WEAPON_AGILITY = 6;
+        private const int BASE_DMG = 19;
+        private const int DMG_DIVIDER = 2;
+        private const int AMMO = 5;
+
         public Bow()
-            : base(30)
+            : base(BASE_DMG)
         {
-            this.WeaponAgility = 6;
-            this.SpecialDmg = this.Dmg + this.WeaponAgility/2;
-            this.Ammo = 10;
+            this.WeaponAgility = WEAPON_AGILITY;
+            this.SpecialDmg = this.Dmg + this.WeaponAgility / DMG_DIVIDER;
+            this.Ammo = AMMO;
         }
 
         public int WeaponAgility
@@ -33,7 +37,7 @@ namespace AdventuresOfTelerik.Models.Weapons
             }
         }
 
-        public override int Ammo
+        public int Ammo
         {
             get
             {
@@ -51,7 +55,7 @@ namespace AdventuresOfTelerik.Models.Weapons
 
         public override string Additionalinfo()
         {
-            return $", Dmg: {this.Dmg}, Ammo: {this.Ammo}, SpecialDmg: {this.SpecialDmg}";
+            return $", Dmg: {this.Dmg}, WeaponAgility: {this.WeaponAgility}, Ammo: {this.Ammo}, SpecialDmg: {this.SpecialDmg}";
         }
     }
 }

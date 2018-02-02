@@ -1,27 +1,23 @@
-﻿using AdventuresOfTelerik.Contracts;
-using AdventuresOfTelerik.Contracts.HeroInterfaces;
-using AdventuresOfTelerik.Models.Weapons;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AdventuresOfTelerik.Contracts.HeroInterfaces;
 using AdventuresOfTelerik.Common.Enums;
+using AdventuresOfTelerik.Contracts.WeaponInterfaces;
 
 namespace AdventuresOfTelerik.Models.Hero
 {
     public class Mage : Hero, IMage
     {
+        private const int MageIntelligence = 20;
+        private const int MageSpecialEnergy = 120;
+
         private int specialEnergy;
         private int intelligence;
-        private Weapon weapon;
 
-        public Mage() :
-            base(HeroColor.darkBlue)
+        public Mage(IWeapon staff, IKnife knife)
+            : base(HeroColor.darkBlue, knife)
         {
-            this.Intelligence = 18;
-            this.SpecialEnergy = 200;
-            this.Weapon = new Staff();
+            this.Intelligence = MageIntelligence;
+            this.SpecialEnergy = MageSpecialEnergy;
+            this.Weapon = staff;
         }
 
         public int Intelligence
@@ -56,14 +52,12 @@ namespace AdventuresOfTelerik.Models.Hero
             }
         }
 
-        public override Weapon Weapon { get => this.weapon; set => this.weapon = value; }
-
         public override int SpecialAttack()
         {
             if (this.SpecialEnergy >= 35)
             {
                 this.SpecialEnergy -= 35;
-                return this.Intelligence + this.Weapon.SpecialDmg + this.Weapon.Dmg;
+                return this.Intelligence + this.Weapon.SpecialDmg;
             }
             else
             {
@@ -73,7 +67,7 @@ namespace AdventuresOfTelerik.Models.Hero
 
         public override string Additionalinfo()
         {
-            return $"Special Attack: CastSpell, Mana: {this.SpecialEnergy}";
+            return $"Special Attack: CastSpell, Mana: {this.SpecialEnergy}, Intelligence: {this.Intelligence}";
         }
     }
 }

@@ -1,18 +1,19 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
+using AdventuresOfTelerik.Contracts.HeroInterfaces;
 
 namespace AdventuresOfTelerik.Models
 {
-    public struct HeroCoordinates
+    public struct HeroCoordinates : IHeroCoordinates
     {
-        public HeroCoordinates(Hero.Hero hero)
+        private readonly IHero hero;
+
+        public HeroCoordinates(IHero hero)
         {
-            this.X = hero.PositionX;
-            this.Y = hero.PositionY;
+            this.hero = hero;
         }
 
-        public double X { get; private set; }
-        public double Y { get; private set; }
+        public double X { get { return this.hero.PositionX; } }
+        public double Y { get { return this.hero.PositionY; } }
 
         public override string ToString()
         {

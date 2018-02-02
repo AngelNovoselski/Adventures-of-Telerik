@@ -1,27 +1,23 @@
-﻿using AdventuresOfTelerik.Contracts;
-using AdventuresOfTelerik.Contracts.HeroInterfaces;
-using AdventuresOfTelerik.Models.Weapons;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AdventuresOfTelerik.Contracts.HeroInterfaces;
 using AdventuresOfTelerik.Common.Enums;
+using AdventuresOfTelerik.Contracts.WeaponInterfaces;
 
 namespace AdventuresOfTelerik.Models.Hero
 {
     public class Warrior : Hero, IWarrior
     {
+        private const int WarriorStrngthValue = 16;
+        private const int WarriorSpecialEnergyValue = 131;
+
         private int strength;
         private int specialEnergy;
-        private Weapon weapon;
 
-        public Warrior() :
-            base(HeroColor.magenta)
+        public Warrior(IWeapon mace, IKnife knife) :
+            base(HeroColor.magenta, knife)
         {
-            this.Strength = 16;
-            this.SpecialEnergy = 200;
-            this.Weapon = new Mace();
+            this.Strength = WarriorStrngthValue;
+            this.SpecialEnergy = WarriorSpecialEnergyValue;
+            this.Weapon = mace;
         }
 
         public int Strength
@@ -56,14 +52,12 @@ namespace AdventuresOfTelerik.Models.Hero
             }
         }
 
-        public override Weapon Weapon { get => this.weapon; set => this.weapon = value; }
-
         public override int SpecialAttack()
         {
             if (this.SpecialEnergy >= 40)
             {
                 this.SpecialEnergy -= 40;
-                return this.Strength + this.Weapon.SpecialDmg + this.Weapon.Dmg;
+                return this.Strength + this.Weapon.SpecialDmg;
             }
             else
             {
@@ -73,7 +67,7 @@ namespace AdventuresOfTelerik.Models.Hero
 
         public override string Additionalinfo()
         {
-            return $"Special Attack: RageAnger, Fury: {this.SpecialEnergy}";
+            return $"Special Attack: RageAnger, Fury: {this.SpecialEnergy}, Strength: {this.Strength}";
         }
     }
 }

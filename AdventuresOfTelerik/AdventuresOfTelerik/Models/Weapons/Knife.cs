@@ -1,22 +1,21 @@
-﻿using AdventuresOfTelerik.Contracts;
-using AdventuresOfTelerik.Contracts.WeaponInterfaces;
+﻿using AdventuresOfTelerik.Contracts.WeaponInterfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Models.Weapons
 {
-    public class Knife : Weapon, IKnife
+    public class Knife : Weapon, IWeapon, IKnife
     {
         private int weaponAgility;
 
+        private const int WEAPON_AGILITY = 4;
+        private const int BASE_DMG = 11;
+        private const int DMG_DIVIDER = 2;
+
         public Knife()
-            : base(15)
+            : base(BASE_DMG)
         {
-            this.WeaponAgility = 4;
-            this.Dmg += this.WeaponAgility/2;
+            this.WeaponAgility = WEAPON_AGILITY;
+            this.Dmg += this.WeaponAgility / DMG_DIVIDER;
         }
 
         public int WeaponAgility
@@ -37,7 +36,7 @@ namespace AdventuresOfTelerik.Models.Weapons
 
         public override string Additionalinfo()
         {
-            return $", Dmg: {this.Dmg}";
+            return $", Dmg: {this.Dmg}, WeaponAgility: {this.WeaponAgility}";
         }
     }
 }

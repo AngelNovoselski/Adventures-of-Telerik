@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AdventuresOfTelerik.Models.Weapons.Contracts;
 
 namespace AdventuresOfTelerik.Contracts.WeaponInterfaces
 {
-    public interface IWeapon
+    public interface IWeapon : ISpecialDamage
     {
         int Dmg { get; }
-        int SpecialDmg { get; }
-        string ToString();
         string Additionalinfo();
     }
 }

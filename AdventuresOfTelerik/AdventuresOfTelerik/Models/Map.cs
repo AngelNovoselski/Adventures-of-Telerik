@@ -1,15 +1,12 @@
 ﻿using AdventuresOfTelerik.Contracts;
+using AdventuresOfTelerik.Models.MessagesForPrinting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Models
 {
     public class Map : IMap
     {
-        private int row = 13;
+        private int row = 10;
         private int col = 10;
         private char[,] firstMap;
 
@@ -17,13 +14,13 @@ namespace AdventuresOfTelerik.Models
         {
             if (this.Row < 1)
             {
-                throw new ArgumentOutOfRangeException("Row must be bigger than 1!!!");
+                throw new ArgumentOutOfRangeException(GlobalMessages.RowRangeException);
             }
             this.Row = row;
 
             if (this.Col < 1)
             {
-                throw new ArgumentOutOfRangeException("Col must be bigger than 1!!!");
+                throw new ArgumentOutOfRangeException(GlobalMessages.ColRangeException);
             }
             this.Col = col;
 
@@ -31,23 +28,20 @@ namespace AdventuresOfTelerik.Models
             FirstMap = new char[,]
             {
                 { '@' , '@' , '@' , '@' , '@' , '@' , '@' , '@' , '@' , '@' },
-                { '@' , '@' , '@' , '@' , 'x' , '@' , '@' , '@' , '@' , '@' },
-                { '@' , '@' , '@' , '@' , '4' , '@' , '@' , '@' , '@' , '@' },
-                { '@' , '@' , '-' , '-' , '-' , '-' , '-' , '@' , '@' , '@' },
-                { '@' , '@' , '-' , '@' , '-' , '@' , '-' , '@' , '@' , '@' },
-                { '@' , '@' , '-' , '@' , '-' , '@' , '-' , '@' , '@' , '@' },
-                { '@' , '@' , '2' , '@' , '2' , '@' , '2' , '@' , '@' , '@' },
-                { '@' , '@' , '-' , '@' , '-' , '@' , '-' , '@' , '@' , '@' },
-                { '@' , '@' , '-' , '-' , '3' , '-' , '-' , '@' , '@' , '@' },
-                { '@' , '@' , '@' , '@' , '1' , '@' , '@' , '@' , '@' , '@' },
-                { '@' , '@' , '@' , '@' , '-' , '@' , '@' , '@' , '@' , '@' },
-                { '@' , '@' , '@' , '@' , '-' , '@' , '@' , '@' , '@' , '@' },
-                { '@' , '@' , '@' , '@' , '@' , '@' , '@' , '@' , '@' , '@' },
+                { '@' , '-' , '1' , '-' , '-' , '-' , '@' , '-' , '@' , '@' },
+                { '@' , '-' , '-' , '1' , '-' , '-' , '-' , '-' , '-' , '@' },
+                { '@' , '1' , '-' , '-' , '@' , '1' , '@' , '-' , '1' , '@' },
+                { '@' , '-' , '-' , '-' , '-' , '-' , '-' , '-' , '-' , '@' },
+                { '@' , '@' , '@' , '1' , '-' , '-' , '-' , '-' , '1' , '@' },
+                { '@' , '1' , '-' , '-' , '@' , '1' , '@' , '1' , '-' , '@' },
+                { '@' , '-' , '1' , '-' , '-' , '-' , '@' , '-' , '-' , '@' },
+                { '@' , '-' , '-' , '-' , '@' , '1' , '@' , '-' , '2' , '@' },
+                { '@' , '@' , '@' , '@' , '@' , '@' , '@' , '@' , 'x' , '@' },
             };
         }
 
         public int Row { get => this.row; private set => this.row = value; }
         public int Col { get => this.col; private set => this.col = value; }
-        public char[,] FirstMap { get => this.firstMap; set => this.firstMap = value; }
+        public char[,] FirstMap { get => this.firstMap; private set => this.firstMap = value; }
     }
 }

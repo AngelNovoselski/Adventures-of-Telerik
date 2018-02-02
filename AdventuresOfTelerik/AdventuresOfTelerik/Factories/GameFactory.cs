@@ -1,64 +1,76 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AdventuresOfTelerik.Models.Enemies;
 using AdventuresOfTelerik.Models.Hero;
 using AdventuresOfTelerik.Models.Weapons;
 using AdventuresOfTelerik.Models;
 using AdventuresOfTelerik.Contracts.WeaponInterfaces;
+using AdventuresOfTelerik.Contracts.HeroInterfaces;
+using AdventuresOfTelerik.Contracts;
+using AdventuresOfTelerik.Contracts.EnemyInterfaces;
 
 namespace AdventuresOfTelerik.Factories
 {
     public class GameFactory : IGameFactory
     {
-        public Map CreateMap()
+        public IMap CreateMap()
         {
-            Map map = new Map();
-            return map;
+            return new Map();
         }
 
-        public Mage CreateMage()
+        public IMage CreateMage(IStaff staff, IKnife knife)
         {
-            Mage mage = new Mage();
-            return mage;
+            return new Mage(staff, knife);
         }
 
-        public Warrior CreateWarrior()
+        public IWarrior CreateWarrior(IMace mace, IKnife knife)
         {
-            Warrior warrior = new Warrior();
-            return warrior;
+            return new Warrior(mace, knife);
         }
 
-        public Hunter CreateHunter()
+        public IHunter CreateHunter(IBow bow, IKnife knife)
         {
-            Hunter hunter = new Hunter();
-            return hunter;
+            return new Hunter(bow, knife);
         }
 
-        public Monster CreateMonster()
+        private IDictionary<string, Func<IHero>> heroTypeMapper;
+
+        public void HeroFactory()
         {
-            Monster monster = new Monster();
-            return monster;
+            heroTypeMapper = new Dictionary<string, Func<IHero>>();
+            heroTypeMapper.Add("Mage", () => { return CreateMage(new Staff(), new Knife()); });
+            heroTypeMapper.Add("Warrior", () => { return CreateWarrior(new Mace(), new Knife()); });
+            heroTypeMapper.Add("Hunter", () => { return CreateHunter(new Bow(), new Knife()); });
         }
 
-        public BossMonster CreateBossMonster()
+        public IHero GetHeroBasedOnType(string heroType)
         {
-            BossMonster bossMonster = new BossMonster();
-            return bossMonster;
+            return heroTypeMapper[heroType]();
         }
 
-        public Dragon CreateDragon()
+        public IMonster CreateMonster()
         {
-            Dragon dragon = new Dragon();
-            return dragon;
+            return new Monster();
         }
 
-        public BossDragon CreateBossDragon()
+        public IMonster CreateBossMonster()
         {
-            BossDragon bossDragon = new BossDragon();
-            return bossDragon;
+            return new BossMonster();
+        }
+
+        public IDragon CreateDragon()
+        {
+            return new Dragon();
+        }
+
+        public IDragon CreateBossDragon()
+        {
+            return new BossDragon();
+        }
+
+        public IHeroCoordinates CreateHeroCoordinates(IHero hero)
+        {
+            return new HeroCoordinates(hero);
         }
     }
 }

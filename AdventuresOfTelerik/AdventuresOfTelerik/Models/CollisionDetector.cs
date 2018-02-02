@@ -1,66 +1,38 @@
-﻿using AdventuresOfTelerik.Engine;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AdventuresOfTelerik.Contracts;
+using AdventuresOfTelerik.Models.MessagesForPrinting;
 
 namespace AdventuresOfTelerik.Models
 {
-    public static class CollisionDetector
+    public class CollisionDetector : ICollisionDetector
     {
-        private const string ExitMessage = "You see the exit of the labyrinth!!!";
-        private const string BossMonsterMessage = "The ground arround you trembles as the visious Xlliyu the spawn of Cthulhu appears before you!\n     It is time to prove you are worthy to protect this realm!";
-        private const string BossDragonMessage = "You see a small hill. Before you can do anything the hill spreads its wings and releases a roar which can be heard across the world!\nIts the legendary Claw of Jormagg! 'Your fate is sealed puny human! You shall die by my claw!'";
-        private const string MonsterMessage = "You see a dark silhouette! Weird that you cant see what it is even tought its midday.";
-        private const string DragonMessage = "You see a dark silhouette! Never mind its a Dragon...";
-        private const string PathMessage = "There is a path! It looks safe but you have a feeling this may not be the case.";
-        private const string RockMessage = "There is a giant rock! If you dont want to get hurt you better not try anything funny like climbing it.";
-
-        public static char CheckCollisions(int positionX, int positionY, Map map)
+        public char CheckCollisions(int positionX, int positionY, IMap map)
         {
             char result = ' ';
             result = map.FirstMap[positionX, positionY];
             return result;
         }
-        public static string GuideMessage(char a)
-        {
-            var msg = "";
 
+        public string GuideMessage(char a)
+        {
             if (a == '-')
             {
-                msg = PathMessage;
-                return msg;
+                return GlobalMessages.PathMessage;
             }
             else if (a == '@')
             {
-                msg = RockMessage;
-                return msg;
+                return GlobalMessages.RockMessage;
             }
             else if (a == '1')
             {
-                msg = MonsterMessage;
-                return msg;
+                return GlobalMessages.MonsterMessage;
             }
             else if (a == '2')
             {
-                msg = DragonMessage;
-                return msg;
-            }
-            else if (a == '3')
-            {
-                msg = BossMonsterMessage;
-                return msg;
-            }
-            else if (a == '4')
-            {
-                msg = BossDragonMessage;
-                return msg;
+                return GlobalMessages.BossMonsterMessage;
             }
             else if (a == 'x')
             {
-                msg = ExitMessage;
-                return msg;
+                return GlobalMessages.ExitMessage;
             }
             return string.Empty;
         }

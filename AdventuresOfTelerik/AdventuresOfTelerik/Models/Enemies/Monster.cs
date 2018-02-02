@@ -1,23 +1,19 @@
-﻿using AdventuresOfTelerik.Contracts.HeroInterfaces;
-using AdventuresOfTelerik.Models.Hero;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AdventuresOfTelerik.Contracts.WeaponInterfaces;
-using AdventuresOfTelerik.Contracts.EnemyInterfaces;
+﻿using AdventuresOfTelerik.Contracts.EnemyInterfaces;
 
 namespace AdventuresOfTelerik.Models.Enemies
 {
     public class Monster : Enemy, IMonster
     {
-        public Monster() 
+        private const int HpValue = 100;
+        private const int DmgValue = 10;
+        private const int EnergyValue = 10;
+
+        public Monster()
             : base()
         {
-            this.Hp = 100;
-            this.Dmg = 10;
-            this.Energy = 10;
+            this.Hp = HpValue;
+            this.Dmg = DmgValue;
+            this.Energy = EnergyValue;
         }
 
         public override int Roar()

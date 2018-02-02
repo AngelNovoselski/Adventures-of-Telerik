@@ -1,32 +1,33 @@
-﻿using AdventuresOfTelerik.Contracts.WeaponInterfaces;
+﻿using AdventuresOfTelerik.Contracts;
+using AdventuresOfTelerik.Contracts.EnemyInterfaces;
+using AdventuresOfTelerik.Contracts.HeroInterfaces;
+using AdventuresOfTelerik.Contracts.WeaponInterfaces;
 using AdventuresOfTelerik.Models;
-using AdventuresOfTelerik.Models.Enemies;
-using AdventuresOfTelerik.Models.Hero;
-using AdventuresOfTelerik.Models.Weapons;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Factories
 {
     public interface IGameFactory
     {
-        Map CreateMap();
+        void HeroFactory();
 
-        Mage CreateMage();
+        IHeroCoordinates CreateHeroCoordinates(IHero hero);
 
-        Warrior CreateWarrior();
+        IHero GetHeroBasedOnType(string heroType);
 
-        Hunter CreateHunter();
+        IMap CreateMap();
 
-        Monster CreateMonster();
+        IMage CreateMage(IStaff staff, IKnife knife);
 
-        BossMonster CreateBossMonster();
+        IWarrior CreateWarrior(IMace mace, IKnife knife);
 
-        Dragon CreateDragon();
+        IHunter CreateHunter(IBow bow, IKnife knife);
 
-        BossDragon CreateBossDragon();
+        IMonster CreateMonster();
+
+        IMonster CreateBossMonster();
+
+        IDragon CreateDragon();
+
+        IDragon CreateBossDragon();
     }
 }

@@ -1,20 +1,19 @@
 ﻿using AdventuresOfTelerik.Contracts.EnemyInterfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdventuresOfTelerik.Models.Enemies
 {
-    public class Dragon: Enemy, IDragon
+    public class Dragon : Enemy, IDragon
     {
-        public Dragon() 
+        private const int HpValue = 111;
+        private const int DmgValue = 11;
+        private const int EnergyValue = 10;
+
+        public Dragon()
             : base()
         {
-            this.Hp = 111;
-            this.Dmg = 11;
-            this.Energy = 10;
+            this.Hp = HpValue;
+            this.Dmg = DmgValue;
+            this.Energy = EnergyValue;
         }
 
         public override int Roar()

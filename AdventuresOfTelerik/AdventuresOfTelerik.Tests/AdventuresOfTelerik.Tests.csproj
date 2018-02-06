@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Engine\Constructor_Should.cs" />
     <Compile Include="Models\Hero\HunterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

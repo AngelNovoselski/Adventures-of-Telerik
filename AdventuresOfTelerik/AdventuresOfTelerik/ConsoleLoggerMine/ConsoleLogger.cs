@@ -30,5 +30,10 @@
         {
             this.writer.Clear();
         }
+
+        public void SetSize()
+        {
+            this.writer.SetSize();
+        }
     }
 }

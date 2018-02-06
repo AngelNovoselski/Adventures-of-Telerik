@@ -13,5 +13,10 @@ namespace AdventuresOfTelerik.ConsoleLoggerMine
         {
             Console.Clear();
         }
+
+        public void SetSize()
+        {
+            Console.SetWindowSize(120, 26);
+        }
     }
 }

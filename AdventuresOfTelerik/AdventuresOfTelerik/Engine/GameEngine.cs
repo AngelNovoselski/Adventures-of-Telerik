@@ -15,7 +15,7 @@ namespace AdventuresOfTelerik.Engine
         private readonly IFightMode fightMode;
         private readonly ICollisionDetector detect;
         private readonly ICommandSelection commandSelection;
-        private readonly IMap map;
+        private IMap map;
         private IHero hero;
         private IHeroCoordinates heroCord;
 
@@ -29,8 +29,7 @@ namespace AdventuresOfTelerik.Engine
             this.detect = detect ?? throw new NullReferenceException();
             this.commandSelection = commandSelection ?? throw new NullReferenceException();
             this.Factory.HeroFactory();
-            this.map = this.Factory.CreateMap() ?? throw new NullReferenceException();
-            Console.SetWindowSize(120, 26);
+            this.printer.Logger.SetSize();
         }
 
         public IGameFactory Factory { get { return this.factory; } }
@@ -39,7 +38,11 @@ namespace AdventuresOfTelerik.Engine
         public IFightMode FightMode { get { return this.fightMode; } }
         public ICollisionDetector Detect { get { return this.detect; } }
         public ICommandSelection CommandSelection { get { return this.commandSelection; } }
-        public IMap Map { get { return this.map; } }
+        public IMap Map
+        {
+            get { return this.map; }
+            set { this.map = value ?? throw new NullReferenceException(); }
+        }
         public IHero Hero
         {
             get { return this.hero; }
@@ -50,11 +53,12 @@ namespace AdventuresOfTelerik.Engine
             get { return this.heroCord; }
             set { this.heroCord = value ?? throw new NullReferenceException(); }
         }
-
+        public string heroType;
         public void Start()
         {
+            this.Map = this.Factory.CreateMap();
             this.Printer.PrintStartScreen();
-            var heroType = this.Printer.PrintChooseHeroScreen();
+            this.heroType = this.Printer.PrintChooseHeroScreen();
             this.Printer.PrintAfterChoiceScreen();
             this.Hero = this.Factory.GetHeroBasedOnType(heroType);
             this.HeroCord = this.Factory.CreateHeroCoordinates(this.Hero);

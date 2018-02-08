@@ -89,6 +89,18 @@ namespace AdventuresOfTelerik.Tests.Models.Hero
         }
 
         [TestMethod]
+        public void Should_InitializeSecondWeaponValid()
+        {
+            
+            //Arrange
+            var mockBow = new Mock<IBow>();
+            var mockKnife = new Mock<IKnife>();
+            var hunter = new Hunter(mockBow.Object, mockKnife.Object);
+            // Act&&Assert
+            Assert.AreEqual(mockKnife.Object, hunter.WeaponSecond);
+        }
+
+        [TestMethod]
         public void Should_Additionalinfo_ReturnCorrectString()
         {
             //Arrange

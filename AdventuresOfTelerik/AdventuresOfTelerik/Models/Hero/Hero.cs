@@ -108,6 +108,7 @@ namespace AdventuresOfTelerik.Models.Hero
                    $"Hero Weapon:{this.Weapon.ToString()}\nHero Secret Weapon:{this.WeaponSecond.ToString()}";
         }
 
+
         public virtual string Additionalinfo()
         {
             return string.Empty;

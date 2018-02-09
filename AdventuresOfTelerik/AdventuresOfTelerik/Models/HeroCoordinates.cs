@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using AdventuresOfTelerik.Contracts.HeroInterfaces;
+using System;
 
 namespace AdventuresOfTelerik.Models
 {
@@ -9,11 +10,13 @@ namespace AdventuresOfTelerik.Models
 
         public HeroCoordinates(IHero hero)
         {
-            this.hero = hero;
+            this.hero = hero ?? throw new ArgumentNullException();
         }
 
-        public double X { get { return this.hero.PositionX; } }
-        public double Y { get { return this.hero.PositionY; } }
+        public double X { get { return this.Hero.PositionX; } }
+        public double Y { get { return this.Hero.PositionY; } }
+
+        public IHero Hero => hero;
 
         public override string ToString()
         {

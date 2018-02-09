@@ -62,11 +62,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Engine\Constructor_Should.cs" />
-    <Compile Include="Models\Heroes\FakeAbstractHero.cs" />
-    <Compile Include="Models\Heroes\HeroTests.cs" />
-    <Compile Include="Models\Heroes\HunterTests.cs" />
-    <Compile Include="Models\Heroes\MageTests.cs" />
-    <Compile Include="Models\Heroes\WarriorTests.cs" />
+    <Compile Include="Models\Heroes\HunterTests\AdditionalInfo_Should.cs" />
+    <Compile Include="Models\Heroes\HunterTests\SpecialAttack_Should.cs" />
+    <Compile Include="Models\Heroes\Mocks\FakeAbstractHero.cs" />
+    <Compile Include="Models\Heroes\HeroTests\HeroTests.cs" />
+    <Compile Include="Models\Heroes\HunterTests\Constructor_Should.cs" />
+    <Compile Include="Models\Heroes\MageTests\MageTests.cs" />
+    <Compile Include="Models\Heroes\WarriorTests\WarriorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

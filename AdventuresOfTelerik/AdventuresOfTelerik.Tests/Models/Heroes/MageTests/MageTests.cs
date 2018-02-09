@@ -4,16 +4,12 @@ using AdventuresOfTelerik.Models;
 using Moq;
 using AdventuresOfTelerik.Contracts.WeaponInterfaces;
 using System;
-using AdventuresOfTelerik.Contracts.HeroInterfaces;
-using AdventuresOfTelerik.Common.Enums;
 
-namespace AdventuresOfTelerik.Tests.Models.Hero
+namespace AdventuresOfTelerik.Tests.Models.Heroes.MageTests
 {
     [TestClass]
     public class MageTests
     {
-
-
         [TestMethod]
         public void Should_Throw_WhenKnifeIsNull()
         {

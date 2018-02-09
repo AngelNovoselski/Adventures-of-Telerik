@@ -1,16 +1,11 @@
 ﻿using AdventuresOfTelerik.Common.Enums;
-using AdventuresOfTelerik.Contracts.HeroInterfaces;
 using AdventuresOfTelerik.Contracts.WeaponInterfaces;
-using AdventuresOfTelerik.Tests.Models.HeroTests;
+using AdventuresOfTelerik.Tests.Models.Heroes.Mocks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AdventuresOfTelerik.Tests.Models.Heroes
+namespace AdventuresOfTelerik.Tests.Models.Heroes.Heroes
 {
     [TestClass]
     public class Hero_Should
@@ -35,6 +30,7 @@ namespace AdventuresOfTelerik.Tests.Models.Heroes
             Assert.AreEqual(color, fakeHero.HeroColor);
             Assert.AreEqual(knife.Object, fakeHero.WeaponSecond);
         }
+
         [TestMethod]
         public void SetCorrectWeapon_When_WeaponIsValid()
         {
@@ -63,6 +59,7 @@ namespace AdventuresOfTelerik.Tests.Models.Heroes
             //act & assert
             Assert.ThrowsException<ArgumentException>(() => fakeHero.Weapon = null);
         }
+
         [TestMethod]
         public void SetCorrectSecondWeapon_When_SecondWeaponIsValid()
         {
@@ -91,6 +88,7 @@ namespace AdventuresOfTelerik.Tests.Models.Heroes
             //act & assert
             Assert.ThrowsException<ArgumentException>(() => fakeHero.WeaponSecond = null);
         }
+
         [TestMethod]
         public void SetCorrectNewValues_When_MovingLeft()
         {
@@ -108,6 +106,7 @@ namespace AdventuresOfTelerik.Tests.Models.Heroes
             //assert
             Assert.AreEqual(currentPosition - 1, fakeHero.PositionY);
         }
+
         [TestMethod]
         public void SetCorrectNewValues_When_MovingRight()
         {
@@ -125,6 +124,7 @@ namespace AdventuresOfTelerik.Tests.Models.Heroes
             //assert
             Assert.AreEqual(currentPosition + 1, fakeHero.PositionY);
         }
+
         [TestMethod]
         public void SetCorrectNewValues_When_MovingUp()
         {
@@ -142,6 +142,7 @@ namespace AdventuresOfTelerik.Tests.Models.Heroes
             //assert
             Assert.AreEqual(currentPosition - 1, fakeHero.PositionX);
         }
+
         [TestMethod]
         public void SetCorrectNewValues_When_MovingDown()
         {
@@ -159,6 +160,7 @@ namespace AdventuresOfTelerik.Tests.Models.Heroes
             //assert
             Assert.AreEqual(currentPosition + 1, fakeHero.PositionX);
         }
+
         [TestMethod]
         public void ToStringReturnCorrectInfo()
         {
@@ -173,11 +175,9 @@ namespace AdventuresOfTelerik.Tests.Models.Heroes
             var expectedInfo = $"Hero Hp: {fakeHero.Hp}, Name: {fakeHero.Name}, Class: { fakeHero.GetType().Name}\n" +
                    $"{fakeHero.Additionalinfo()}\n" +
                    $"Hero Weapon:{fakeHero.Weapon.ToString()}\nHero Secret Weapon:{fakeHero.WeaponSecond.ToString()}";
-            
 
             //act & assert
             Assert.AreEqual(expectedInfo, fakeHero.ToString());
         }
-
     }
 }

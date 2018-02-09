@@ -1,9 +1,8 @@
 ﻿using System;
 using AdventuresOfTelerik.Common.Enums;
 using AdventuresOfTelerik.Contracts.WeaponInterfaces;
-using AdventuresOfTelerik.Models.Hero;
 
-namespace AdventuresOfTelerik.Tests.Models.HeroTests
+namespace AdventuresOfTelerik.Tests.Models.Heroes.Mocks
 {
     public class FakeAbstractHero : AdventuresOfTelerik.Models.Hero.Hero
     {
@@ -11,7 +10,6 @@ namespace AdventuresOfTelerik.Tests.Models.HeroTests
             : base(heroColor, knife)
         {
         }
-        
 
         public override int SpecialEnergy { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 

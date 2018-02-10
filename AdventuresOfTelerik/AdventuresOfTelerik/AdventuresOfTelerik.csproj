@@ -73,11 +73,7 @@
     <Compile Include="Models\Hero\Contracts\IHunter.cs" />
     <Compile Include="Models\Hero\Contracts\IMage.cs" />
     <Compile Include="Models\Hero\Contracts\IWarrior.cs" />
-    <Compile Include="ContractsUnused\IAgility.cs" />
-    <Compile Include="ContractsUnused\IDoDmg.cs" />
-    <Compile Include="ContractsUnused\IIntelligence.cs" />
     <Compile Include="Models\Contracts\IMap.cs" />
-    <Compile Include="ContractsUnused\IStrength.cs" />
     <Compile Include="Models\FightMode.cs" />
     <Compile Include="Models\Contracts\ICollisionDetector.cs" />
     <Compile Include="Models\Contracts\IFightMode.cs" />

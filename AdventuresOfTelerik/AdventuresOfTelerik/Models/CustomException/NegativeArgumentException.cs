@@ -9,7 +9,7 @@ namespace AdventuresOfTelerik.Models
         public NegativeArgumentException(IConsoleLogger logger)
             : base()
         {
-            Console.WriteLine(GlobalMessages.PositiveMessage);
+            logger.Write(GlobalMessages.PositiveMessage);
         }
 
         public NegativeArgumentException(string message)

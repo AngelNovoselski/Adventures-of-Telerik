@@ -63,15 +63,19 @@
   <ItemGroup>
     <Compile Include="Engine\Constructor_Should.cs" />
     <Compile Include="Engine\Start_Should.cs" />
-    <Compile Include="Models\CollisionDetectorTests\CollisionDetectorTests.cs" />
+    <Compile Include="Models\CollisionDetectorTests\CheckCollisions_Should.cs" />
+    <Compile Include="Models\CollisionDetectorTests\GuideMessage_Should.cs" />
     <Compile Include="Models\FightModeTests\FightModeTests.cs" />
     <Compile Include="Models\HeroCoordinatesTests\HeroCoordinates_Should.cs" />
+    <Compile Include="Models\Heroes\HeroTests\Move_Should.cs" />
+    <Compile Include="Models\Heroes\HeroTests\ToString_Should.cs" />
+    <Compile Include="Models\Heroes\HeroTests\OnFightMonster_Should.cs" />
     <Compile Include="Models\Heroes\HunterTests\AdditionalInfo_Should.cs" />
     <Compile Include="Models\Heroes\HunterTests\SpecialAttack_Should.cs" />
     <Compile Include="Models\Heroes\MageTests\SpecialAttack_Should.cs" />
     <Compile Include="Models\Heroes\MageTests\AdditionalInfo_Should.cs" />
     <Compile Include="Models\Heroes\Mocks\FakeAbstractHero.cs" />
-    <Compile Include="Models\Heroes\HeroTests\HeroTests.cs" />
+    <Compile Include="Models\Heroes\HeroTests\Constructor_Should.cs" />
     <Compile Include="Models\Heroes\HunterTests\Constructor_Should.cs" />
     <Compile Include="Models\Heroes\MageTests\Constructor_Should.cs" />
     <Compile Include="Models\Heroes\WarriorTests\SpecialAttack_Should.cs" />

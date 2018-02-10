@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Engine\Constructor_Should.cs" />
+    <Compile Include="Engine\Start_Should.cs" />
     <Compile Include="Models\CollisionDetectorTests\CollisionDetectorTests.cs" />
     <Compile Include="Models\FightModeTests\FightModeTests.cs" />
     <Compile Include="Models\HeroCoordinatesTests\HeroCoordinates_Should.cs" />

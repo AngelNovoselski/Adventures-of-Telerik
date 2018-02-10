@@ -18,16 +18,17 @@ namespace AdventuresOfTelerik.Engine
         private IMap map;
         private IHero hero;
         private IHeroCoordinates heroCord;
+        private string heroType;
 
         public GameEngine(IGameFactory factory, IScreenPrinter printer, IHeroPrinter heroPrint,
                             IFightMode fightMode, ICollisionDetector detect, ICommandSelection commandSelection)
         {
-            this.factory = factory ?? throw new NullReferenceException();
-            this.printer = printer ?? throw new NullReferenceException();
-            this.heroPrint = heroPrint ?? throw new NullReferenceException();
-            this.fightMode = fightMode ?? throw new NullReferenceException();
-            this.detect = detect ?? throw new NullReferenceException();
-            this.commandSelection = commandSelection ?? throw new NullReferenceException();
+            this.factory = factory ?? throw new ArgumentNullException ();
+            this.printer = printer ?? throw new ArgumentNullException ();
+            this.heroPrint = heroPrint ?? throw new ArgumentNullException ();
+            this.fightMode = fightMode ?? throw new ArgumentNullException ();
+            this.detect = detect ?? throw new ArgumentNullException ();
+            this.commandSelection = commandSelection ?? throw new ArgumentNullException ();
             this.Factory.HeroFactory();
             this.printer.Logger.SetSize();
         }
@@ -38,22 +39,25 @@ namespace AdventuresOfTelerik.Engine
         public IFightMode FightMode { get { return this.fightMode; } }
         public ICollisionDetector Detect { get { return this.detect; } }
         public ICommandSelection CommandSelection { get { return this.commandSelection; } }
+
         public IMap Map
         {
             get { return this.map; }
-            set { this.map = value ?? throw new NullReferenceException(); }
+            set { this.map = value ?? throw new ArgumentNullException (); }
         }
+
         public IHero Hero
         {
             get { return this.hero; }
-            set { this.hero = value ?? throw new NullReferenceException(); }
+            set { this.hero = value ?? throw new ArgumentNullException (); }
         }
+
         public IHeroCoordinates HeroCord
         {
             get { return this.heroCord; }
-            set { this.heroCord = value ?? throw new NullReferenceException(); }
+            set { this.heroCord = value ?? throw new ArgumentNullException (); }
         }
-        public string heroType;
+
         public void Start()
         {
             this.Map = this.Factory.CreateMap();

@@ -5,8 +5,6 @@ using Moq;
 using AdventuresOfTelerik.Factories;
 using AdventuresOfTelerik.Models;
 using AdventuresOfTelerik.Models.MessagesForPrinting;
-using AdventuresOfTelerik.Contracts;
-using AdventuresOfTelerik.Contracts.HeroInterfaces;
 
 namespace AdventuresOfTelerik.Tests.Engine
 {
@@ -14,7 +12,7 @@ namespace AdventuresOfTelerik.Tests.Engine
     public class Constructor_Should
     {
         [TestMethod]
-        public void ThrowArgumentNullException_WhenFactoryIsNull()
+        public void ThrowArgumentNullException_WhenPassedParamFactoryIsNull()
         {
             // Arrange
             var stubFactory = new Mock<IGameFactory>();
@@ -25,13 +23,13 @@ namespace AdventuresOfTelerik.Tests.Engine
             var stubCommandSelection = new Mock<ICommandSelection>();
 
             // Act & Assert
-            Assert.ThrowsException<NullReferenceException>(
+            Assert.ThrowsException<ArgumentNullException>(
                 () => new GameEngine(null, stubScreenPrinter.Object, stubHeroPrinter.Object,
                 stubFightMode.Object, stubCollisionDetector.Object, stubCommandSelection.Object));
         }
 
         [TestMethod]
-        public void ThrowArgumentNullException_WhenScreenPrinterIsNull()
+        public void ThrowArgumentNullException_WhenPassedParamScreenPrinterIsNull()
         {
             // Arrange
             var stubFactory = new Mock<IGameFactory>();
@@ -42,13 +40,13 @@ namespace AdventuresOfTelerik.Tests.Engine
             var stubCommandSelection = new Mock<ICommandSelection>();
 
             // Act & Assert
-            Assert.ThrowsException<NullReferenceException>(
+            Assert.ThrowsException<ArgumentNullException>(
                 () => new GameEngine(stubFactory.Object, null, stubHeroPrinter.Object,
                 stubFightMode.Object, stubCollisionDetector.Object, stubCommandSelection.Object));
         }
 
         [TestMethod]
-        public void ThrowArgumentNullException_WhenHeroPrinterIsNull()
+        public void ThrowArgumentNullException_WhenPassedParamHeroPrinterIsNull()
         {
             // Arrange
             var stubFactory = new Mock<IGameFactory>();
@@ -59,13 +57,13 @@ namespace AdventuresOfTelerik.Tests.Engine
             var stubCommandSelection = new Mock<ICommandSelection>();
 
             // Act & Assert
-            Assert.ThrowsException<NullReferenceException>(
+            Assert.ThrowsException<ArgumentNullException>(
                 () => new GameEngine(stubFactory.Object, stubScreenPrinter.Object, null,
                 stubFightMode.Object, stubCollisionDetector.Object, stubCommandSelection.Object));
         }
 
         [TestMethod]
-        public void ThrowArgumentNullException_WhenFightModeIsNull()
+        public void ThrowArgumentNullException_WhenPassedParamFightModeIsNull()
         {
             // Arrange
             var stubFactory = new Mock<IGameFactory>();
@@ -76,13 +74,13 @@ namespace AdventuresOfTelerik.Tests.Engine
             var stubCommandSelection = new Mock<ICommandSelection>();
 
             // Act & Assert
-            Assert.ThrowsException<NullReferenceException>(
+            Assert.ThrowsException<ArgumentNullException>(
                 () => new GameEngine(stubFactory.Object, stubScreenPrinter.Object, stubHeroPrinter.Object,
                 null, stubCollisionDetector.Object, stubCommandSelection.Object));
         }
 
         [TestMethod]
-        public void ThrowArgumentNullException_WhenCollisionDetectorIsNull()
+        public void ThrowArgumentNullException_WhenPassedParamCollisionDetectorIsNull()
         {
             // Arrange
             var stubFactory = new Mock<IGameFactory>();
@@ -93,13 +91,13 @@ namespace AdventuresOfTelerik.Tests.Engine
             var stubCommandSelection = new Mock<ICommandSelection>();
 
             // Act & Assert
-            Assert.ThrowsException<NullReferenceException>(
+            Assert.ThrowsException<ArgumentNullException>(
                 () => new GameEngine(stubFactory.Object, stubScreenPrinter.Object, stubHeroPrinter.Object,
                 stubFightMode.Object, null, stubCommandSelection.Object));
         }
 
         [TestMethod]
-        public void ThrowArgumentNullException_WhenCommandSelectionIsNull()
+        public void ThrowArgumentNullException_WhenPassedParamCommandSelectionIsNull()
         {
             // Arrange
             var stubFactory = new Mock<IGameFactory>();
@@ -110,14 +108,13 @@ namespace AdventuresOfTelerik.Tests.Engine
             var stubCommandSelection = new Mock<ICommandSelection>();
 
             // Act & Assert
-            Assert.ThrowsException<NullReferenceException>(
+            Assert.ThrowsException<ArgumentNullException>(
                 () => new GameEngine(stubFactory.Object, stubScreenPrinter.Object, stubHeroPrinter.Object,
                 stubFightMode.Object, stubCollisionDetector.Object, null));
         }
 
         [TestMethod]
-        //[Ignore]
-        public void InvokeCreateOnFactoryHeroFactoryCreation()
+        public void InvokeFactoryHeroFactory()
         {
             // Arrange
             var mockFactory = new Mock<IGameFactory>();
@@ -126,9 +123,9 @@ namespace AdventuresOfTelerik.Tests.Engine
             var stubFightMode = new Mock<IFightMode>();
             var stubCollisionDetector = new Mock<ICollisionDetector>();
             var stubCommandSelection = new Mock<ICommandSelection>();
+            stubScreenPrinter.Setup(x => x.Logger.SetSize());
 
             // Act
-            stubScreenPrinter.Setup(x => x.Logger.SetSize());
             var engine = new GameEngine(mockFactory.Object, stubScreenPrinter.Object, stubHeroPrinter.Object,
                 stubFightMode.Object, stubCollisionDetector.Object, stubCommandSelection.Object);
 
@@ -137,7 +134,7 @@ namespace AdventuresOfTelerik.Tests.Engine
         }
 
         [TestMethod]
-        public void InvokePrinterLoggerSetSizeOnCreation()
+        public void InvokePrinterLoggerSetSize()
         {
             // Arrange
             var stubFactory = new Mock<IGameFactory>();
@@ -146,9 +143,9 @@ namespace AdventuresOfTelerik.Tests.Engine
             var stubFightMode = new Mock<IFightMode>();
             var stubCollisionDetector = new Mock<ICollisionDetector>();
             var stubCommandSelection = new Mock<ICommandSelection>();
+            mockScreenPrinter.Setup(x => x.Logger.SetSize());
 
             // Act
-            mockScreenPrinter.Setup(x => x.Logger.SetSize());
             var engine = new GameEngine(stubFactory.Object, mockScreenPrinter.Object, stubHeroPrinter.Object,
                 stubFightMode.Object, stubCollisionDetector.Object, stubCommandSelection.Object);
 
@@ -157,7 +154,27 @@ namespace AdventuresOfTelerik.Tests.Engine
         }
 
         [TestMethod]
-        public void SetProperFactory_WhenEngineIsCreated()
+        public void SetCorrectFactory_WhenEngineIsCreated()
+        {
+            // Arrange
+            var mockFactory = new Mock<IGameFactory>();
+            var stubScreenPrinter = new Mock<IScreenPrinter>();
+            var stubHeroPrinter = new Mock<IHeroPrinter>();
+            var stubFightMode = new Mock<IFightMode>();
+            var stubCollisionDetector = new Mock<ICollisionDetector>();
+            var stubCommandSelection = new Mock<ICommandSelection>();
+            stubScreenPrinter.Setup(x => x.Logger.SetSize());
+
+            // Act
+            var engine = new GameEngine(mockFactory.Object, stubScreenPrinter.Object, stubHeroPrinter.Object,
+                stubFightMode.Object, stubCollisionDetector.Object, stubCommandSelection.Object);
+
+            // Assert
+            Assert.AreEqual(mockFactory.Object, engine.Factory);
+        }
+
+        [TestMethod]
+        public void SetCorrectScreenPrinter_WhenEngineIsCreated()
         {
             // Arrange
             var stubFactory = new Mock<IGameFactory>();
@@ -166,195 +183,148 @@ namespace AdventuresOfTelerik.Tests.Engine
             var stubFightMode = new Mock<IFightMode>();
             var stubCollisionDetector = new Mock<ICollisionDetector>();
             var stubCommandSelection = new Mock<ICommandSelection>();
+            mockScreenPrinter.Setup(x => x.Logger.SetSize());
 
             // Act
-            mockScreenPrinter.Setup(x => x.Logger.SetSize());
             var engine = new GameEngine(stubFactory.Object, mockScreenPrinter.Object, stubHeroPrinter.Object,
                 stubFightMode.Object, stubCollisionDetector.Object, stubCommandSelection.Object);
 
             // Assert
-            Assert.AreEqual(stubFactory.Object, engine.Factory);
+            Assert.AreEqual(mockScreenPrinter.Object, engine.Printer);
         }
 
         [TestMethod]
-        public void SetProperPrinter_WhenEngineIsCreated()
-        {
-            // Arrange & Act
-            var stubFactory = new Mock<IGameFactory>();
-            var stubScreenPrinter = new Mock<IScreenPrinter>();
-            var stubHeroPrinter = new Mock<IHeroPrinter>();
-            var stubFightMode = new Mock<IFightMode>();
-            var stubCollisionDetector = new Mock<ICollisionDetector>();
-            var stubCommandSelection = new Mock<ICommandSelection>();
-            stubScreenPrinter.Setup(x => x.Logger.SetSize());
-            var engine = new GameEngine(stubFactory.Object, stubScreenPrinter.Object, stubHeroPrinter.Object,
-                stubFightMode.Object, stubCollisionDetector.Object, stubCommandSelection.Object);
-
-            // Assert
-            Assert.AreEqual(stubScreenPrinter.Object, engine.Printer);
-        }
-
-        [TestMethod]
-        public void SetProperHeroPrint_WhenEngineIsCreated()
-        {
-            // Arrange & Act
-            var stubFactory = new Mock<IGameFactory>();
-            var stubScreenPrinter = new Mock<IScreenPrinter>();
-            var stubHeroPrinter = new Mock<IHeroPrinter>();
-            var stubFightMode = new Mock<IFightMode>();
-            var stubCollisionDetector = new Mock<ICollisionDetector>();
-            var stubCommandSelection = new Mock<ICommandSelection>();
-            stubScreenPrinter.Setup(x => x.Logger.SetSize());
-            var engine = new GameEngine(stubFactory.Object, stubScreenPrinter.Object, stubHeroPrinter.Object,
-                stubFightMode.Object, stubCollisionDetector.Object, stubCommandSelection.Object);
-
-            // Assert
-            Assert.AreEqual(stubHeroPrinter.Object, engine.HeroPrint);
-        }
-
-        [TestMethod]
-        public void SetProperFightMode_WhenEngineIsCreated()
-        {
-            // Arrange & Act
-            var stubFactory = new Mock<IGameFactory>();
-            var stubScreenPrinter = new Mock<IScreenPrinter>();
-            var stubHeroPrinter = new Mock<IHeroPrinter>();
-            var stubFightMode = new Mock<IFightMode>();
-            var stubCollisionDetector = new Mock<ICollisionDetector>();
-            var stubCommandSelection = new Mock<ICommandSelection>();
-            stubScreenPrinter.Setup(x => x.Logger.SetSize());
-            var engine = new GameEngine(stubFactory.Object, stubScreenPrinter.Object, stubHeroPrinter.Object,
-                stubFightMode.Object, stubCollisionDetector.Object, stubCommandSelection.Object);
-
-            // Assert
-            Assert.AreEqual(stubFightMode.Object, engine.FightMode);
-        }
-
-        [TestMethod]
-        public void SetProperDetect_WhenEngineIsCreated()
-        {
-            // Arrange & Act
-            var stubFactory = new Mock<IGameFactory>();
-            var stubScreenPrinter = new Mock<IScreenPrinter>();
-            var stubHeroPrinter = new Mock<IHeroPrinter>();
-            var stubFightMode = new Mock<IFightMode>();
-            var stubCollisionDetector = new Mock<ICollisionDetector>();
-            var stubCommandSelection = new Mock<ICommandSelection>();
-            stubScreenPrinter.Setup(x => x.Logger.SetSize());
-            var engine = new GameEngine(stubFactory.Object, stubScreenPrinter.Object, stubHeroPrinter.Object,
-                stubFightMode.Object, stubCollisionDetector.Object, stubCommandSelection.Object);
-
-            // Assert
-            Assert.AreEqual(stubCollisionDetector.Object, engine.Detect);
-        }
-
-        [TestMethod]
-        public void SetProperCommandSelection_WhenEngineIsCreated()
-        {
-            // Arrange & Act
-            var stubFactory = new Mock<IGameFactory>();
-            var stubScreenPrinter = new Mock<IScreenPrinter>();
-            var stubHeroPrinter = new Mock<IHeroPrinter>();
-            var stubFightMode = new Mock<IFightMode>();
-            var stubCollisionDetector = new Mock<ICollisionDetector>();
-            var stubCommandSelection = new Mock<ICommandSelection>();
-            stubScreenPrinter.Setup(x => x.Logger.SetSize());
-            var engine = new GameEngine(stubFactory.Object, stubScreenPrinter.Object, stubHeroPrinter.Object,
-                stubFightMode.Object, stubCollisionDetector.Object, stubCommandSelection.Object);
-
-            // Assert
-            Assert.AreEqual(stubCommandSelection.Object, engine.CommandSelection);
-        }
-
-        [TestMethod]
-        public void ThrowNullReferenceException_WhenMapIsNull()
-        {
-            // Arrange & Act
-            var stubFactory = new Mock<IGameFactory>();
-            var stubScreenPrinter = new Mock<IScreenPrinter>();
-            var stubHeroPrinter = new Mock<IHeroPrinter>();
-            var stubFightMode = new Mock<IFightMode>();
-            var stubCollisionDetector = new Mock<ICollisionDetector>();
-            var stubCommandSelection = new Mock<ICommandSelection>();
-            stubScreenPrinter.Setup(x => x.Logger.SetSize());
-            var engine = new GameEngine(stubFactory.Object, stubScreenPrinter.Object, stubHeroPrinter.Object,
-                stubFightMode.Object, stubCollisionDetector.Object, stubCommandSelection.Object);
-
-            // Assert
-            Assert.ThrowsException<NullReferenceException>(() => engine.Map = null);
-        }
-
-        [TestMethod]
-        public void ThrowNullReferenceException_WhenHeroIsNull()
-        {
-            // Arrange & Act
-            var stubFactory = new Mock<IGameFactory>();
-            var stubScreenPrinter = new Mock<IScreenPrinter>();
-            var stubHeroPrinter = new Mock<IHeroPrinter>();
-            var stubFightMode = new Mock<IFightMode>();
-            var stubCollisionDetector = new Mock<ICollisionDetector>();
-            var stubCommandSelection = new Mock<ICommandSelection>();
-            stubScreenPrinter.Setup(x => x.Logger.SetSize());
-            var engine = new GameEngine(stubFactory.Object, stubScreenPrinter.Object, stubHeroPrinter.Object,
-                stubFightMode.Object, stubCollisionDetector.Object, stubCommandSelection.Object);
-
-            // Assert
-            Assert.ThrowsException<NullReferenceException>(() => engine.Hero = null);
-        }
-
-        [TestMethod]
-        public void ThrowNullReferenceException_WhenHeroCordIsNull()
-        {
-            // Arrange & Act
-            var stubFactory = new Mock<IGameFactory>();
-            var stubScreenPrinter = new Mock<IScreenPrinter>();
-            var stubHeroPrinter = new Mock<IHeroPrinter>();
-            var stubFightMode = new Mock<IFightMode>();
-            var stubCollisionDetector = new Mock<ICollisionDetector>();
-            var stubCommandSelection = new Mock<ICommandSelection>();
-            stubScreenPrinter.Setup(x => x.Logger.SetSize());
-            var engine = new GameEngine(stubFactory.Object, stubScreenPrinter.Object, stubHeroPrinter.Object,
-                stubFightMode.Object, stubCollisionDetector.Object, stubCommandSelection.Object);
-
-            // Assert
-            Assert.ThrowsException<NullReferenceException>(() => engine.HeroCord = null);
-        }
-
-        [TestMethod]
-        public void InvokeOnePrintStartScreen_WhenEngineIsStarted()
+        public void SetCorrectHeroPrinter_WhenEngineIsCreated()
         {
             // Arrange
             var stubFactory = new Mock<IGameFactory>();
-            var mockScreenPrinter = new Mock<IScreenPrinter>();
+            var stubScreenPrinter = new Mock<IScreenPrinter>();
+            var mockHeroPrinter = new Mock<IHeroPrinter>();
+            var stubFightMode = new Mock<IFightMode>();
+            var stubCollisionDetector = new Mock<ICollisionDetector>();
+            var stubCommandSelection = new Mock<ICommandSelection>();
+            stubScreenPrinter.Setup(x => x.Logger.SetSize());
+
+            // Act
+            var engine = new GameEngine(stubFactory.Object, stubScreenPrinter.Object, mockHeroPrinter.Object,
+                stubFightMode.Object, stubCollisionDetector.Object, stubCommandSelection.Object);
+
+            // Assert
+            Assert.AreEqual(mockHeroPrinter.Object, engine.HeroPrint);
+        }
+
+        [TestMethod]
+        public void SetCorrectFightMode_WhenEngineIsCreated()
+        {
+            // Arrange
+            var stubFactory = new Mock<IGameFactory>();
+            var stubScreenPrinter = new Mock<IScreenPrinter>();
+            var stubHeroPrinter = new Mock<IHeroPrinter>();
+            var mockFightMode = new Mock<IFightMode>();
+            var stubCollisionDetector = new Mock<ICollisionDetector>();
+            var stubCommandSelection = new Mock<ICommandSelection>();
+            stubScreenPrinter.Setup(x => x.Logger.SetSize());
+
+            // Act
+            var engine = new GameEngine(stubFactory.Object, stubScreenPrinter.Object, stubHeroPrinter.Object,
+                mockFightMode.Object, stubCollisionDetector.Object, stubCommandSelection.Object);
+
+            // Assert
+            Assert.AreEqual(mockFightMode.Object, engine.FightMode);
+        }
+
+        [TestMethod]
+        public void SetCorrectCollisionDetector_WhenEngineIsCreated()
+        {
+            // Arrange
+            var stubFactory = new Mock<IGameFactory>();
+            var stubScreenPrinter = new Mock<IScreenPrinter>();
+            var stubHeroPrinter = new Mock<IHeroPrinter>();
+            var stubFightMode = new Mock<IFightMode>();
+            var mockCollisionDetector = new Mock<ICollisionDetector>();
+            var stubCommandSelection = new Mock<ICommandSelection>();
+            stubScreenPrinter.Setup(x => x.Logger.SetSize());
+
+            // Act
+            var engine = new GameEngine(stubFactory.Object, stubScreenPrinter.Object, stubHeroPrinter.Object,
+                stubFightMode.Object, mockCollisionDetector.Object, stubCommandSelection.Object);
+
+            // Assert
+            Assert.AreEqual(mockCollisionDetector.Object, engine.Detect);
+        }
+
+        [TestMethod]
+        public void SetCorrectCommandSelection_WhenEngineIsCreated()
+        {
+            // Arrange
+            var stubFactory = new Mock<IGameFactory>();
+            var stubScreenPrinter = new Mock<IScreenPrinter>();
+            var stubHeroPrinter = new Mock<IHeroPrinter>();
+            var stubFightMode = new Mock<IFightMode>();
+            var stubCollisionDetector = new Mock<ICollisionDetector>();
+            var mockCommandSelection = new Mock<ICommandSelection>();
+            stubScreenPrinter.Setup(x => x.Logger.SetSize());
+
+            // Act
+            var engine = new GameEngine(stubFactory.Object, stubScreenPrinter.Object, stubHeroPrinter.Object,
+                stubFightMode.Object, stubCollisionDetector.Object, mockCommandSelection.Object);
+
+            // Assert
+            Assert.AreEqual(mockCommandSelection.Object, engine.CommandSelection);
+        }
+
+        [TestMethod]
+        public void ThrowArgumentNullException_WhenMapIsNull()
+        {
+            // Arrange 
+            var stubFactory = new Mock<IGameFactory>();
+            var stubScreenPrinter = new Mock<IScreenPrinter>();
             var stubHeroPrinter = new Mock<IHeroPrinter>();
             var stubFightMode = new Mock<IFightMode>();
             var stubCollisionDetector = new Mock<ICollisionDetector>();
             var stubCommandSelection = new Mock<ICommandSelection>();
-
-            mockScreenPrinter.Setup(x => x.Logger.SetSize());
-            mockScreenPrinter.Setup(x => x.PrintChooseHeroScreen()).Returns("mage");
-
-            var map = new Mock<IMap>();
-            stubFactory.Setup(x => x.CreateMap()).Returns(map.Object);
-
-            var hero = new Mock<IHero>();
-            string type = "mage";
-            stubFactory.Setup(x => x.GetHeroBasedOnType(type)).Returns(hero.Object);
-
-            var heroCord = new Mock<IHeroCoordinates>();
-            stubFactory.Setup(x => x.CreateHeroCoordinates(hero.Object)).Returns(heroCord.Object);
-            
-
-            var engine = new GameEngine(stubFactory.Object, mockScreenPrinter.Object, stubHeroPrinter.Object,
+            stubScreenPrinter.Setup(x => x.Logger.SetSize());
+            var engine = new GameEngine(stubFactory.Object, stubScreenPrinter.Object, stubHeroPrinter.Object,
                 stubFightMode.Object, stubCollisionDetector.Object, stubCommandSelection.Object);
 
-            // Act
-            engine.Start();
+            // Act & Assert
+            Assert.ThrowsException<ArgumentNullException>(() => engine.Map = null);
+        }
 
-            // Assert
-            mockScreenPrinter.Verify(x => x.PrintStartScreen(), Times.Exactly(1));
-            mockScreenPrinter.Verify(x => x.PrintAfterChoiceScreen(), Times.Exactly(1));
-            mockScreenPrinter.Verify(x => x.PrintChooseHeroScreen(), Times.Exactly(1));
+        [TestMethod]
+        public void ThrowArgumentNullException_WhenHeroIsNull()
+        {
+            // Arrange
+            var stubFactory = new Mock<IGameFactory>();
+            var stubScreenPrinter = new Mock<IScreenPrinter>();
+            var stubHeroPrinter = new Mock<IHeroPrinter>();
+            var stubFightMode = new Mock<IFightMode>();
+            var stubCollisionDetector = new Mock<ICollisionDetector>();
+            var stubCommandSelection = new Mock<ICommandSelection>();
+            stubScreenPrinter.Setup(x => x.Logger.SetSize());
+            var engine = new GameEngine(stubFactory.Object, stubScreenPrinter.Object, stubHeroPrinter.Object,
+                stubFightMode.Object, stubCollisionDetector.Object, stubCommandSelection.Object);
+
+            // Act & Assert
+            Assert.ThrowsException<ArgumentNullException>(() => engine.Hero = null);
+        }
+
+        [TestMethod]
+        public void ThrowArgumentNullException_WhenHeroCordIsNull()
+        {
+            // Arrange
+            var stubFactory = new Mock<IGameFactory>();
+            var stubScreenPrinter = new Mock<IScreenPrinter>();
+            var stubHeroPrinter = new Mock<IHeroPrinter>();
+            var stubFightMode = new Mock<IFightMode>();
+            var stubCollisionDetector = new Mock<ICollisionDetector>();
+            var stubCommandSelection = new Mock<ICommandSelection>();
+            stubScreenPrinter.Setup(x => x.Logger.SetSize());
+            var engine = new GameEngine(stubFactory.Object, stubScreenPrinter.Object, stubHeroPrinter.Object,
+                stubFightMode.Object, stubCollisionDetector.Object, stubCommandSelection.Object);
+
+            // Act & Assert
+            Assert.ThrowsException<ArgumentNullException>(() => engine.HeroCord = null);
         }
     }
 }

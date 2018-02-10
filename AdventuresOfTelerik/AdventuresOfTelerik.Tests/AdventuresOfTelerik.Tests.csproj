@@ -68,11 +68,15 @@
     <Compile Include="Models\HeroCoordinatesTests\HeroCoordinates_Should.cs" />
     <Compile Include="Models\Heroes\HunterTests\AdditionalInfo_Should.cs" />
     <Compile Include="Models\Heroes\HunterTests\SpecialAttack_Should.cs" />
+    <Compile Include="Models\Heroes\MageTests\SpecialAttack_Should.cs" />
+    <Compile Include="Models\Heroes\MageTests\AdditionalInfo_Should.cs" />
     <Compile Include="Models\Heroes\Mocks\FakeAbstractHero.cs" />
     <Compile Include="Models\Heroes\HeroTests\HeroTests.cs" />
     <Compile Include="Models\Heroes\HunterTests\Constructor_Should.cs" />
-    <Compile Include="Models\Heroes\MageTests\MageTests.cs" />
-    <Compile Include="Models\Heroes\WarriorTests\WarriorTests.cs" />
+    <Compile Include="Models\Heroes\MageTests\Constructor_Should.cs" />
+    <Compile Include="Models\Heroes\WarriorTests\SpecialAttack_Should.cs" />
+    <Compile Include="Models\Heroes\WarriorTests\AdditionalInfo_Should.cs" />
+    <Compile Include="Models\Heroes\WarriorTests\Constructor_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

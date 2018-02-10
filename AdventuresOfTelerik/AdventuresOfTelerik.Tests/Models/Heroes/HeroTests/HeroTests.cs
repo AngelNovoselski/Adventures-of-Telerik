@@ -57,7 +57,7 @@ namespace AdventuresOfTelerik.Tests.Models.Heroes.Heroes
             var fakeHero = new FakeAbstractHero(color, knife.Object);
 
             //act & assert
-            Assert.ThrowsException<ArgumentException>(() => fakeHero.Weapon = null);
+            Assert.ThrowsException<ArgumentNullException>(() => fakeHero.Weapon = null);
         }
 
         [TestMethod]
@@ -86,7 +86,7 @@ namespace AdventuresOfTelerik.Tests.Models.Heroes.Heroes
             var fakeHero = new FakeAbstractHero(color, knife.Object);
 
             //act & assert
-            Assert.ThrowsException<ArgumentException>(() => fakeHero.WeaponSecond = null);
+            Assert.ThrowsException<ArgumentNullException>(() => fakeHero.WeaponSecond = null);
         }
 
         [TestMethod]

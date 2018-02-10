@@ -11,23 +11,23 @@ namespace AdventuresOfTelerik.Tests.Models.Heroes.HunterTests
     public class Constructor_Should
     {
         [TestMethod]
-        public void ThrowArgumentException_WhenKnifeIsNull()
+        public void ThrowArgumentNullException_WhenParamKnifeIsNull()
         {
             // Arrange
             var stubBow = new Mock<IBow>();
 
             // Act & Assert
-            Assert.ThrowsException<ArgumentException>(() => new Hunter(stubBow.Object, null));
+            Assert.ThrowsException<ArgumentNullException>(() => new Hunter(stubBow.Object, null));
         }
 
         [TestMethod]
-        public void ThrowArgumentException_WhenBowIsNull()
+        public void ThrowArgumentNullException_WhenParamBowIsNull()
         {
             // Arrange
             var stubKnife = new Mock<IKnife>();
 
             // Act & Assert
-            Assert.ThrowsException<ArgumentException>(() => new Hunter(null, stubKnife.Object));
+            Assert.ThrowsException<ArgumentNullException>(() => new Hunter(null, stubKnife.Object));
         }
 
         [TestMethod]

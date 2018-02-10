@@ -9,7 +9,7 @@ namespace AdventuresOfTelerik.Tests.Models.Heroes.HunterTests
     public class SpecialAttack_Should
     {
         [TestMethod]
-        public void ReturnsZero_WhenSpecialEnergyIsLessThan44()
+        public void ReturnZero_WhenSpecialEnergyIsLessThan44()
         {
             // Arrange
             var stubBow = new Mock<IBow>();
@@ -22,7 +22,7 @@ namespace AdventuresOfTelerik.Tests.Models.Heroes.HunterTests
         }
 
         [TestMethod]
-        public void ReturnsCorrectValue_When_SpecialEnergyIsMoreThan44()
+        public void ReturnCorrectValue_When_SpecialEnergyIsMoreThan44()
         {
             // Arrange
             var stubBow = new Mock<IBow>();

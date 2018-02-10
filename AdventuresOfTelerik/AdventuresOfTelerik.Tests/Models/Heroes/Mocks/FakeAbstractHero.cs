@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq.Expressions;
 using AdventuresOfTelerik.Common.Enums;
 using AdventuresOfTelerik.Contracts.WeaponInterfaces;
 
@@ -11,11 +12,11 @@ namespace AdventuresOfTelerik.Tests.Models.Heroes.Mocks
         {
         }
 
-        public override int SpecialEnergy { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public override int SpecialEnergy { get; set; }
 
         public override int SpecialAttack()
         {
-            throw new NotImplementedException();
+            return default(int);
         }
     }
 }

@@ -53,7 +53,7 @@ namespace AdventuresOfTelerik.Models.Hero
             {
                 if (value == null)
                 {
-                    throw new ArgumentException("Weapon must be created!!!");
+                    throw new ArgumentNullException("Weapon must be created!!!");
                 }
                 this.weapon = value;
             }
@@ -69,7 +69,7 @@ namespace AdventuresOfTelerik.Models.Hero
             {
                 if (value == null)
                 {
-                    throw new ArgumentException("Weapon must be created!!!");
+                    throw new ArgumentNullException("Weapon must be created!!!");
                 }
                 this.weaponSecond = value;
             }
